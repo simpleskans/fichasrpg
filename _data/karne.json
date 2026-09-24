@@ -1,0 +1,56 @@
+{
+    "infobasica": {
+        "nome": "Karne",
+        "origem": "Forasteiro",
+        "classe": "Barbáro",
+        "especie": "Leonino",
+        "subclasse": "",
+        "exp": 1,
+        "nivel": 1,
+        "alinhamento": "l,b",
+        "aparencia": {
+            "idade": "23",
+            "altura": "2.3",
+            "peso": "340",
+            "olhos": "Vermelho",
+            "pele": "Branca",
+            "cabelo": "Branco com padrões vermelhos"
+        }
+    },
+    "atributos": {
+        "for": 15,
+        "des": 12,
+        "con": 13,
+        "int": 8,
+        "sab": 14,
+        "car": 10,
+        "saves": {
+            "for": true,
+            "des": false,
+            "con": true,
+            "int": false,
+            "sab": false,
+            "car": false
+        },
+        "pericias": {
+            "acrobacia": false,
+            "arcanismo": false,
+            "atletismo": true,
+            "atuacao": true,
+            "enganacao": false,
+            "furtividade": false,
+            "historia": false,
+            "intimidacao": false,
+            "intuicao": false,
+            "investigacao": false,
+            "lidarcomanimais": true,
+            "medicina": false,
+            "natureza": true,
+            "percepcao": true,
+            "persuasao": false,
+            "prestidigitacao": false,
+            "religiao": false,
+            "sobrevivencia": true
+        }
+    }
+}

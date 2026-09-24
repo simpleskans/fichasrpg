@@ -1,0 +1,49 @@
+@font-face {
+    font-family: Scaly Sans;
+    src: url(/font/Scaly\ Sans\ Caps.otf);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+#root, #__next {
+  isolation: isolate;
+}
+
+body {
+    font-family: 'Scaly Sans', sans-serif;
+    line-height: 1.5;
+}
+
+h1 {
+    margin: 1rem;
+}
+
+#cabecalho {
+    max-width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.cabecalho {
+    background: #75232E;
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+}
+
+.bloco {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border: 1px #9F9274 solid;
+    padding: 10px;
+}
+
