@@ -5,446 +5,158 @@ personagem: karne
 layout: ficha
 ---
 
-<div id="cabecalho"></div>
-
-<script>
-    const personagem = {{ site.data.karne | jsonify }};
-
-    const info = personagem.infobasica;
-    const atributos = personagem.atributos;
-
-
-    // ========================================
-    // FUNÇÕES DE CÁLCULO
-    // ========================================
-
-    // Modificador de atributo
-    function modificador(valor) {
-        return Math.floor((valor - 10) / 2);
-    }
-
-
-    // Formata modificador: +2, +1, 0, -1...
-    function formatarModificador(valor) {
-        return valor > 0 ? `+${valor}` : `${valor}`;
-    }
-
-
-    // Bônus de proficiência baseado no nível
-    function bonusProficiencia(nivel) {
-        return Math.floor((nivel - 1) / 4) + 2;
-    }
-
-
-    const bonusProf = bonusProficiencia(info.nivel);
-
-
-    // ========================================
-    // ESTRUTURA DA FICHA
-    // ========================================
-
-    document.getElementById("cabecalho").innerHTML = `
-
-        <!-- BLOCO 1 -->
-        
-
-        <div class="cabecalho">
-                <h2>${info.nome}</h2>
-            </div>
-
-
-        <div class="bloco">
-            
-
-            <div>
-                <strong>${info.origem}</strong>
-                <span>Origem</span>
-            </div>
-
-            <div>
-                <span>Classe</span>
-                <strong>${info.classe}</strong>
-            </div>
-
-            <div>
-                <span>Espécie</span>
-                <strong>${info.especie}</strong>
-            </div>
-
-            <div>
-                <span>Subclasse</span>
-                <strong>${info.subclasse || "—"}</strong>
-            </div>
-        </div>
-
-
-        <!-- BLOCO 2 -->
-        <div class="bloco">
-            <div>
-                <span>Nível</span>
-                <strong>${info.nivel}</strong>
-            </div>
-
-            <div>
-                <span>Exp.</span>
-                <strong>${info.exp}</strong>
-            </div>
-        </div>
-
-
-        <!-- BLOCO 3 -->
-        <div class="bloco">
-            <div>
-                <span>Classe de Armadura</span>
-                <strong>—</strong>
-            </div>
-
-            <div>
-                <span>Escudo</span>
-                <strong>—</strong>
-            </div>
-        </div>
-
-
-        <!-- BLOCO 4 -->
-        <div class="bloco">
-
-            <!-- PONTOS DE VIDA -->
-            <section>
-                Pontos de Vida
-
-                <div>
-                    <span>Atual</span>
-                    <strong>—</strong>
-                </div>
-
-                <div>
-                    <span>Temp.</span>
-                    <strong>—</strong>
-                </div>
-
-                <div>
-                    <span>Max.</span>
-                    <strong>—</strong>
-                </div>
-            </section>
-
-
-            <!-- DADO DE VIDA -->
-            <section>
-                Dado de Vida
-
-                <div>
-                    <span>Gasto</span>
-                    <strong>—</strong>
-                </div>
-
-                <div>
-                    <span>Max</span>
-                    <strong>—</strong>
-                </div>
-            </section>
-
-
-            <!-- TESTE DE RESISTÊNCIA À MORTE -->
-            <section>
-                Teste de Res. de Morte
-
-                <div>
-                    <span>Sucessos</span>
-
-                    <label>
-                        <input type="checkbox">
-                    </label>
-
-                    <label>
-                        <input type="checkbox">
-                    </label>
-
-                    <label>
-                        <input type="checkbox">
-                    </label>
-                </div>
-
-                <div>
-                    <span>Falhas</span>
-
-                    <label>
-                        <input type="checkbox">
-                    </label>
-
-                    <label>
-                        <input type="checkbox">
-                    </label>
-
-                    <label>
-                        <input type="checkbox">
-                    </label>
-                </div>
-            </section>
-
-        </div>
-
-
-        <!-- ATRIBUTOS -->
-        <div class="bloco atributos">
-
-            <div class="atributo">
-                <span>Bônus de Proficiência</span>
-                <strong id="bonus-proficiencia"></strong>
-            </div>
-
-            <div class="atributo">
-                <span>Força</span>
-                <strong id="for"></strong>
-            </div>
-
-            <div class="atributo">
-                <span>Destreza</span>
-                <strong id="des"></strong>
-            </div>
-
-            <div class="atributo">
-                <span>Constituição</span>
-                <strong id="con"></strong>
-            </div>
-
-            <div class="atributo">
-                <span>Inteligência</span>
-                <strong id="int"></strong>
-            </div>
-
-            <div class="atributo">
-                <span>Sabedoria</span>
-                <strong id="sab"></strong>
-            </div>
-
-            <div class="atributo">
-                <span>Carisma</span>
-                <strong id="car"></strong>
-            </div>
-
-            <div class="atributo">
-                <span>Inspiração Heroica</span>
-                <strong id="inspiracao"></strong>
-            </div>
-
-        </div>
-
-
-        <!-- SAVES -->
-        <div class="bloco saves">
-
-            Salvaguardas
-
-            <div id="saves"></div>
-
-        </div>
-
-
-        <!-- PERÍCIAS -->
-        <div class="bloco pericias">
-
-            Perícias
-
-            <div id="pericias"></div>
-
-        </div>
-
-        <!-- INICIATIVA / VELOCIDADE / TAMANHO / PERCEPÇÃO PASSIVA -->
-<div class="bloco">
-
-    <div>
-        <span>Iniciativa</span>
-        <strong id="iniciativa"></strong>
+{% assign karne = site.data.karne %}
+
+<div class="ficha">
+    <!-- BLOCO 1 -->
+    <div class="cabecalho">
+        <h2>{{ karne.infobasica.nome }}</h2>
     </div>
 
-    <div>
-        <span>Velocidade</span>
-        <strong id="velocidade">—</strong>
+    <div class="bloco b2 classe">
+
+        <div>
+            <span>{{ karne.infobasica.origem }}</span>
+            <strong>Origem</strong>
+        </div>
+
+        <div>
+            <span>{{ karne.infobasica.classe }}</span>
+            <strong>Classe</strong>
+        </div>
+
+        <div>
+            <span>{{ karne.infobasica.especie }}</span>
+            <strong>Espécie</strong>
+        </div>
+
+        <div>
+            <span>{% if karne.infobasica.subclasse and karne.infobasica.subclasse != "" %}{{
+                karne.infobasica.subclasse }}{% else %}—{% endif %}</span>
+            <strong>Subclasse</strong>
+        </div>
     </div>
 
-    <div>
-        <span>Tamanho</span>
-        <strong id="tamanho">—</strong>
+
+    <!-- BLOCO 2 -->
+    <div class="bloco b1 nivel">
+        <div>
+            <span>{{ karne.infobasica.nivel }}</span>
+            <strong>Nível</strong>
+        </div>
+
+        <div>
+            <span>{{ karne.infobasica.exp }}</span>
+            <strong>Exp.</strong>
+        </div>
     </div>
 
-    <div>
-        <span>Percepção Passiva</span>
-        <strong id="percepcao-passiva"></strong>
+
+    <!-- BLOCO 3 -->
+    <div class="bloco b1 nivel armadura">
+        <div>
+            <strong>Classe de Armadura</strong>
+            <span>—</span>
+        </div>
+
+        <div>
+            <strong>Escudo</strong>
+            <label>
+                <input type="checkbox" disabled {% if karne.equipamento.escudo==1 %}checked{% endif %}>
+            </label>
+        </div>
     </div>
 
+
+    <!-- BLOCO 4 -->
+    <div class="bloco b2 vida">
+
+        <!-- PONTOS DE VIDA -->
+        <section class="pontos-vida">
+            <strong>Pontos de Vida</strong>
+
+            <div>
+                <span><input type="text" inputmode="numeric" value="{{ karne.combate.pv_atual }}"></span>
+                <strong>Atual</strong>
+            </div>
+
+            <div>
+                <span><input type="text" inputmode="numeric" value="{{ karne.combate.pv_temp }}"></span>
+                <strong>Temp.</strong>
+            </div>
+
+            <div>
+                <span>—</span>
+                <strong>Max.</strong>
+            </div>
+        </section>
+
+
+        <!-- DADO DE VIDA -->
+        <section>
+            <strong>Dado de Vida</strong>
+
+            <div>
+                <span><input type="text" inputmode="numeric" value="{{ karne.combate.dado_gasto }}"></span>
+                <strong>Gasto</strong>
+            </div>
+
+            <div>
+                <span>—</span>
+                <strong>Max</strong>
+            </div>
+        </section>
+
+
+        <!-- TESTE DE RESISTÊNCIA À MORTE -->
+        <section>
+            <strong>Teste de Res. de Morte</strong>
+
+            <div>
+                <span>Sucessos</span>
+
+                <label>
+                    <input type="checkbox">
+                </label>
+
+                <label>
+                    <input type="checkbox">
+                </label>
+
+                <label>
+                    <input type="checkbox">
+                </label>
+            </div>
+
+            <div>
+                <span>Falhas</span>
+
+                <label>
+                    <input type="checkbox">
+                </label>
+
+                <label>
+                    <input type="checkbox">
+                </label>
+
+                <label>
+                    <input type="checkbox">
+                </label>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ATRIBUTOS -->
+    <!-- PROFICIÊNCIA -->
+
+    {% assign nivel_ajustado = karne.infobasica.nivel | minus: 1 %}
+    {% assign bonus_prof = nivel_ajustado | divided_by: 4 | plus: 2 %}
+
+    <div class="bloco b1 prof">
+        <div>
+            <strong>Bônus de Proficiência</strong>
+            <span>+{{ bonus_prof }}</span>
+        </div>
+    </div>
 </div>
-    `;
-
-
-    // ========================================
-    // ATRIBUTOS
-    // ========================================
-
-    const nomesAtributos = {
-        for: "Força",
-        des: "Destreza",
-        con: "Constituição",
-        int: "Inteligência",
-        sab: "Sabedoria",
-        car: "Carisma"
-    };
-
-
-    for (const atributo of Object.keys(nomesAtributos)) {
-
-        const valor = atributos[atributo];
-        const mod = modificador(valor);
-
-        document.getElementById(atributo).innerHTML = `
-            ${formatarModificador(mod)}
-            <small>(${valor})</small>
-        `;
-    }
-
-
-    // Bônus de proficiência
-    document.getElementById("bonus-proficiencia").textContent =
-        formatarModificador(bonusProf);
-
-
-    // Inspiração Heroica
-    document.getElementById("inspiracao").textContent =
-        atributos.inspiracao ? "S" : "N";
-
-
-    // ========================================
-    // SAVES
-    // ========================================
-
-    const saves = [
-        ["for", "Força"],
-        ["des", "Destreza"],
-        ["con", "Constituição"],
-        ["int", "Inteligência"],
-        ["sab", "Sabedoria"],
-        ["car", "Carisma"]
-    ];
-
-
-    document.getElementById("saves").innerHTML = saves.map(
-        ([chave, nome]) => {
-
-            const mod = modificador(atributos[chave]);
-
-            const proficiente = atributos.saves[chave];
-
-            const total =
-                mod + (proficiente ? bonusProf : 0);
-
-            return `
-                <div class="save">
-                    <span>${nome}</span>
-                    <strong>${formatarModificador(total)}</strong>
-                </div>
-            `;
-
-        }
-    ).join("");
-
-
-    // ========================================
-    // PERÍCIAS
-    // ========================================
-
-    const pericias = {
-
-        acrobacia: ["Acrobacia", "des"],
-
-        arcanismo: ["Arcanismo", "int"],
-
-        atletismo: ["Atletismo", "for"],
-
-        atuacao: ["Atuação", "car"],
-
-        enganacao: ["Enganação", "car"],
-
-        furtividade: ["Furtividade", "des"],
-
-        historia: ["História", "int"],
-
-        intimidacao: ["Intimidação", "car"],
-
-        intuicao: ["Intuição", "sab"],
-
-        investigacao: ["Investigação", "int"],
-
-        lidarcomanimais: ["Lidar com Animais", "sab"],
-
-        medicina: ["Medicina", "sab"],
-
-        natureza: ["Natureza", "int"],
-
-        percepcao: ["Percepção", "sab"],
-
-        persuasao: ["Persuasão", "car"],
-
-        prestidigitacao: ["Prestidigitação", "des"],
-
-        religiao: ["Religião", "int"],
-
-        sobrevivencia: ["Sobrevivência", "sab"]
-
-    };
-
-
-    document.getElementById("pericias").innerHTML =
-        Object.entries(pericias).map(
-            ([chave, [nome, atributo]]) => {
-
-                const mod = modificador(atributos[atributo]);
-
-                const proficiente =
-                    atributos.pericias[chave];
-
-                const total =
-                    mod + (proficiente ? bonusProf : 0);
-
-                return `
-                    <div class="pericia">
-                        <span>${nome}</span>
-                        <strong>${formatarModificador(total)}</strong>
-                    </div>
-                `;
-
-            }
-        ).join("");
-
-    // ========================================
-    // INICIATIVA
-    // ========================================
-
-    const iniciativa = modificador(atributos.des);
-
-    document.getElementById("iniciativa").textContent =
-        formatarModificador(iniciativa);
-
-
-    // ========================================
-    // PERCEPÇÃO PASSIVA
-    // ========================================
-
-    const modSabedoria = modificador(atributos.sab);
-
-    const percepcaoProficiente = atributos.pericias.percepcao;
-
-    const percepcaoPassiva =
-        10 +
-        modSabedoria +
-        (percepcaoProficiente ? bonusProf : 0);
-
-    document.getElementById("percepcao-passiva").textContent =
-        percepcaoPassiva;
-
-</script>
-
-
-</body>
-
-</html>
