@@ -6,6 +6,9 @@ layout: ficha
 ---
 
 {% assign karne = site.data.karne %}
+{% assign bonus_prof = karne.infobasica.nivel | minus: 1 | divided_by: 4 | plus: 2 %}
+
+
 
 <div class="ficha">
     <!-- BLOCO 1 -->
@@ -21,7 +24,7 @@ layout: ficha
         </div>
 
         <div>
-            <span>{{ karne.infobasica.classe }}</span>
+            <span>{{ karne.classe.nome }}</span>
             <strong>Classe</strong>
         </div>
 
@@ -71,92 +74,613 @@ layout: ficha
     <!-- BLOCO 4 -->
     <div class="bloco b2 vida">
 
-        <!-- PONTOS DE VIDA -->
-        <section class="pontos-vida">
-            <strong>Pontos de Vida</strong>
+        {% assign mod_con = karne.atributos.con | minus: 10 %}
+        {% if mod_con < 0 %} {% assign mod_con=mod_con | minus: 1 | divided_by: 2 %} {% else %} {% assign
+            mod_con=mod_con | divided_by: 2 %} {% endif %} {% assign niveis_extra=karne.infobasica.nivel | minus: 1 %}
+            {% assign pv_extra=karne.classe.pv_por_nivel | plus: mod_con | times: niveis_extra %} {% assign
+            pv_max=karne.classe.pv_nivel_1 | plus: mod_con | plus: pv_extra %} <!-- PONTOS DE VIDA -->
+            <section class="pontos-vida">
+                <strong>Pontos de Vida</strong>
 
-            <div>
-                <span><input type="text" inputmode="numeric" value="{{ karne.combate.pv_atual }}"></span>
-                <strong>Atual</strong>
-            </div>
+                <div>
+                    <span><input type="text" inputmode="numeric"></span>
+                    <strong>Atual</strong>
+                </div>
 
-            <div>
-                <span><input type="text" inputmode="numeric" value="{{ karne.combate.pv_temp }}"></span>
-                <strong>Temp.</strong>
-            </div>
+                <div>
+                    <span><input type="text" inputmode="numeric" value="0"></span>
+                    <strong>Temp.</strong>
+                </div>
 
-            <div>
-                <span>—</span>
-                <strong>Max.</strong>
-            </div>
-        </section>
-
-
-        <!-- DADO DE VIDA -->
-        <section>
-            <strong>Dado de Vida</strong>
-
-            <div>
-                <span><input type="text" inputmode="numeric" value="{{ karne.combate.dado_gasto }}"></span>
-                <strong>Gasto</strong>
-            </div>
-
-            <div>
-                <span>—</span>
-                <strong>Max</strong>
-            </div>
-        </section>
+                <div>
+                    <span>{{ pv_max }}</span>
+                    <strong>Max.</strong>
+                </div>
+            </section>
 
 
-        <!-- TESTE DE RESISTÊNCIA À MORTE -->
-        <section>
-            <strong>Teste de Res. de Morte</strong>
+            <!-- DADO DE VIDA -->
+            <section>
+                <strong>Dado de Vida</strong>
 
-            <div>
-                <span>Sucessos</span>
+                <div>
+                    <span><input type="text" inputmode="numeric"></span>
+                    <strong>Gasto</strong>
+                </div>
 
-                <label>
-                    <input type="checkbox">
-                </label>
+                <div>
+                    <span><span>{{ karne.infobasica.nivel }}d{{ karne.classe.dado_vida }}</span></span>
+                    <strong>Max</strong>
+                </div>
+            </section>
 
-                <label>
-                    <input type="checkbox">
-                </label>
 
-                <label>
-                    <input type="checkbox">
-                </label>
-            </div>
+            <!-- TESTE DE RESISTÊNCIA À MORTE -->
+            <section>
+                <strong>Teste de Res. de Morte</strong>
 
-            <div>
-                <span>Falhas</span>
+                <div>
+                    <span>Sucessos<br></span>
 
-                <label>
-                    <input type="checkbox">
-                </label>
+                    <label>
+                        <input type="checkbox">
+                    </label>
 
-                <label>
-                    <input type="checkbox">
-                </label>
+                    <label>
+                        <input type="checkbox">
+                    </label>
 
-                <label>
-                    <input type="checkbox">
-                </label>
-            </div>
-        </section>
+                    <label>
+                        <input type="checkbox">
+                    </label>
+                </div>
+
+                <div>
+                    <span>Falhas<br></span>
+
+                    <label>
+                        <input type="checkbox">
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                    </label>
+                </div>
+            </section>
 
     </div>
 
     <!-- ATRIBUTOS -->
-    <!-- PROFICIÊNCIA -->
+    <div class="bloco coluna b2">
 
-    {% assign nivel_ajustado = karne.infobasica.nivel | minus: 1 %}
-    {% assign bonus_prof = nivel_ajustado | divided_by: 4 | plus: 2 %}
 
-    <div class="bloco b1 prof">
-        <div>
-            <strong>Bônus de Proficiência</strong>
-            <span>+{{ bonus_prof }}</span>
+        <div class="prof">
+            <div>
+                <strong>Bônus de Proficiência</strong>
+                <span>+{{ bonus_prof }}</span>
+            </div>
+        </div>
+
+        <!-- FORÇA -->
+
+        <div class="bloco atributo">
+            <div>
+                {% assign mod = karne.atributos.for | minus: 10 %}
+                {% if mod < 0 %} {% assign mod=mod | minus: 1 | divided_by: 2 %} {% else %} {% assign mod=mod |
+                    divided_by: 2 %} {% endif %} <strong>Força</strong>
+                    <section>
+                        <span class="modificador">{% if mod >= 0 %}+{% endif %}{{ mod }}</span>
+                        <span class="valor">{{ karne.atributos.for }}</span>
+                    </section>
+            </div>
+            <section class="salvaguarda">
+                {% if karne.atributos.saves.for %}
+                {% assign save_total = mod | plus: bonus_prof %}
+                {% else %}
+                {% assign save_total = mod %}
+                {% endif %}
+
+                <label>
+                    <input type="checkbox" disabled {% if karne.atributos.saves.for %}checked{% endif %}>
+                </label>
+                <span>{% if save_total >= 0 %}+{% endif %}{{ save_total }}</span>
+                <strong>Salvaguarda</strong>
+            </section>
+            <section class="pericias">
+                <div>
+                    {% assign prof = karne.atributos.pericias.atletismo %}
+                    {% if prof %}
+                    {% assign pericia_total = mod | plus: bonus_prof %}
+                    {% else %}
+                    {% assign pericia_total = mod %}
+                    {% endif %}
+
+                    <label>
+                        <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+                    </label>
+                    <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+                    Atletismo
+                </div>
+            </section>
+        </div>
+
+        <!-- DESTREZA -->
+
+        <div class="bloco atributo">
+            <div>
+                {% assign mod = karne.atributos.des | minus: 10 %}
+                {% if mod < 0 %} {% assign mod=mod | minus: 1 | divided_by: 2 %} {% else %} {% assign mod=mod |
+                    divided_by: 2 %} {% endif %} <strong>Destreza</strong>
+                    <section>
+                        <span class="modificador">{% if mod >= 0 %}+{% endif %}{{ mod }}</span>
+                        <span class="valor">{{ karne.atributos.des }}</span>
+                    </section>
+            </div>
+            <section class="salvaguarda">
+                {% if karne.atributos.saves.des %}
+                {% assign save_total = mod | plus: bonus_prof %}
+                {% else %}
+                {% assign save_total = mod %}
+                {% endif %}
+
+                <label>
+                    <input type="checkbox" disabled {% if karne.atributos.saves.des %}checked{% endif %}>
+                </label>
+                <span>{% if save_total >= 0 %}+{% endif %}{{ save_total }}</span>
+                <strong>Salvaguarda</strong>
+            </section>
+            <section class="pericias">
+                <div>
+                    {% assign prof = karne.atributos.pericias.acrobacia %}
+                    {% if prof %}
+                    {% assign pericia_total = mod | plus: bonus_prof %}
+                    {% else %}
+                    {% assign pericia_total = mod %}
+                    {% endif %}
+
+                    <label>
+                        <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+                    </label>
+                    <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+                    Acrobacia
+                </div>
+                <div>
+                    {% assign prof = karne.atributos.pericias.prestidigitacao %}
+                    {% if prof %}
+                    {% assign pericia_total = mod | plus: bonus_prof %}
+                    {% else %}
+                    {% assign pericia_total = mod %}
+                    {% endif %}
+
+                    <label>
+                        <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+                    </label>
+                    <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+                    Prestidigitação
+                </div>
+                <div>
+                    {% assign prof = karne.atributos.pericias.furtividade %}
+                    {% if prof %}
+                    {% assign pericia_total = mod | plus: bonus_prof %}
+                    {% else %}
+                    {% assign pericia_total = mod %}
+                    {% endif %}
+
+                    <label>
+                        <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+                    </label>
+                    <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+                    Furtividade
+                </div>
+            </section>
+
+        </div>
+
+        <!-- CONSTITUIÇÃO -->
+
+        <div class="bloco atributo">
+            <div>
+                {% assign mod = karne.atributos.con | minus: 10 %}
+                {% if mod < 0 %} {% assign mod=mod | minus: 1 | divided_by: 2 %} {% else %} {% assign mod=mod |
+                    divided_by: 2 %} {% endif %} <strong>Constituição</strong>
+                    <section>
+                        <span class="modificador">{% if mod >= 0 %}+{% endif %}{{ mod }}</span>
+                        <span class="valor">{{ karne.atributos.con }}</span>
+                    </section>
+            </div>
+            <section class="salvaguarda">
+                {% if karne.atributos.saves.con %}
+                {% assign save_total = mod | plus: bonus_prof %}
+                {% else %}
+                {% assign save_total = mod %}
+                {% endif %}
+
+                <label>
+                    <input type="checkbox" disabled {% if karne.atributos.saves.con %}checked{% endif %}>
+                </label>
+                <span>{% if save_total >= 0 %}+{% endif %}{{ save_total }}</span>
+                <strong>Salvaguarda</strong>
+            </section>
+        </div>
+
+
+        <div class="prof">
+            <div>
+                <strong>Inspiração Heróica</strong>
+                <label>
+                    <input type="checkbox">
+                </label>
+            </div>
+        </div>
+
+        <!-- INTELIGÊNCIA -->
+
+        <div class="bloco atributo">
+            <div>
+                {% assign mod = karne.atributos.int | minus: 10 %}
+                {% if mod < 0 %} {% assign mod=mod | minus: 1 | divided_by: 2 %} {% else %} {% assign mod=mod |
+                    divided_by: 2 %} {% endif %} <strong>Inteligência</strong>
+                    <section>
+                        <span class="modificador">{% if mod >= 0 %}+{% endif %}{{ mod }}</span>
+                        <span class="valor">{{ karne.atributos.int }}</span>
+                    </section>
+            </div>
+            <section class="salvaguarda">
+                {% if karne.atributos.saves.int %}
+                {% assign save_total = mod | plus: bonus_prof %}
+                {% else %}
+                {% assign save_total = mod %}
+                {% endif %}
+
+                <label>
+                    <input type="checkbox" disabled {% if karne.atributos.saves.int %}checked{% endif %}>
+                </label>
+                <span>{% if save_total >= 0 %}+{% endif %}{{ save_total }}</span>
+                <strong>Salvaguarda</strong>
+            </section>
+            <section class="pericias">
+                <div>
+                    {% assign prof = karne.atributos.pericias.arcanismo %}
+                    {% if prof %}
+                    {% assign pericia_total = mod | plus: bonus_prof %}
+                    {% else %}
+                    {% assign pericia_total = mod %}
+                    {% endif %}
+
+                    <label>
+                        <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+                    </label>
+                    <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+                    Arcanismo
+                </div>
+                <div>
+                    {% assign prof = karne.atributos.pericias.historia %}
+                    {% if prof %}
+                    {% assign pericia_total = mod | plus: bonus_prof %}
+                    {% else %}
+                    {% assign pericia_total = mod %}
+                    {% endif %}
+
+                    <label>
+                        <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+                    </label>
+                    <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+                    História
+                </div>
+                <div>
+                    {% assign prof = karne.atributos.pericias.investigacao %}
+                    {% if prof %}
+                    {% assign pericia_total = mod | plus: bonus_prof %}
+                    {% else %}
+                    {% assign pericia_total = mod %}
+                    {% endif %}
+
+                    <label>
+                        <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+                    </label>
+                    <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+                    Investigação
+                </div>
+                <div>
+                    {% assign prof = karne.atributos.pericias.natureza %}
+                    {% if prof %}
+                    {% assign pericia_total = mod | plus: bonus_prof %}
+                    {% else %}
+                    {% assign pericia_total = mod %}
+                    {% endif %}
+
+                    <label>
+                        <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+                    </label>
+                    <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+                    Natureza
+                </div>
+                <div>
+                    {% assign prof = karne.atributos.pericias.religiao %}
+                    {% if prof %}
+                    {% assign pericia_total = mod | plus: bonus_prof %}
+                    {% else %}
+                    {% assign pericia_total = mod %}
+                    {% endif %}
+
+                    <label>
+                        <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+                    </label>
+                    <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+                    Religião
+                </div>
+            </section>
+        </div>
+
+        <!-- SABEDORIAs -->
+
+        <div class="bloco atributo">
+            <div>
+                {% assign mod = karne.atributos.sab | minus: 10 %}
+                {% if mod < 0 %} {% assign mod=mod | minus: 1 | divided_by: 2 %} {% else %} {% assign mod=mod |
+                    divided_by: 2 %} {% endif %} <strong>Sabedoria</strong>
+                    <section>
+                        <span class="modificador">{% if mod >= 0 %}+{% endif %}{{ mod }}</span>
+                        <span class="valor">{{ karne.atributos.sab }}</span>
+                    </section>
+            </div>
+            <section class="salvaguarda">
+                {% if karne.atributos.saves.sab %}
+                {% assign save_total = mod | plus: bonus_prof %}
+                {% else %}
+                {% assign save_total = mod %}
+                {% endif %}
+
+                <label>
+                    <input type="checkbox" disabled {% if karne.atributos.saves.sab %}checked{% endif %}>
+                </label>
+                <span>{% if save_total >= 0 %}+{% endif %}{{ save_total }}</span>
+                <strong>Salvaguarda</strong>
+            </section>
+            <section class="pericias">
+                <div>
+                    {% assign prof = karne.atributos.pericias.lidarcomanimais %}
+                    {% if prof %}
+                    {% assign pericia_total = mod | plus: bonus_prof %}
+                    {% else %}
+                    {% assign pericia_total = mod %}
+                    {% endif %}
+
+                    <label>
+                        <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+                    </label>
+                    <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+                    Lidar com Animais
+                </div>
+                <div>
+                    {% assign prof = karne.atributos.pericias.intuicao %}
+                    {% if prof %}
+                    {% assign pericia_total = mod | plus: bonus_prof %}
+                    {% else %}
+                    {% assign pericia_total = mod %}
+                    {% endif %}
+
+                    <label>
+                        <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+                    </label>
+                    <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+                    Intuição
+                </div>
+                <div>
+                    {% assign prof = karne.atributos.pericias.medicina %}
+                    {% if prof %}
+                    {% assign pericia_total = mod | plus: bonus_prof %}
+                    {% else %}
+                    {% assign pericia_total = mod %}
+                    {% endif %}
+
+                    <label>
+                        <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+                    </label>
+                    <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+                    Medicina
+                </div>
+                <div>
+                    {% assign prof = karne.atributos.pericias.percepcao %}
+                    {% if prof %}
+                    {% assign pericia_total = mod | plus: bonus_prof %}
+                    {% else %}
+                    {% assign pericia_total = mod %}
+                    {% endif %}
+
+                    <label>
+                        <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+                    </label>
+                    <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+                    Percepção
+                </div>
+                <div>
+                    {% assign prof = karne.atributos.pericias.sobrevivencia %}
+                    {% if prof %}
+                    {% assign pericia_total = mod | plus: bonus_prof %}
+                    {% else %}
+                    {% assign pericia_total = mod %}
+                    {% endif %}
+
+                    <label>
+                        <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+                    </label>
+                    <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+                    Sobrevivência
+                </div>
+            </section>
+        </div>
+
+        <!-- CARISMA -->
+
+        <div class="bloco atributo">
+            <div>
+                {% assign mod = karne.atributos.car | minus: 10 %}
+                {% if mod < 0 %} {% assign mod=mod | minus: 1 | divided_by: 2 %} {% else %} {% assign mod=mod |
+                    divided_by: 2 %} {% endif %} <strong>Carisma</strong>
+                    <section>
+                        <span class="modificador">{% if mod >= 0 %}+{% endif %}{{ mod }}</span>
+                        <span class="valor">{{ karne.atributos.car }}</span>
+                    </section>
+            </div>
+            <section class="salvaguarda">
+                {% if karne.atributos.saves.car %}
+                {% assign save_total = mod | plus: bonus_prof %}
+                {% else %}
+                {% assign save_total = mod %}
+                {% endif %}
+
+                <label>
+                    <input type="checkbox" disabled {% if karne.atributos.saves.car %}checked{% endif %}>
+                </label>
+                <span>{% if save_total >= 0 %}+{% endif %}{{ save_total }}</span>
+                <strong>Salvaguarda</strong>
+            </section>
+            <section class="pericias">
+                <div>
+                    {% assign prof = karne.atributos.pericias.enganacao %}
+                    {% if prof %}
+                    {% assign pericia_total = mod | plus: bonus_prof %}
+                    {% else %}
+                    {% assign pericia_total = mod %}
+                    {% endif %}
+
+                    <label>
+                        <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+                    </label>
+                    <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+                    Enganação
+                </div>
+                <div>
+                    {% assign prof = karne.atributos.pericias.intimidacao %}
+                    {% if prof %}
+                    {% assign pericia_total = mod | plus: bonus_prof %}
+                    {% else %}
+                    {% assign pericia_total = mod %}
+                    {% endif %}
+
+                    <label>
+                        <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+                    </label>
+                    <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+                    Intimidação
+                </div>
+                <div>
+                    {% assign prof = karne.atributos.pericias.atuacao %}
+                    {% if prof %}
+                    {% assign pericia_total = mod | plus: bonus_prof %}
+                    {% else %}
+                    {% assign pericia_total = mod %}
+                    {% endif %}
+
+                    <label>
+                        <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+                    </label>
+                    <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+                    Atuação
+                </div>
+                <div>
+                    {% assign prof = karne.atributos.pericias.persuasao %}
+                    {% if prof %}
+                    {% assign pericia_total = mod | plus: bonus_prof %}
+                    {% else %}
+                    {% assign pericia_total = mod %}
+                    {% endif %}
+
+                    <label>
+                        <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+                    </label>
+                    <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+                    Persuasão
+                </div>
+            </section>
         </div>
     </div>
+
+    <!-- OUTROS -->
+    {% assign mod_des = karne.atributos.des | minus: 10 %}
+    {% if mod_des < 0 %} {% assign mod_des=mod_des | minus: 1 | divided_by: 2 %} {% else %} {% assign mod_des=mod_des |
+        divided_by: 2 %} {% endif %} <div class="bloco coluna col4 b4 outros">
+        <div>
+            <div>
+                <strong>Iniciativa</strong>
+                <span>{% if mod_des >= 0 %}+{% endif %}{{ mod_des }}</span>
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <strong>Velocidade</strong>
+                <span>{{ karne.outros.deslocamento }} m</span>
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <strong>Tamanho</strong>
+                <span>{{ karne.outros.tamanho }}</span>
+            </div>
+        </div>
+
+
+        {% assign mod_sab = karne.atributos.sab | minus: 10 %}
+        {% if mod_sab < 0 %} {% assign mod_sab=mod_sab | minus: 1 | divided_by: 2 %} {% else %} {% assign
+            mod_sab=mod_sab | divided_by: 2 %} {% endif %} {% assign percepcao_passiva=mod_sab | plus: 10 %} {% if
+            karne.atributos.pericias.percepcao %} {% assign percepcao_passiva=percepcao_passiva | plus: bonus_prof %} {%
+            endif %} <div>
+            <div>
+                <strong>Percepção Passiva</strong>
+                <span>{{ percepcao_passiva }}</span>
+            </div>
+
+
+</div>
+<div class="ataques">
+    <strong>Armas & Truques de Dano</strong>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Bônus/CD</th>
+                <th>Dano & Tipo</th>
+                <th>Anotações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% assign prof_armas = karne.classe.proficiencias.armas %}
+
+            {% for ataque in karne.ataques %}
+            {% assign arma = site.data.armas | where: "nome", ataque.arma | first %}
+
+            {% assign mod_atq = karne.atributos[ataque.atributo] | minus: 10 %}
+            {% if mod_atq < 0 %} {% assign mod_atq=mod_atq | minus: 1 | divided_by: 2 %} {% else %} {% assign
+                mod_atq=mod_atq | divided_by: 2 %} {% endif %} {% assign bonus_atq=mod_atq | plus: ataque.bonus_extra %}
+                {% if prof_armas contains arma.categoria %} {% assign bonus_atq=bonus_atq | plus: bonus_prof %} {% endif
+                %} {% assign dano_total=mod_atq | plus: ataque.bonus_extra %} <tr>
+                <td>{{ arma.nome }}</td>
+                <td>{% if bonus_atq >= 0 %}+{% endif %}{{ bonus_atq }}</td>
+                <td>{{ arma.dano }} {% if dano_total >= 0 %}+{% endif %}{{ dano_total }} {{ arma.tipo_dano }}</td>
+                <td>
+                    {{ arma.propriedades | join: ", " }}<br>{% if arma.maestria %}
+                    Maestria: {{ arma.maestria }}
+                    {% endif %}
+                </td>
+                </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+
+    {% for nota in karne.anotacoes_ataques %}
+    <div class="anotacao-ataque">
+        <strong>{{ nota.nome }}</strong>
+        <p>{{ nota.texto }}</p>
+    </div>
+    {% endfor %}
+</div>
+</div>
 </div>

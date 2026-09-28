@@ -81,23 +81,23 @@ h2 {
 }
 
 .b5 {
-    min-width: calc((100% / 6 * 5) - 1rem);
-    max-width: calc((100% / 6 * 5) - 1rem);
+    min-width: calc((100% / 6 * 5) - (1rem / 6 * 2));
+    max-width: calc((100% / 6 * 5) - (1rem / 6 * 2));
 }
 
 .b4 {
-    min-width: calc((100% / 6 * 4) - 1rem);
-    max-width: calc((100% / 6 * 4) - 1rem);
+    min-width: calc((100% / 6 * 4) - (1rem / 6 * 3));
+    max-width: calc((100% / 6 * 4) - (1rem / 6 * 3));
 }
 
 .b3 {
-    min-width: calc((100% / 6 * 3) - 1rem);
-    max-width: calc((100% / 6 * 3) - 1rem);
+    min-width: calc((100% / 6 * 3) - (1rem / 6 * 4));
+    max-width: calc((100% / 6 * 3) - (1rem / 6 * 4));
 }
 
 .b2 {
-    min-width: calc((100% / 6 * 2) - 1rem);
-    max-width: calc((100% / 6 * 2) - 1rem);
+    min-width: calc((100% / 6 * 2) - (1rem / 6 * 5));
+    max-width: calc((100% / 6 * 2) - (1rem / 6 * 5));
 }
 
 .b1 {
@@ -171,6 +171,31 @@ h2 {
     display: block;
 }
 
+.bloco.coluna {
+    display: block;
+    border: none !important;
+    padding: 0;
+    column-count: 2;
+    gap: 1rem;
+}
+
+.bloco.coluna>div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border: 1px #9F9274 solid;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    flex: 1;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    border-radius: 5px;
+}
+
+.bloco.coluna>div div {
+    break-inside: avoid;
+}
+
 .prof div {
     display: flex;
     flex-direction: column;
@@ -180,4 +205,123 @@ h2 {
 
 .prof div span {
     font-size: 1.5rem;
+    line-height: 1rem;
+}
+
+.prof div strong {
+    border-bottom: #000 solid 1px;
+    margin-bottom: 1rem;
+}
+
+.atributo {
+    break-inside: avoid;
+}
+
+.atributo>div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+}
+
+.atributo>div>section {
+    display: inline-block;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.atributo .modificador {
+    font-size: 1.5rem;
+    border: #9F9274 solid 1px;
+    border-radius: 100%;
+    width: 3ch;
+    height: 3ch;
+    display: inline-block;
+}
+
+.atributo .valor {
+    border: #9F9274 solid 1px;
+    padding: 0.2rem;
+}
+
+.atributo>div strong {
+    display: block;
+}
+
+.atributo .salvaguarda {
+    border-top: #000 solid 1px;
+    width: 100%;
+    padding: 0.2rem 0;
+}
+
+.atributo .salvaguarda:has(+ section) {
+    border-bottom: #000 solid 1px;
+    margin-bottom: -0.8rem;
+}
+
+
+.atributo>section span,
+.pericias span {
+    border-bottom: 1px solid #000;
+}
+
+.atributo section label,
+.pericias label {
+    display: inline;
+}
+
+.bloco.coluna.col4 {
+    column-count: 4;
+}
+
+.outros div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    break-inside: avoid;
+}
+
+.outros div div strong {
+    border-bottom: 1px solid #000;
+}
+
+.outros div div span {
+    font-size: 1.2rem;
+}
+
+.ataques {
+    column-span: all;
+}
+
+.ataques strong {
+    border-bottom: #000 1px solid;
+}
+
+.ataques table {
+    border-collapse: collapse;
+    width: 100%;
+    border: none;
+    text-align: left;
+}
+
+.ataques th {
+    font-size: 0.7em;
+}
+
+.ataques th,
+.ataques td {
+    border: none;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+    width: 1px;
+}
+
+.ataques th:last-child,
+.ataques td:last-child {
+    border-right: none;
+}
+
+.ataques th:nth-child(2),
+.ataques td:nth-child(2) {
+    text-align: center;
 }

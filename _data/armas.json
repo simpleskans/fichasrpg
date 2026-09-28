@@ -1,0 +1,33 @@
+[
+    {
+        "nome": "Alabarda",
+        "categoria": "marcial",
+        "dano": "1d10",
+        "tipo_dano": "cortante",
+        "propriedades": ["Pesada", "Alcance", "Duas Mãos"],
+        "maestria": "Trepassar"
+    },
+    {
+        "nome": "Machadinha",
+        "categoria": "simples",
+        "dano": "1d6",
+        "tipo_dano": "cortante",
+        "propriedades": ["Leve", "Arremesso (alcance 6/18 m)"],
+        "maestria": "Afligir"
+    },
+    {
+        "nome": "Azagaia",
+        "categoria": "simples",
+        "dano": "1d6",
+        "tipo_dano": "perfurante",
+        "propriedades": ["Arremesso (alcance 9/36 m)"],
+        "maestria": "Lentidão"
+    },
+    {
+        "nome": "Garras",
+        "categoria": "simples",
+        "dano": "1d4",
+        "tipo_dano": "cortante"
+    }
+
+]

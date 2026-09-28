@@ -2,10 +2,9 @@
     "infobasica": {
         "nome": "Karne",
         "origem": "Forasteiro",
-        "classe": "Barbáro",
         "especie": "Leonino",
         "subclasse": "",
-        "exp": 0,
+        "exp": 1,
         "nivel": 1,
         "alinhamento": "l,b",
         "aparencia": {
@@ -15,6 +14,39 @@
             "olhos": "Vermelho",
             "pele": "Branca",
             "cabelo": "Branco com padrões vermelhos"
+        }
+    },
+    "classe": {
+        "nome": "Bárbaro",
+        "atributo_primario": "for",
+        "dado_vida": 12,
+        "pv_nivel_1": 12,
+        "pv_por_nivel": 7,
+        "saves": [
+            "for",
+            "con"
+        ],
+        "proficiencias": {
+            "armas": [
+                "simples",
+                "marcial"
+            ],
+            "armaduras": [
+                "leve",
+                "media",
+                "escudo"
+            ]
+        },
+        "equipamento_inicial": {
+            "A": [
+                "Machado Grande",
+                "4x Machadinha",
+                "Pacote do Explorador",
+                "15 PO"
+            ],
+            "B": [
+                "75 PO"
+            ]
         }
     },
     "atributos": {
@@ -33,24 +65,52 @@
             "car": false
         },
         "pericias": {
-            "acrobacia": false,
-            "arcanismo": false,
             "atletismo": true,
-            "atuacao": true,
-            "enganacao": false,
+            "acrobacia": false,
             "furtividade": false,
+            "prestidigitacao": false,
+            "arcanismo": false,
             "historia": false,
-            "intimidacao": false,
-            "intuicao": false,
             "investigacao": false,
+            "natureza": true,
+            "religiao": false,
+            "intuicao": false,
             "lidarcomanimais": true,
             "medicina": false,
-            "natureza": true,
             "percepcao": true,
-            "persuasao": false,
-            "prestidigitacao": false,
-            "religiao": false,
-            "sobrevivencia": true
+            "sobrevivencia": true,
+            "atuacao": true,
+            "enganacao": false,
+            "intimidacao": false,
+            "persuasao": false
         }
-    }
+    },
+    "outros": {
+        "pvmax": 15,
+        "dvmax": 1,
+        "deslocamento": 9.5,
+        "tamanho": "Médio"
+    },
+    "ataques": [
+        {
+            "arma": "Alabarda",
+            "atributo": "for",
+            "bonus_extra": 0
+        },
+        {
+            "arma": "Machadinha",
+            "atributo": "for",
+            "bonus_extra": 0
+        },
+        {
+            "arma": "Azagaia",
+            "atributo": "for",
+            "bonus_extra": 0
+        },
+        {
+            "arma": "Garras",
+            "atributo": "for",
+            "bonus_extra": 0
+        }
+    ]
 }
