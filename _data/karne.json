@@ -1,9 +1,8 @@
 {
     "infobasica": {
         "nome": "Karne",
-        "origem": "Forasteiro",
-        "especie": "Leonino",
         "subclasse": "",
+        "origem": "Forasteiro",
         "exp": 1,
         "nivel": 1,
         "alinhamento": "l,b",
@@ -15,6 +14,43 @@
             "pele": "Branca",
             "cabelo": "Branco com padrões vermelhos"
         }
+    },
+    "talentos": [
+        {
+            "nome": "Andarilho",
+            "descricao": "<p>Você possui uma excelente memória para mapas e geografia, conseguindo sempre se lembrar da configuração geral de um terreno, dos assentamentos e de outras características ao seu redor. Além disso, você pode encontrar comida e água para si mesmo e para até cinco outras pessoas todos os dias, desde que a terra ofereça frutas, pequenos animais, água, etc.</p>"
+        }
+    ],
+    "especie": {
+        "nome": "Leonino",
+        "tamanho": "Médio",
+        "deslocamento": 10.5,
+        "caracteristicas": [
+            {
+                "nome": "Garras",
+                "descricao": "<p>Suas garras são armas naturais, que você pode usar para fazer ataques desarmados. Se acertar com elas, você pode causar dano cortante igual a 1d4 + seu modificador de Força, em vez de causar o dano normal para seu Ataque Desarmado.</p>",
+                "dados": {
+                    "outro": "1d4 + For"
+                }
+            },
+            {
+                "nome": "Rugido Aterrador",
+                "descricao": "<p>Como uma ação bônus, você pode soltar um rugido especialmente ameaçador. Criaturas à sua escolha a até 3 metros de você que possam ouvi-lo devem ser bem-sucedidas em uma salvaguarda de Sabedoria ou ficarão Amedrontadas por você até o final do seu próximo turno. A CD do teste é igual a 8 + seu bônus de proficiência + seu modificador de Constituição. Depois de usar esta característica, você não pode usá-la novamente até terminar um descanso curto ou longo.</p>",
+                "dados": {
+                    "usos_max": 1,
+                    "outro": "CD: 8 + prof. + Con"
+                }
+            },
+            {
+                "nome": "Visão no Escuro",
+                "nivel": 1,
+                "fonte": "MOT p20 (regras 2024)",
+                "descricao": "<p>Você tem Visão no Escuro com um alcance de 18 metros.</p>",
+                "dados": {
+                    "outro": "18 m"
+                }
+            }
+        ]
     },
     "classe": {
         "nome": "Bárbaro",
@@ -47,7 +83,37 @@
             "B": [
                 "75 PO"
             ]
-        }
+        },
+        "caracteristicas": [
+            {
+                "nome": "Fúria",
+                "nivel": 1,
+                "fonte": "PHB'24 p51",
+                "descricao": "<p>Você pode se imbuir com um poder primitivo chamado Fúria, uma força que lhe concede força e resiliência extraordinárias. Você pode entrar em Fúria como uma Ação Bônus, desde que não esteja vestindo armadura Pesada.</p><p>Você pode entrar em Fúria o número de vezes indicado na coluna Fúrias da tabela Características de Bárbaro para seu nível de Bárbaro. Você recupera um uso gasto ao completar um Descanso Curto, e restaura todos os usos gastos ao completar um Descanso Longo.</p><p>Enquanto ativa, sua Fúria segue as regras abaixo.</p><p><em><strong>Resistência a Dano.</strong></em> Você tem Resistência a dano Contundente, Cortante e Perfurante. </p><p><em><strong>Dano da Fúria.</strong></em> Quando você realiza um ataque com Força — seja com uma arma ou um Ataque Desarmado — e causar dano ao alvo, você recebe um bônus no dano, que aumenta conforme você adquire níveis como Bárbaro, conforme mostrado na coluna Dano da Fúria da tabela Características de Bárbaro.</p><p><em><strong>Vantagem com Força.</strong></em> Você tem Vantagem em testes de Força e salvaguardas de Força. </p><p><em><strong>Sem Concentração ou Magias.</strong></em> Você não pode manter a Concentração e não pode conjurar magias. </p><p><em><strong>Duração.</strong></em> A Fúria dura até o final do seu próximo turno, e encerra se você vestir armadura Pesada ou ter a condição Incapacitado. Se sua Fúria ainda estiver ativa no próximo turno, você pode estendê-la por mais um turno ao realizar uma das seguintes ações: </p><ul><li>Realizar uma jogada de ataque contra um inimigo.</li><li>Forçar um inimigo a realizar uma salvaguarda. </li><li>Executar uma Ação Bônus para estender sua Fúria.</li></ul><p>Cada vez que a Fúria é estendida, ela permanece até o final do seu próximo turno. Você pode manter uma Fúria por até 10 minutos.</p>",
+                "dados": {
+                    "usos_max": 2,
+                    "outro": "Bônus: +2"
+                }
+            },
+            {
+                "nome": "Defesa sem Armadura",
+                "nivel": 1,
+                "fonte": "PHB'24 p51",
+                "descricao": "<p>Enquanto você não estiver vestindo nenhuma armadura, sua Classe de Armadura base é igual a 10 mais seus modificadores de Destreza e Constituição. Você pode usar um Escudo e ainda receber este benefício.</p>",
+                "dados": {
+                    "outro": "CA: 10 + Des + Con"
+                }
+            },
+            {
+                "nome": "Maestria com Armas",
+                "nivel": 1,
+                "fonte": "PHB'24 p52",
+                "descricao": "<p>Seu treinamento com armas permite que você utilize as propriedades de maestria com dois tipos de armas Corpo a Corpo Simples ou Marciais à sua escolha, como Machados Grandes e Machadinhas. Sempre que completar um Descanso Longo, você pode praticar movimentos com armas e alterar uma dessas escolhas de armas.</p><p>Ao alcançar certos níveis de Bárbaro, você adquire a habilidade de usar as propriedades de maestria de mais tipos de armas, conforme mostrado na coluna Maestria em Armas da tabela Características de Bárbaro.</p>",
+                "dados": {
+                    "outro": "Qtd.: 2"
+                }
+            }
+        ]
     },
     "atributos": {
         "for": 15,
@@ -87,9 +153,7 @@
     },
     "outros": {
         "pvmax": 15,
-        "dvmax": 1,
-        "deslocamento": 9.5,
-        "tamanho": "Médio"
+        "dvmax": 1
     },
     "ataques": [
         {

@@ -1,6 +1,11 @@
 @font-face {
-    font-family: Scaly Sans;
-    src: url(/font/Scaly\ Sans\ Caps.otf);
+    font-family: "Bookinsanity";
+    src: url("/font/Bookinsanity.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "Scaly Sans";
+    src: url("/font/Scaly Sans Caps.otf") format("opentype");
 }
 
 *,
@@ -36,6 +41,7 @@ body {
     font-family: 'Scaly Sans', sans-serif;
     line-height: 1.5;
     font-size: 1rem;
+    background-color: #ded3d0;
 }
 
 h1,
@@ -73,6 +79,7 @@ h2 {
     justify-content: space-between;
     font-size: 0.8rem;
     border-radius: 5px;
+    background-color: #fff;
 }
 
 .b6 {
@@ -114,6 +121,7 @@ h2 {
 .classe div span {
     border-bottom: 1px solid #000;
     display: block;
+    font-size: 1rem;
 }
 
 .nivel div {
@@ -177,6 +185,7 @@ h2 {
     padding: 0;
     column-count: 2;
     gap: 1rem;
+    background-color: #ded3d0;
 }
 
 .bloco.coluna>div {
@@ -184,6 +193,7 @@ h2 {
     flex-wrap: wrap;
     gap: 1rem;
     border: 1px #9F9274 solid;
+    background-color: #fff;
     padding: 0.5rem;
     margin-bottom: 1rem;
     flex: 1;
@@ -324,4 +334,67 @@ h2 {
 .ataques th:nth-child(2),
 .ataques td:nth-child(2) {
     text-align: center;
+}
+
+.classe {
+    column-span: all;
+}
+
+div.caracteristicas-classe {
+    display: block;
+    text-align: left;
+}
+
+.caracteristicas-classe details {
+    padding: 0.2rem 0.4rem;
+    margin: 0 auto;
+    border: #75232E solid 1px;
+    background-color: #f8f4f0;
+    border-radius: 5px;
+}
+
+.caracteristicas-classe details p {
+    text-indent: 1rem;
+}
+
+.caracteristicas-classe details:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
+
+.caracteristicas-classe summary .dados span{
+    font-size: 0.8rem !important;
+}
+
+.caracteristicas-classe summary .usos-atual {
+    text-align: right;
+    line-height: 0.8rem;
+    width: 3ch;
+    border-bottom: #000 solid 1px;
+}
+
+.caracteristicas-classe summary+div {
+    font-family: 'Bookinsanity', serif;
+    text-align: left;
+}
+
+.caracteristicas-classe summary:hover {
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 956px) {
+    .ficha {
+        display: grid;
+    }
+
+    .bloco {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media only screen and (max-width: 620px) {
+    .bloco.coluna.col4 {
+        column-count: 2;
+    }
 }

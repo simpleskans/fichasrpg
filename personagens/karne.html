@@ -29,7 +29,7 @@ layout: ficha
         </div>
 
         <div>
-            <span>{{ karne.infobasica.especie }}</span>
+            <span>{{ karne.especie.nome }}</span>
             <strong>Espécie</strong>
         </div>
 
@@ -615,14 +615,14 @@ layout: ficha
         <div>
             <div>
                 <strong>Velocidade</strong>
-                <span>{{ karne.outros.deslocamento }} m</span>
+                <span>{{ karne.especie.deslocamento }} m</span>
             </div>
         </div>
 
         <div>
             <div>
                 <strong>Tamanho</strong>
-                <span>{{ karne.outros.tamanho }}</span>
+                <span>{{ karne.especie.tamanho }}</span>
             </div>
         </div>
 
@@ -674,13 +674,100 @@ layout: ficha
                 {% endfor %}
         </tbody>
     </table>
+</div>
 
-    {% for nota in karne.anotacoes_ataques %}
-    <div class="anotacao-ataque">
-        <strong>{{ nota.nome }}</strong>
-        <p>{{ nota.texto }}</p>
+<div class="ataques">
+    <strong>Características de Classe</strong>
+
+    <div class="caracteristicas-classe">
+        {% for carac in karne.classe.caracteristicas %}
+        <details>
+            <summary>
+                <span class="nome">{{ carac.nome }}</span>
+                <br>
+                <span class="dados">
+                    {% if carac.dados %}
+                    {% if carac.dados.usos_max %}
+                    <span class="dado">
+                        Usos:
+                        <input type="text" inputmode="numeric" class="usos-atual" value="{{ carac.dados.usos_max }}">
+                        /{{ carac.dados.usos_max }}
+                    </span>
+                    {% endif %}
+                    {% endif %}
+                    {% if carac.dados.outro %}
+                    <span class="dado">{{ carac.dados.outro }}</span>
+                    {% endif %}
+                </span>
+            </summary>
+            <div>{{ carac.descricao }}</div>
+        </details>
+        {% endfor %}
     </div>
-    {% endfor %}
+
+</div>
+
+<div class="ataques raciais">
+    <strong>Características Raciais</strong>
+
+    <div class="caracteristicas-classe">
+        {% for carac in karne.especie.caracteristicas %}
+        <details>
+            <summary>
+                <span class="nome">{{ carac.nome }}</span>
+                <br>
+
+                <span class="dados">
+                    {% if carac.dados %}
+                    {% if carac.dados.usos_max %}
+                    <span class="dado">
+                        Usos:
+                        <input type="text" inputmode="numeric" class="usos-atual" value="{{ carac.dados.usos_max }}">
+                        /{{ carac.dados.usos_max }}
+                    </span>
+                    {% endif %}
+                    {% endif %}
+                    {% if carac.dados.outro %}
+                    <span class="dado">{{ carac.dados.outro }}</span>
+                    {% endif %}
+                </span>
+            </summary>
+            <div>{{ carac.descricao }}</div>
+        </details>
+        {% endfor %}
+    </div>
+
+</div>
+<div class="ataques">
+    <strong>Talentos</strong>
+
+    <div class="caracteristicas-classe">
+        {% for carac in karne.talentos %}
+        <details>
+            <summary>
+                <span class="nome">{{ carac.nome }}</span>
+                <br>
+
+                <span class="dados">
+                    {% if carac.dados %}
+                    {% if carac.dados.usos_max %}
+                    <span class="dado">
+                        Usos:
+                        <input type="text" inputmode="numeric" class="usos-atual" value="{{ carac.dados.usos_max }}">
+                        /{{ carac.dados.usos_max }}
+                    </span>
+                    {% endif %}
+                    {% endif %}
+                    {% if carac.dados.outro %}
+                    <span class="dado">{{ carac.dados.outro }}</span>
+                    {% endif %}
+                </span>
+            </summary>
+            <div>{{ carac.descricao }}</div>
+        </details>
+        {% endfor %}
+    </div>
+
 </div>
 </div>
 </div>
