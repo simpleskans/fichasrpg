@@ -2,17 +2,21 @@
   font-family: "Bookinsanity";
   src: url("/font/Bookinsanity.otf") format("opentype");
 }
+
 @font-face {
   font-family: "Scaly Sans";
   src: url("/font/Scaly Sans Caps.otf") format("opentype");
 }
+
 * {
   box-sizing: border-box;
   margin: 0;
 }
+
 *::before {
   box-sizing: border-box;
 }
+
 *::after {
   box-sizing: border-box;
 }
@@ -78,6 +82,7 @@ h2 {
   padding: 10px;
   width: 100%;
 }
+
 .cabecalho h2 {
   margin: 0;
 }
@@ -128,11 +133,13 @@ h2 {
 .classe {
   column-span: all;
 }
+
 .classe div {
   display: flex;
   flex-direction: column;
   width: calc(50% - 1rem);
 }
+
 .classe div span {
   border-bottom: 1px solid #000;
   display: block;
@@ -145,10 +152,12 @@ h2 {
   width: 100%;
   text-align: center;
 }
+
 .nivel div span {
   border-bottom: 1px solid #000;
   display: block;
 }
+
 .nivel div:first-child span {
   font-size: 1.5rem;
 }
@@ -164,24 +173,29 @@ h2 {
   width: calc(25% - 1rem);
   text-align: center;
 }
+
 .bloco.vida section:not(:last-child) div {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
+
 .bloco.vida section:not(:last-child) span {
   border-bottom: 1px solid #000;
   display: block;
 }
+
 .bloco.vida section.pontos-vida {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto 1fr 1fr;
   width: calc(50% - 1rem);
   align-items: end;
 }
+
 .bloco.vida section.pontos-vida strong:first-child {
   grid-column: 1/-1;
 }
+
 .bloco.vida section.pontos-vida div:nth-child(2) {
   grid-row: 2/4;
 }
@@ -194,7 +208,8 @@ h2 {
   gap: 1rem;
   background-color: #ded3d0;
 }
-.bloco.coluna > div {
+
+.bloco.coluna>div {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -207,7 +222,8 @@ h2 {
   font-size: 0.8rem;
   border-radius: 5px;
 }
-.bloco.coluna > div div {
+
+.bloco.coluna>div div {
   break-inside: avoid;
 }
 
@@ -217,10 +233,12 @@ h2 {
   width: 100%;
   text-align: center;
 }
+
 .prof div span {
   font-size: 1.5rem;
   line-height: 1rem;
 }
+
 .prof div strong {
   border-bottom: #000 solid 1px;
   margin-bottom: 1rem;
@@ -229,20 +247,24 @@ h2 {
 .atributo {
   break-inside: avoid;
 }
-.atributo > div {
+
+.atributo>div {
   display: flex;
   flex-direction: column;
   text-align: center;
   width: 100%;
 }
-.atributo > div > section {
+
+.atributo>div>section {
   display: inline-block;
   width: fit-content;
   margin: 0 auto;
 }
-.atributo > div strong {
+
+.atributo>div strong {
   display: block;
 }
+
 .atributo .modificador {
   font-size: 1.5rem;
   border: #9F9274 solid 1px;
@@ -251,22 +273,27 @@ h2 {
   height: 3ch;
   display: inline-block;
 }
+
 .atributo .valor {
   border: #9F9274 solid 1px;
   padding: 0.2rem;
 }
+
 .atributo .salvaguarda {
   border-top: #000 solid 1px;
   width: 100%;
   padding: 0.2rem 0;
 }
+
 .atributo .salvaguarda:has(+ section) {
   border-bottom: #000 solid 1px;
   margin-bottom: -0.8rem;
 }
-.atributo > section span {
+
+.atributo>section span {
   border-bottom: 1px solid #000;
 }
+
 .atributo section label {
   display: inline;
 }
@@ -274,6 +301,7 @@ h2 {
 .pericias span {
   border-bottom: 1px solid #000;
 }
+
 .pericias label {
   display: inline;
 }
@@ -288,9 +316,11 @@ h2 {
   text-align: center;
   break-inside: avoid;
 }
+
 .outros div div strong {
   border-bottom: 1px solid #000;
 }
+
 .outros div div span {
   font-size: 1.2rem;
 }
@@ -298,14 +328,17 @@ h2 {
 .bloco.treinamento {
   column-span: all;
 }
+
 .bloco.treinamento strong {
   border-bottom: 1px solid #000;
   width: 100%;
 }
+
 .bloco.treinamento section strong {
   border-bottom: none;
   display: block;
 }
+
 .bloco.treinamento .armaduras {
   margin-top: -1rem;
   display: flex;
@@ -314,15 +347,18 @@ h2 {
   width: 100%;
   border-bottom: 1px solid #000;
 }
-.bloco.treinamento .armaduras > * {
+
+.bloco.treinamento .armaduras>* {
   display: block;
   align-content: center;
 }
+
 .bloco.treinamento .armas {
   display: block;
   width: 100%;
   margin: -1rem 0 1rem;
 }
+
 .bloco.treinamento .ferramentas {
   display: block;
   width: 100%;
@@ -333,15 +369,18 @@ h2 {
 .ataques {
   column-span: all;
 }
+
 .ataques strong {
   border-bottom: #000 1px solid;
 }
+
 .ataques table {
   border-collapse: collapse;
   width: 100%;
   border: none;
   text-align: left;
 }
+
 .ataques th {
   font-size: 0.7em;
   border: none;
@@ -349,21 +388,26 @@ h2 {
   border-right: 1px solid #000;
   width: 1px;
 }
+
 .ataques th:last-child {
   border-right: none;
 }
+
 .ataques th:nth-child(2) {
   text-align: center;
 }
+
 .ataques td {
   border: none;
   border-bottom: 1px solid #000;
   border-right: 1px solid #000;
   width: 1px;
 }
+
 .ataques td:last-child {
   border-right: none;
 }
+
 .ataques td:nth-child(2) {
   text-align: center;
 }
@@ -380,27 +424,38 @@ div.caracteristicas-classe {
   background-color: #f8f4f0;
   border-radius: 5px;
 }
+
 .caracteristicas-classe details p {
   text-indent: 1rem;
 }
+
 .caracteristicas-classe details:not(:last-child) {
   margin-bottom: 0.5rem;
 }
+
 .caracteristicas-classe summary .dados span {
   font-size: 0.8rem !important;
 }
+
 .caracteristicas-classe summary .usos-atual {
   text-align: right;
   line-height: 0.8rem;
   width: 3ch;
   border-bottom: #000 solid 1px;
 }
+
 .caracteristicas-classe summary:hover {
   cursor: pointer;
 }
-.caracteristicas-classe summary + div {
+
+.caracteristicas-classe summary+div {
   font-family: "Bookinsanity", serif;
   text-align: left;
+}
+
+.conjuracao {
+  break-inside: avoid;
+  column-span: all;
 }
 
 .conjuracao div {
@@ -412,10 +467,12 @@ div.caracteristicas-classe {
   align-items: center;
   padding: 0 0.2rem;
 }
+
 .conjuracao div:not(:first-child) strong {
   border-left: #000 solid 1px;
   padding-left: 0.5rem;
 }
+
 .conjuracao .conjatrib {
   display: flex;
   flex-direction: column;
@@ -428,21 +485,88 @@ div.caracteristicas-classe {
   gap: 0;
   border-bottom: #000 solid 1px;
 }
+
 .conjuracao .conjatrib span {
   width: 100%;
   border-bottom: #000 solid 1px;
+}
+
+.ataques.magias {
+  flex-direction: column;
+  text-align: center;
+  break-inside: avoid;
+}
+
+.circulo-magia {
+  width: 100%;
+}
+
+.ataques.magias .titulo-circulo {
+  display: block;
+  text-align: left;
+  border-bottom: none;
+}
+
+.cabecalho-espacos {
+  display: block;
+  text-align: left;
+  padding: 0.5rem 0
+}
+
+.gastos-espacos label {
+  padding: 0 0.2rem;
+}
+
+.tags p {
+  text-indent: 0 !important;
+}
+
+.negrito {
+  font-weight: bold;
+}
+
+.magia-descricao {
+  margin-top: 0.5rem;
+}
+
+.finais .bloco {
+  column-span: all;
+}
+
+.finais .bloco strong {
+  border-bottom: 1px solid #000;
+  width: 100%;
+}
+
+.finais .bloco .moedas {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.moedas label {
+  display: flex;
+  flex-direction: column;
+}
+
+.moedas label input {
+  border: 1px solid #000;
+  border-radius: 5px;
 }
 
 @media only screen and (max-width: 956px) {
   .ficha {
     display: grid;
   }
+
   .bloco {
     width: 100%;
     min-width: 100%;
     max-width: 100%;
   }
 }
+
 @media only screen and (max-width: 620px) {
   .bloco.coluna.col4 {
     column-count: 2;
