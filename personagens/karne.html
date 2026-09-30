@@ -599,6 +599,58 @@ layout: ficha
                 </div>
             </section>
         </div>
+
+        <div class="bloco treinamento">
+            <strong>Treinamento em Equipamentos e Proficiências</strong>
+
+            <section class="armaduras">
+                <span>Treinamento Armaduras</span>
+
+                <label>
+                    <input type="checkbox" disabled {% if karne.classe.proficiencias.armaduras contains "leve"
+                        %}checked{% endif %}>
+                    Leve
+                </label>
+
+                <label>
+                    <input type="checkbox" disabled {% if karne.classe.proficiencias.armaduras contains "media"
+                        %}checked{% endif %}>
+                    Média
+                </label>
+
+                <label>
+                    <input type="checkbox" disabled {% if karne.classe.proficiencias.armaduras contains "pesada"
+                        %}checked{% endif %}>
+                    Pesada
+                </label>
+
+                <label>
+                    <input type="checkbox" disabled {% if karne.classe.proficiencias.armaduras contains "escudo"
+                        %}checked{% endif %}>
+                    Escudos
+                </label>
+            </section>
+
+            <section class="armas">
+                <strong>Armas</strong>
+                <p>
+                    {% for cat in karne.classe.proficiencias.armas %}
+                    {{ cat | capitalize }}{% unless forloop.last %}, {% endunless %}
+                    {% endfor %}
+                </p>
+            </section>
+
+            <section class="ferramentas">
+                <strong>Ferramentas</strong>
+                <p>
+                    {% if karne.proficiencias_ferramentas.size > 0 %}
+                    {{ karne.proficiencias_ferramentas | join: ", " }}
+                    {% else %}
+                    —
+                    {% endif %}
+                </p>
+            </section>
+        </div>
     </div>
 
     <!-- OUTROS -->
@@ -636,7 +688,7 @@ layout: ficha
                 <strong>Percepção Passiva</strong>
                 <span>{{ percepcao_passiva }}</span>
             </div>
-
+</div>
 
 </div>
 <div class="ataques">
@@ -770,4 +822,42 @@ layout: ficha
 
 </div>
 </div>
+</div>
+
+<div class="ficha">
+    <!-- BLOCO 1 -->
+    <div class="cabecalho">
+        <h2>{{ karne.infobasica.nome }} - Página 2</h2>
+    </div>
+
+    <div class="bloco b1 conjuracao">
+        <div class="conjatrib">
+            <span>—</span>
+            <strong>Atributo de Conjuração</strong>
+        </div>
+
+        <div>
+            <span>—</span>
+            <strong>Modificador de Conjuração</strong>
+        </div>
+
+        <div>
+            <span>—</span>
+            <strong>CD para Evitar sua Magia</strong>
+        </div>
+
+        <div>
+            <span>—</span>
+            <strong>Modificador de Ataque Mágico</strong>
+        </div>
+    </div>
+
+    <div class="bloco b3 espacos">
+        <strong>Espaços de Magia</strong>
+    </div>
+
+    <div class="bloco b2">
+        <strong>Aparência</strong>
+    </div>
+
 </div>
