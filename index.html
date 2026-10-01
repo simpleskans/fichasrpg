@@ -6,7 +6,8 @@ layout: padrao
 <h2>Lista de Campanhas</h2>
 
 <ul>
-    <li><a href="/a%20ultima%20luz">A última luz</a></li>
+    {% assign aventuras = site.pages | where_exp: "p", "p.path contains 'aventuras/'" %}
+    {% for pagina in aventuras %}
+    <li><a href="{{ pagina.url }}">{{ pagina.nome | default: pagina.title }}</a></li>
+    {% endfor %}
 </ul>
-
-

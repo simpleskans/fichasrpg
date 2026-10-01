@@ -1,0 +1,313 @@
+{
+  "infobasica": {
+    "nome": "Sasha Novikov (Sova)",
+    "subclasse": "",
+    "exp": 0,
+    "nivel": 1,
+    "alinhamento": "NB",
+    "aparencia": {
+      "idade": "30",
+      "altura": "1.9",
+      "peso": "79",
+      "olhos": "Azul",
+      "pele": "Branca",
+      "cabelo": "Loiro-esbranquiçado"
+    }
+  },
+  "ca": {
+    "base": 12,
+    "atributos": ["des"],
+    "max_atributo": null,
+    "bonus_fixo": 0
+  },
+  "origem": {
+    "antecedente": "Guia",
+    "talento": {
+      "nome": "Iniciado em Magia",
+      "descricao": "<p>Você adquire os seguintes benefícios.</p><p><em><strong>Dois Truques.</strong></em> Você aprende dois truques à sua escolha na lista de magias de Clérigo, Druida ou Mago. Inteligência, Sabedoria ou Carisma é seu atributo de conjuração para as magias deste talento (escolha quando selecionar este talento). </p><p><em><strong>Magia de 1º Círculo.</strong></em> Escolha uma magia de 1º círculo da mesma lista que você selecionou para os truques deste talento. Você tem essa magia sempre preparada. Você pode conjurá-la uma vez sem um espaço de magia, e você restaura a capacidade de conjurá-la dessa maneira quando completa um Descanso Longo. Você também pode conjurar a magia usando qualquer espaço de magia que tiver.</p><p><em><strong>Substituição de Magia.</strong></em> Sempre que você alcança um novo nível, pode substituir uma das magias que escolheu para este talento por uma magia diferente do mesmo círculo da lista de magias escolhida.</p><p><em><strong>Repetível.</strong></em> Você pode adquirir este talento mais de uma vez, mas deve escolher uma lista de magias diferente a cada vez.</p>"
+    },
+    "ferramentas": ["Ferramentas de Cartógrafo"],
+    "idiomas": ["Comum", "Élfico"]
+  },
+  "talentos": [
+    {
+      "nome": null,
+      "descricao": null
+    }
+  ],
+  "especie": {
+    "nome": "Elfo Silvestre",
+    "tamanho": "Médio",
+    "deslocamento": 9,
+    "caracteristicas": [
+      {
+        "nome": "Visão no Escuro",
+        "descricao": "<p>Você tem Visão no Escuro com um alcance de 18 metros.</p>",
+        "dados": {
+          "outro": "18 m"
+        }
+      },
+      {
+        "nome": "Linhagem Élfica",
+        "descricao": "<p>Você é de uma linhagem que lhe concede habilidades sobrenaturais. Escolha uma linhagem da tabela Linhagem Élfica. Você adquire o benefício de nível 1 dessa linhagem.</p><p>Ao atingir os níveis 3 e 5, você aprende uma magia de círculo superior, conforme indicado na tabela. Essa magia está sempre preparada e pode ser conjurada uma vez sem usar um espaço de magia, restaurando essa capacidade ao completar um Descanso Longo. Além disso, você pode conjurá-la usando qualquer espaço de magia apropriado que possua.</p><p>Inteligência, Sabedoria ou Carisma é seu atributo de conjuração para as magias que você conjura com este traço (escolha o atributo quando selecionar a linhagem).</p>"
+      },
+      {
+        "nome": "Ancestralidade Feérica.",
+        "descricao": "<p>Você tem Vantagem ao realizar salvaguardas para evitar ou encerrar a condição Enfeitiçado.</p>"
+      },
+      {
+        "nome": "Transe",
+        "descricao": "<p> Você pode completar um Descanso Longo em 4 horas ao meditar, sem a necessidade de dormir, mantendo a consciência, e magia não pode forçá-lo a dormir.</p>"
+      }
+    ]
+  },
+  "classe": {
+    "nome": "Guardião",
+    "atributo_primario": "for",
+    "dado_vida": 10,
+    "pv_nivel_1": 12,
+    "pv_por_nivel": 7,
+    "saves": ["for", "con"],
+    "proficiencias": {
+      "armas": ["simples", "marcial"],
+      "armaduras": ["leve", "media", "escudo"]
+    },
+    "caracteristicas": [
+      {
+        "nome": "Inimigo Favorito",
+        "nivel": 1,
+        "descricao": "<p>Você sempre tem a magia Marca do Predador preparada. Você pode conjurá-la duas vezes sem gastar um espaço de magia, e você restaura todos os usos gastos desta característica ao completar um Descanso Longo.</p><p>O número de vezes que você pode conjurar a magia sem um espaço de magia aumenta ao atingir certos níveis de Guardião, conforme mostrado na coluna Inimigo Favorito da tabela Características de Guardião.</p>",
+        "dados": {
+          "usos_max": 2
+        }
+      },
+      {
+        "nome": "Maestria em Armas",
+        "nivel": 1,
+        "descricao": "<p>Seu treinamento com armas permite que você utilize as propriedades de maestria com dois tipos de  armas à sua escolha com as quais você tem proficiência, como Arcos Longos e Espadas Curtas.</p><p>Sempre que completar um Descanso Longo, você pode alterar os tipos de armas que escolheu. Por exemplo, você pode mudar para usar as propriedades de maestria de Cimitarras e Espadas Longas.</p>",
+        "dados": {
+          "outro": "Qtd.: 2"
+        }
+      }
+    ]
+  },
+  "atributos": {
+    "for": 13,
+    "des": 15,
+    "con": 11,
+    "int": 12,
+    "sab": 14,
+    "car": 8,
+    "saves": {
+      "for": true,
+      "des": true,
+      "con": false,
+      "int": false,
+      "sab": false,
+      "car": false
+    },
+    "pericias": {
+      "acrobacia": false,
+      "arcanismo": false,
+      "atletismo": false,
+      "atuacao": false,
+      "enganacao": false,
+      "furtividade": true,
+      "historia": false,
+      "intimidacao": false,
+      "investigacao": true,
+      "intuicao": false,
+      "lidarcomanimais": false,
+      "medicina": false,
+      "natureza": true,
+      "percepcao": true,
+      "persuasao": false,
+      "prestidigitacao": false,
+      "religiao": false,
+      "sobrevivencia": true
+    }
+  },
+  "outros": {
+    "pvmax": 15,
+    "dvmax": 1
+  },
+  "ataques": [
+    {
+      "arma": "Alabarda",
+      "atributo": "for",
+      "bonus_extra": 0
+    },
+    {
+      "arma": "Machadinha",
+      "atributo": "for",
+      "bonus_extra": 0
+    },
+    {
+      "arma": "Azagaia",
+      "atributo": "for",
+      "bonus_extra": 0
+    },
+    {
+      "arma": "Garras",
+      "atributo": "for",
+      "bonus_extra": 0
+    }
+  ],
+  "conjuracao": {
+    "atributo": "sab"
+  },
+  "espacos_magia": [
+    {
+      "circulo": 0,
+      "total": 3
+    },
+    {
+      "circulo": 1,
+      "total": 2
+    },
+    {
+      "circulo": 2,
+      "total": 0
+    },
+    {
+      "circulo": 3,
+      "total": 0
+    },
+    {
+      "circulo": 4,
+      "total": 0
+    },
+    {
+      "circulo": 5,
+      "total": 0
+    },
+    {
+      "circulo": 6,
+      "total": 0
+    },
+    {
+      "circulo": 7,
+      "total": 0
+    },
+    {
+      "circulo": 8,
+      "total": 0
+    },
+    {
+      "circulo": 9,
+      "total": 0
+    }
+  ],
+  "magias": [
+    {
+      "nome": "Golpe Constritor",
+      "original": "Ensnaring Strike",
+      "nivel": 1,
+      "escola": "Invocação",
+      "classes": "Guardião",
+      "tempo": "Ação Bônus, que você realiza imediatamente após atingir uma criatura com uma arma",
+      "ritual": false,
+      "alcance": "Pessoal",
+      "componentes": "V",
+      "duracao": "até 1 minuto",
+      "concentracao": true,
+      "descricao": "<p>Ao acertar o alvo, vinhas agarradoras aparecem nele e ele realiza uma salvaguarda de Força. Uma criatura Grande ou maior tem Vantagem nesta salvaguarda. Se falhar, o alvo está com a condição Contido até que a magia termine. Em caso de sucesso, as videiras murcham e a magia se encerra.</p> <p>Enquanto Contido desse modo, o alvo sofre 1d6 pontos de dano Perfurante no início de cada um dos turnos dele. O alvo ou uma criatura ao alcance dele pode executar uma ação para realizar um teste de Força (Atletismo) contra a CD para evitar sua magia. Em caso de sucesso, as videiras desaparecem.</p> <p><strong>Usando um Espaço de Magia de Círculo Superior.</strong> O dano aumenta em 1d6 pontos para cada círculo de espaço de magia acima de 1.</p>"
+    },
+    {
+      "nome": "Curar Ferimentos",
+      "original": "cure wounds",
+      "nivel": 1,
+      "escola": "Abjuração",
+      "classes": "Bardo, Clérigo, Druida, Guardião, Paladino, Artífice",
+      "tempo": "Ação",
+      "ritual": false,
+      "alcance": "Toque",
+      "componentes": "V, S",
+      "duracao": "Instantânea",
+      "concentracao": false,
+      "descricao": "<p>Uma criatura que você toca recupera um número de Pontos de Vida igual a 2d8 mais seu modificador de atributo de conjuração.</p> <p><strong>Usando um Espaço de Magia de Círculo Superior.</strong> A cura aumenta em 2d8 para cada círculo de espaço de magia acima de 1.</p>"
+    },
+    {
+      "nome": "Arte Druídica",
+      "original": "druidcraft",
+      "nivel": 0,
+      "escola": "Transmutação",
+      "classes": "Druida",
+      "tempo": "Ação",
+      "ritual": false,
+      "alcance": 9,
+      "componentes": "V, S",
+      "duracao": "Instantânea",
+      "concentracao": false,
+      "descricao": "<p>Sussurrando para os espíritos da natureza, você cria um dos seguintes efeitos no alcance da magia.</p> <p><strong>Brincar com Fogo.</strong> Você acende ou apaga uma vela, uma tocha ou uma fogueira.</p> <p><strong>Efeito Sensorial.</strong> Você cria um efeito sensorial inofensivo, como folhas caindo, fadas dançantes espectrais, uma brisa suave, o som de um animal ou o leve odor de gambá. O efeito deve caber em um Cubo de 1,5 metro de lado.</p> <p><strong>Florescimento.</strong> Você instantaneamente faz uma flor desabrochar, uma vagem se abrir ou um botão de folha se abrir.</p> <p><strong>Sensor Climático.</strong> Você cria um efeito sensorial minúsculo e inofensivo que prevê qual será o clima no local onde você está pelas próximas 24 horas. O efeito pode se manifestar como uma esfera dourada para céu claro, uma nuvem para chuva, flocos de neve caindo para neve e assim por diante. Esse efeito persiste por 1 rodada.</p>"
+    },
+    {
+      "nome": "Fagulha Estelar",
+      "original": "Starry Wisp",
+      "nivel": 0,
+      "escola": "Evocação",
+      "classes": "Bardo, Druida",
+      "tempo": "Ação",
+      "ritual": false,
+      "alcance": 18,
+      "componentes": "V, S",
+      "duracao": "Instantânea",
+      "concentracao": false,
+      "descricao": "<p>Você lança uma faísca de luz em uma criatura ou objeto no alcance da magia. Realize um ataque mágico à distância contra o alvo. Em caso de acerto, o alvo sofre 1d8 pontos de dano Radiante e, até o final do seu próximo turno, emite Meia-luz em um raio de 3 metros e não pode se beneficiar da condição Invisível.</p> <p><strong>Aprimoramento de Truque.</strong> O dano aumenta em 1d8 quando você atinge os níveis 5 (2d8), 11 (3d8) e 17 (4d8).</p>"
+    },
+    {
+      "nome": "Faca de Gelo",
+      "original": "Ice Knife",
+      "nivel": 1,
+      "escola": "Invocação",
+      "classes": "Druida, Feiticeiro, Mago",
+      "tempo": "Ação",
+      "ritual": false,
+      "alcance": 18,
+      "componentes": "S, M (uma gota de água ou um pedaço de gelo)",
+      "duracao": "Instantânea",
+      "concentracao": false,
+      "descricao": "<p>Você cria um fragmento de gelo e o arremessa em uma criatura no alcance da magia. Realize um ataque mágico à distância contra o alvo. Se o ataque for bem-sucedido, o alvo sofre 1d10 pontos de dano Perfurante. Independentemente de ter acertado ou não, o fragmento explode. O alvo e cada criatura a até 1,5 metro dele devem ser bem-sucedidos em uma salvaguarda de Destreza ou sofrem 2d6 pontos de dano Gélido.</p> <p><strong>Usando um Espaço de Magia de Círculo Superior.</strong> O dano Gélido aumenta em 1d6 para cada círculo de espaço de magia acima de 1.</p>"
+    },
+    {
+      "nome": "Mensagem",
+      "original": "message",
+      "nivel": 0,
+      "escola": "Transmutação",
+      "classes": "Bardo, Druida, Feiticeiro, Mago, Artífice",
+      "tempo": "Ação",
+      "ritual": false,
+      "alcance": 36,
+      "componentes": "S, M (um fio de cobre)",
+      "duracao": "1 rodada",
+      "concentracao": false,
+      "descricao": "<p>Você aponta para uma criatura no alcance da magia e sussurra uma mensagem. Somente o alvo ouve a mensagem e pode responder em um sussurro que apenas você consegue ouvir.</p> <p>Você pode conjurar essa magia através de objetos sólidos se estiver familiarizado com o alvo e souber que ele está além da barreira. Silêncio mágico, 30 centímetros de pedra, metal ou madeira, ou uma fina folha de chumbo bloqueiam a magia.</p>"
+    }
+  ],
+  "equipamentos": {
+    "escudo": false,
+    "lista": [
+      { "nome": "Armadura de Couro Batido" },
+      { "nome": "Cimitarra" },
+      { "nome": "Espada Curta" },
+      { "nome": "Arco Longo" },
+      { "quantidade": 20, "nome": "Flechas" },
+      { "nome": "Aljava" },
+      { "nome": "Foco Druídico (ramo de visco)" },
+      { "nome": "Kit de Aventureiro" },
+      { "nome": "Arco Curto" },
+      { "quantidade": 20, "nome": "Flechas" },
+      { "nome": "Ferramentas de Cartógrafo" },
+      { "nome": "Aljava" },
+      { "nome": "Roupas de Viagem" },
+      { "nome": "Saco de Dormir" },
+      { "nome": "Tenda" }
+    ],
+    "itens_magicos": [
+      {
+        "nome": null,
+        "sintonizado": false
+      }
+    ]
+  }
+}

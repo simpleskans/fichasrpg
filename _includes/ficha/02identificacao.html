@@ -1,0 +1,23 @@
+<div class="bloco b2 classe">
+
+    <div>
+        <span>{{ personagem.origem.antecedente }}</span>
+        <strong>Origem</strong>
+    </div>
+
+    <div>
+        <span>{{ personagem.classe.nome }}</span>
+        <strong>Classe</strong>
+    </div>
+
+    <div>
+        <span>{{ personagem.especie.nome }}</span>
+        <strong>Espécie</strong>
+    </div>
+
+    <div>
+        <span>{% if personagem.infobasica.subclasse and personagem.infobasica.subclasse != "" %}{{
+            personagem.infobasica.subclasse }}{% else %}—{% endif %}</span>
+        <strong>Subclasse</strong>
+    </div>
+</div>

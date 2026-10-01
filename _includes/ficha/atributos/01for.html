@@ -1,0 +1,40 @@
+<div class="bloco atributo">
+    <div>
+        {% assign mod = personagem.atributos.for | minus: 10 %}
+        {% if mod < 0 %} {% assign mod=mod | minus: 1 | divided_by: 2 %} {% else %} {% assign mod=mod | divided_by: 2 %}
+            {% endif %} <strong>Força</strong>
+            <section>
+                <span class="modificador">{% if mod >= 0 %}+{% endif %}{{ mod }}</span>
+                <span class="valor">{{ personagem.atributos.for }}</span>
+            </section>
+    </div>
+    <section class="salvaguarda">
+        {% if personagem.atributos.saves.for %}
+        {% assign save_total = mod | plus: bonus_prof %}
+        {% else %}
+        {% assign save_total = mod %}
+        {% endif %}
+
+        <label>
+            <input type="checkbox" disabled {% if personagem.atributos.saves.for %}checked{% endif %}>
+        </label>
+        <span>{% if save_total >= 0 %}+{% endif %}{{ save_total }}</span>
+        <strong>Salvaguarda</strong>
+    </section>
+    <section class="pericias">
+        <div>
+            {% assign prof = personagem.atributos.pericias.atletismo %}
+            {% if prof %}
+            {% assign pericia_total = mod | plus: bonus_prof %}
+            {% else %}
+            {% assign pericia_total = mod %}
+            {% endif %}
+
+            <label>
+                <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+            </label>
+            <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+            Atletismo
+        </div>
+    </section>
+</div>

@@ -1,0 +1,31 @@
+<div class="bloco b1 nivel armadura">
+    {% assign ca = personagem.ca.base %}
+    {% assign soma_mods = 0 %}
+
+    {% for attr in personagem.ca.atributos %}
+    {% assign valor_attr = personagem.atributos[attr] %}
+    {% assign mod_attr = valor_attr | minus: 10 %}
+    {% if mod_attr < 0 %} {% assign mod_attr=mod_attr | minus: 1 | divided_by: 2 %} {% else %} {% assign
+        mod_attr=mod_attr | divided_by: 2 %} {% endif %} {% assign soma_mods=soma_mods | plus: mod_attr %} {% endfor %}
+        {% if personagem.ca.max_atributo %} {% if soma_mods> personagem.ca.max_atributo %}
+        {% assign soma_mods = personagem.ca.max_atributo %}
+        {% endif %}
+        {% endif %}
+
+        {% assign ca = ca | plus: soma_mods | plus: personagem.ca.bonus_fixo %}
+
+        {% if personagem.equipamentos.escudo %}
+        {% assign ca = ca | plus: 2 %}
+        {% endif %}
+        <div>
+            <strong>Classe de Armadura</strong>
+            <span>{{ ca }}</span>
+        </div>
+
+        <div>
+            <strong>Escudo</strong>
+            <label>
+                <input type="checkbox" disabled {% if personagem.equipamentos.escudo %}checked{% endif %}>
+            </label>
+        </div>
+</div>

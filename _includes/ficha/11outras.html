@@ -1,0 +1,34 @@
+<div>
+    {% assign mod_des = personagem.atributos.des | minus: 10 %}
+    {% if mod_des < 0 %} {% assign mod_des=mod_des | minus: 1 | divided_by: 2 %} {% else %} {% assign mod_des=mod_des |
+        divided_by: 2 %} {% endif %} <div>
+        <strong>Iniciativa</strong>
+        <span>{% if mod_des >= 0 %}+{% endif %}{{ mod_des }}</span>
+</div>
+</div>
+
+<div>
+    <div>
+        <strong>Velocidade</strong>
+        <span>{{ personagem.especie.deslocamento }} m</span>
+    </div>
+</div>
+
+<div>
+    <div>
+        <strong>Tamanho</strong>
+        <span>{{ personagem.especie.tamanho }}</span>
+    </div>
+</div>
+
+
+<div>
+    {% assign mod_sab = personagem.atributos.sab | minus: 10 %}
+    {% if mod_sab < 0 %} {% assign mod_sab=mod_sab | minus: 1 | divided_by: 2 %} {% else %} {% assign mod_sab=mod_sab |
+        divided_by: 2 %} {% endif %} {% assign percepcao_passiva=mod_sab | plus: 10 %} {% if
+        personagem.atributos.pericias.percepcao %} {% assign percepcao_passiva=percepcao_passiva | plus: bonus_prof %}
+        {% endif %} <div>
+        <strong>Percepção Passiva</strong>
+        <span>{{ percepcao_passiva }}</span>
+</div>
+</div>

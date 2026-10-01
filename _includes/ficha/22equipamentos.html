@@ -1,0 +1,22 @@
+<div class="bloco equipamentos">
+    <strong>Equipamentos</strong>
+
+    <ul>
+        {% for item in personagem.equipamentos.lista %}
+        <li>{{ item.quantidade}} {{ item.nome }};</li>
+        {% endfor %}
+    </ul>
+
+    <div class="itens-magicos">
+        <strong>Itens Mágicos Sintonizados</strong>
+        <ul>
+            {% for item in personagem.equipamentos.itens_magicos %}
+            <li>
+                <label>
+                    <input type="checkbox" disabled {% if item.sintonizado %}checked{% endif %}> {{ item.nome }}
+                </label>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

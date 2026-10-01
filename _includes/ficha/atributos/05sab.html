@@ -1,0 +1,96 @@
+<div class="bloco atributo">
+    <div>
+        {% assign mod = personagem.atributos.sab | minus: 10 %}
+        {% if mod < 0 %} {% assign mod=mod | minus: 1 | divided_by: 2 %} {% else %} {% assign mod=mod | divided_by: 2 %}
+            {% endif %} <strong>Sabedoria</strong>
+            <section>
+                <span class="modificador">{% if mod >= 0 %}+{% endif %}{{ mod }}</span>
+                <span class="valor">{{ personagem.atributos.sab }}</span>
+            </section>
+    </div>
+    <section class="salvaguarda">
+        {% if personagem.atributos.saves.sab %}
+        {% assign save_total = mod | plus: bonus_prof %}
+        {% else %}
+        {% assign save_total = mod %}
+        {% endif %}
+
+        <label>
+            <input type="checkbox" disabled {% if personagem.atributos.saves.sab %}checked{% endif %}>
+        </label>
+        <span>{% if save_total >= 0 %}+{% endif %}{{ save_total }}</span>
+        <strong>Salvaguarda</strong>
+    </section>
+    <section class="pericias">
+        <div>
+            {% assign prof = personagem.atributos.pericias.lidarcomanimais %}
+            {% if prof %}
+            {% assign pericia_total = mod | plus: bonus_prof %}
+            {% else %}
+            {% assign pericia_total = mod %}
+            {% endif %}
+
+            <label>
+                <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+            </label>
+            <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+            Lidar com Animais
+        </div>
+        <div>
+            {% assign prof = personagem.atributos.pericias.intuicao %}
+            {% if prof %}
+            {% assign pericia_total = mod | plus: bonus_prof %}
+            {% else %}
+            {% assign pericia_total = mod %}
+            {% endif %}
+
+            <label>
+                <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+            </label>
+            <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+            Intuição
+        </div>
+        <div>
+            {% assign prof = personagem.atributos.pericias.medicina %}
+            {% if prof %}
+            {% assign pericia_total = mod | plus: bonus_prof %}
+            {% else %}
+            {% assign pericia_total = mod %}
+            {% endif %}
+
+            <label>
+                <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+            </label>
+            <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+            Medicina
+        </div>
+        <div>
+            {% assign prof = personagem.atributos.pericias.percepcao %}
+            {% if prof %}
+            {% assign pericia_total = mod | plus: bonus_prof %}
+            {% else %}
+            {% assign pericia_total = mod %}
+            {% endif %}
+
+            <label>
+                <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+            </label>
+            <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+            Percepção
+        </div>
+        <div>
+            {% assign prof = personagem.atributos.pericias.sobrevivencia %}
+            {% if prof %}
+            {% assign pericia_total = mod | plus: bonus_prof %}
+            {% else %}
+            {% assign pericia_total = mod %}
+            {% endif %}
+
+            <label>
+                <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+            </label>
+            <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+            Sobrevivência
+        </div>
+    </section>
+</div>

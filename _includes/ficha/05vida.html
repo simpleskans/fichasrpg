@@ -1,0 +1,81 @@
+<div class="bloco b2 vida">
+
+    {% assign mod_con = personagem.atributos.con | minus: 10 %}
+    {% if mod_con < 0 %} {% assign mod_con=mod_con | minus: 1 | divided_by: 2 %} {% else %} {% assign mod_con=mod_con |
+        divided_by: 2 %} {% endif %} {% assign niveis_extra=personagem.infobasica.nivel | minus: 1 %} {% assign
+        pv_extra=personagem.classe.pv_por_nivel | plus: mod_con | times: niveis_extra %} {% assign
+        pv_max=personagem.classe.pv_nivel_1 | plus: mod_con | plus: pv_extra %} <!-- PONTOS DE VIDA -->
+        <section class="pontos-vida">
+            <strong>Pontos de Vida</strong>
+
+            <div>
+                <span><input type="text" inputmode="numeric"></span>
+                <strong>Atual</strong>
+            </div>
+
+            <div>
+                <span><input type="text" inputmode="numeric" value="0"></span>
+                <strong>Temp.</strong>
+            </div>
+
+            <div>
+                <span>{{ pv_max }}</span>
+                <strong>Max.</strong>
+            </div>
+        </section>
+
+
+        <!-- DADO DE VIDA -->
+        <section>
+            <strong>Dado de Vida</strong>
+
+            <div>
+                <span><input type="text" inputmode="numeric"></span>
+                <strong>Gasto</strong>
+            </div>
+
+            <div>
+                <span><span>{{ personagem.infobasica.nivel }}d{{ personagem.classe.dado_vida }}</span></span>
+                <strong>Max</strong>
+            </div>
+        </section>
+
+
+        <!-- TESTE DE RESISTÊNCIA À MORTE -->
+        <section>
+            <strong>Teste de Res. de Morte</strong>
+
+            <div>
+                <span>Sucessos<br></span>
+
+                <label>
+                    <input type="checkbox">
+                </label>
+
+                <label>
+                    <input type="checkbox">
+                </label>
+
+                <label>
+                    <input type="checkbox">
+                </label>
+            </div>
+
+            <div>
+                <span>Falhas<br></span>
+
+                <label>
+                    <input type="checkbox">
+                </label>
+
+                <label>
+                    <input type="checkbox">
+                </label>
+
+                <label>
+                    <input type="checkbox">
+                </label>
+            </div>
+        </section>
+
+</div>

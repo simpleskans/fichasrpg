@@ -1,0 +1,51 @@
+<div class="bloco treinamento">
+    <strong>Treinamento em Equipamentos e Proficiências</strong>
+
+    <section class="armaduras">
+        <span>Treinamento<br>Armaduras</span>
+
+        <label>
+            <input type="checkbox" disabled {% if personagem.classe.proficiencias.armaduras contains "leve" %}checked{%
+                endif %}>
+            Leve
+        </label>
+
+        <label>
+            <input type="checkbox" disabled {% if personagem.classe.proficiencias.armaduras contains "media" %}checked{%
+                endif %}>
+            Média
+        </label>
+
+        <label>
+            <input type="checkbox" disabled {% if personagem.classe.proficiencias.armaduras contains "pesada"
+                %}checked{% endif %}>
+            Pesada
+        </label>
+
+        <label>
+            <input type="checkbox" disabled {% if personagem.classe.proficiencias.armaduras contains "escudo"
+                %}checked{% endif %}>
+            Escudos
+        </label>
+    </section>
+
+    <section class="armas">
+        <strong>Armas</strong>
+        <p>
+            {% for cat in personagem.classe.proficiencias.armas %}
+            {{ cat | capitalize }}{% unless forloop.last %}, {% endunless %}
+            {% endfor %}
+        </p>
+    </section>
+
+    <section class="ferramentas">
+        <strong>Ferramentas</strong>
+        <p>
+            {% if personagem.origem.ferramentas.size > 0 %}
+            {{ personagem.origem.ferramentas | join: ", " }}
+            {% else %}
+            —
+            {% endif %}
+        </p>
+    </section>
+</div>

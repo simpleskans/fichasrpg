@@ -1,0 +1,19 @@
+---
+layout: padrao
+---
+
+<h2>{{ page.nome | default: page.title }}</h2>
+
+<ul>
+    {% assign prefixo = "personagens/" | append: page.pasta | append: "/" %}
+
+    {% for personagem in site.pages %}
+    {% if personagem.path contains prefixo %}
+    <li>
+        <a href="{{ personagem.url }}">
+            {{ personagem.nome | default: personagem.title }}
+        </a>
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>

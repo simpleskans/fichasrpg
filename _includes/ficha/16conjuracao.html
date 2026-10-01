@@ -1,0 +1,31 @@
+<div class="bloco conjuracao">
+
+    {% if personagem.conjuracao.atributo %}
+    {% assign valor_conj = personagem.atributos[personagem.conjuracao.atributo] %}
+    {% assign mod_conj = valor_conj | minus: 10 %}
+    {% if mod_conj < 0 %} {% assign mod_conj=mod_conj | minus: 1 | divided_by: 2 %} {% else %} {% assign
+        mod_conj=mod_conj | divided_by: 2 %} {% endif %} {% assign cd_conj=mod_conj | plus: bonus_prof | plus: 8 %} {%
+        assign ataque_conj=mod_conj | plus: bonus_prof %} {% endif %} <div class="conjatrib">
+        <span>{% if personagem.conjuracao.atributo %}{{ personagem.conjuracao.atributo | capitalize }}{% else %}—{%
+            endif
+            %}</span>
+        <strong>Atributo de Conjuração</strong>
+</div>
+
+<div>
+    <span>{% if personagem.conjuracao.atributo %}{% if mod_conj >= 0 %}+{% endif %}{{ mod_conj }}{% else %}—{%
+        endif %}</span>
+    <strong>Modificador de Conjuração</strong>
+</div>
+
+<div>
+    <span>{% if personagem.conjuracao.atributo %}{{ cd_conj }}{% else %}—{% endif %}</span>
+    <strong>CD para Evitar sua Magia</strong>
+</div>
+
+<div>
+    <span>{% if personagem.conjuracao.atributo %}{% if ataque_conj >= 0 %}+{% endif %}{{ ataque_conj }}{% else
+        %}—{% endif %}</span>
+    <strong>Modificador de Ataque Mágico</strong>
+</div>
+</div>

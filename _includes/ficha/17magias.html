@@ -1,0 +1,100 @@
+<div class="ataques magias">
+    <strong>Truques e Magias Preparadas</strong>
+
+    {% assign magias_por_nivel = personagem.magias | group_by: "nivel" | sort: "name" %}
+
+    {% for grupo in magias_por_nivel %}
+    <section class="circulo-magia">
+
+        {% if grupo.name == "0" %}
+        {% assign espaco = personagem.espacos_magia | where: "circulo", grupo.name | first %}
+        <strong class="titulo-circulo">Truques ({{ espaco.total }})</strong>
+
+        {% else %}
+        <strong class="titulo-circulo">{{ grupo.name }}º Círculo</strong>
+
+        {% assign espaco = personagem.espacos_magia | where: "circulo", grupo.name | first %}
+        <div class="cabecalho-espacos">
+            <span>Espaços:</span>
+            <span class="total-espacos">{{ espaco.total }}</span>
+            <span> | Gastos</span>
+            <span class="gastos-espacos">
+                {% for i in (1..espaco.total) %}
+                <label><input type="checkbox"></label>
+                {% endfor %}
+            </span>
+        </div>
+        {% endif %}
+
+        <div class="caracteristicas-classe">
+            {% for magia in grupo.items %}
+            <details>
+                <summary>
+                    <span class="nome">{{ magia.nome }}</span><br>
+                    <span class="dados">
+                        {{ magia.tempo | split: "," | first }},
+
+                        {% assign alcance_num = magia.alcance | times: 1 %}
+                        {% if alcance_num != 0 or magia.alcance == 0 %}
+                        {% assign quadrados = magia.alcance | divided_by: 1.5 %}
+                        {% if alcance_num >= 1000 %}
+                        {% assign km = alcance_num | times: 0.001 %}
+                        {{ km | replace: ".", "," }} km,
+                        {% else %}
+                        {{ alcance_num | replace: ".", "," }} m,
+                        {% endif %}
+                        {% else %}
+                        {{ magia.alcance }}
+                        {% endif %}
+
+                        {{ magia.componentes }}{% if magia.concentracao %}, C{% endif %}
+                    </span>
+                </summary>
+
+                <div class="magia-detalhes">
+                    <span class="nivel-escola">
+                        <br>
+                        <i>
+                            {% if magia.nivel == 0 %}Truque de{% else %}{{ magia.nivel }}º Círculo,{% endif %}
+                            {{ magia.escola }}.
+                        </i>
+                    </span>
+
+                    <div class="tags">
+                        <p>
+                            <span class="negrito">Tempo de Conjuração:</span> {{ magia.tempo }}
+                            {% if magia.ritual %} ou Ritual{% endif %}
+                        </p>
+
+                        {% assign alcance_num = magia.alcance | times: 1 %}
+                        <p>
+                            <span class="negrito">Alcance: </span>
+                            {% if alcance_num != 0 or magia.alcance == 0 %}
+                            {% assign quadrados = magia.alcance | divided_by: 1.5 %}
+                            {% if alcance_num >= 1000 %}
+                            {% assign km = alcance_num | times: 0.001 %}
+                            {{ km | replace: ".", "," }} km
+                            {% else %}
+                            {{ alcance_num | replace: ".", "," }} metros ({{ quadrados | round }})
+                            {% endif %}
+                            {% else %}
+                            {{ magia.alcance }}
+                            {% endif %}
+                        </p>
+
+                        <p><span class="negrito">Componentes: </span> {{ magia.componentes }}</p>
+
+                        <p>
+                            <span class="negrito">Duração: </span>
+                            {% if magia.concentracao %}Concentração, {% endif %}{{ magia.duracao }}
+                        </p>
+                    </div>
+
+                    <div class="magia-descricao">{{ magia.descricao }}</div>
+                </div>
+            </details>
+            {% endfor %}
+        </div>
+    </section>
+    {% endfor %}
+</div>

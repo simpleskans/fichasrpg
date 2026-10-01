@@ -1,0 +1,16 @@
+<div class="bloco">
+    {% assign alinhamento_nome = "" %}
+    {% case personagem.infobasica.alinhamento %}
+    {% when "OB" %} {% assign alinhamento_nome = "Ordeiro e Bom" %}
+    {% when "NB" %} {% assign alinhamento_nome = "Neutro e Bom" %}
+    {% when "CB" %} {% assign alinhamento_nome = "Caótico e Bom" %}
+    {% when "ON" %} {% assign alinhamento_nome = "Ordeiro e Neutro" %}
+    {% when "N" %} {% assign alinhamento_nome = "Neutro" %}
+    {% when "CN" %} {% assign alinhamento_nome = "Caótico e Neutro" %}
+    {% when "OM" %} {% assign alinhamento_nome = "Ordeiro e Mau" %}
+    {% when "NM" %} {% assign alinhamento_nome = "Neutro e Mau" %}
+    {% when "CM" %} {% assign alinhamento_nome = "Caótico e Mau" %}
+    {% endcase %}
+    <strong>Alinhamento</strong>
+    <span>{{ alinhamento_nome }}</span>
+</div>

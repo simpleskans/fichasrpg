@@ -44,6 +44,10 @@ input[type=text] {
   border: none;
 }
 
+input[type=checkbox]:hover {
+  cursor: pointer;
+}
+
 #root {
   isolation: isolate;
 }
@@ -244,6 +248,11 @@ h2 {
   margin-bottom: 1rem;
 }
 
+.prof div input[type=checkbox] {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
 .atributo {
   break-inside: avoid;
 }
@@ -327,6 +336,7 @@ h2 {
 
 .bloco.treinamento {
   column-span: all;
+  margin-top: 1rem;
 }
 
 .bloco.treinamento strong {
@@ -468,6 +478,11 @@ div.caracteristicas-classe {
   padding: 0 0.2rem;
 }
 
+.conjuracao div:not(:first-child) span {
+  min-width: 3ch;
+  text-align: right;
+}
+
 .conjuracao div:not(:first-child) strong {
   border-left: #000 solid 1px;
   padding-left: 0.5rem;
@@ -536,6 +551,24 @@ div.caracteristicas-classe {
 .finais .bloco strong {
   border-bottom: 1px solid #000;
   width: 100%;
+}
+
+.finais .bloco.equipamentos ul {
+  padding: 0 1rem;
+}
+
+.finais .bloco.equipamentos .itens-magicos ul {
+  list-style-type: none;
+  padding: 1rem 0;
+}
+
+.finais .bloco.equipamentos .itens-magicos li {
+  border-bottom: #000 solid 1px;
+  padding: 0.2rem 0;
+}
+
+.finais .bloco.equipamentos li {
+  text-align: left;
 }
 
 .finais .bloco .moedas {

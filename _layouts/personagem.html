@@ -1,0 +1,101 @@
+---
+layout: ficha
+---
+
+{% assign personagem = site.data[page.personagem] %}
+{% assign bonus_prof = personagem.infobasica.nivel | minus: 1 | divided_by: 4 | plus: 2 %}
+
+<div class="ficha">
+    <!-- CABEÇALHO -->
+    {% include ficha/01cabecalho.html %}
+
+    <!-- IDENTIFICAÇÃO -->
+    {% include ficha/02identificacao.html %}
+
+    <!-- NÍVEL -->
+    {% include ficha/03nivel.html %}
+
+    <!-- ARMADURA -->
+    {% include ficha/04armadura.html %}
+
+    <!-- VIDA -->
+    {% include ficha/05vida.html %}
+
+    <!-- ATRIBUTOS E PROFICIÊNCIAS -->
+    <div class="bloco coluna b2">
+
+        <!-- BÔNUS DE PROFICIÊNCIA -->
+        {% include ficha/06proficiencia.html %}
+
+        <!-- ATRIBUTOS 1 -->
+        {% include ficha/07atributos.html %}
+
+        <!-- INSPIRAÇÃO -->
+        {% include ficha/08inspiracao.html %}
+
+        <!-- ATRIBUTOS 2 -->
+        {% include ficha/09atributos.html %}
+
+        <!-- PROFICIÊNCIAS -->
+        {% include ficha/10treinamento.html %}
+    </div>
+
+    <!-- CARACTERÍSTICAS -->
+    <div class="bloco coluna col4 b4 outros">
+
+        <!-- OUTRAS ESTATÍSTICAS -->
+        {% include ficha/11outras.html %}
+
+        <!-- ATAQUES -->
+        {% include ficha/12ataques.html %}
+
+        <!-- CLASSE -->
+        {% include ficha/13classe.html %}
+
+        <!-- ESPÉCIE -->
+        {% include ficha/14especie.html %}
+
+        <!-- TALENTOS -->
+        {% include ficha/15talentos.html %}
+
+    </div>
+</div>
+<div class="ficha">
+    <!-- CABEÇALHO -->
+    {% include ficha/01cabecalho.html page2="sim" %}
+
+    <!-- CONJURAÇÃO -->
+    <div class="bloco coluna">
+
+        <!-- DADOS DE CONJURAÇÃO -->
+        {% include ficha/16conjuracao.html %}
+
+        <!-- MAGIAS -->
+        {% include ficha/17magias.html %}
+
+    </div>
+
+    <!-- LORE E EQUIPAMENTOS -->
+    <div class="coluna bloco b2 outros finais">
+
+        <!-- MAGIAS -->
+        {% include ficha/18aparencia.html %}
+
+        <!-- HISTÓRIA -->
+        {% include ficha/19historia.html %}
+
+        <!-- ALINHAMENTO -->
+        {% include ficha/20alinhamento.html %}
+
+        <!-- IDIOMAS -->
+        {% include ficha/21idiomas.html %}
+
+        <!-- EQUIPAMENTOS -->
+        {% include ficha/22equipamentos.html %}
+
+        <!-- MOEDAS -->
+        {% include ficha/23moedas.html %}
+
+    </div>
+
+</div>

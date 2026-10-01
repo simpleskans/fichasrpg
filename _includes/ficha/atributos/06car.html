@@ -1,0 +1,82 @@
+<div class="bloco atributo">
+    <div>
+        {% assign mod = personagem.atributos.car | minus: 10 %}
+        {% if mod < 0 %} {% assign mod=mod | minus: 1 | divided_by: 2 %} {% else %} {% assign mod=mod | divided_by: 2 %}
+            {% endif %} <strong>Carisma</strong>
+            <section>
+                <span class="modificador">{% if mod >= 0 %}+{% endif %}{{ mod }}</span>
+                <span class="valor">{{ personagem.atributos.car }}</span>
+            </section>
+    </div>
+    <section class="salvaguarda">
+        {% if personagem.atributos.saves.car %}
+        {% assign save_total = mod | plus: bonus_prof %}
+        {% else %}
+        {% assign save_total = mod %}
+        {% endif %}
+
+        <label>
+            <input type="checkbox" disabled {% if personagem.atributos.saves.car %}checked{% endif %}>
+        </label>
+        <span>{% if save_total >= 0 %}+{% endif %}{{ save_total }}</span>
+        <strong>Salvaguarda</strong>
+    </section>
+    <section class="pericias">
+        <div>
+            {% assign prof = personagem.atributos.pericias.enganacao %}
+            {% if prof %}
+            {% assign pericia_total = mod | plus: bonus_prof %}
+            {% else %}
+            {% assign pericia_total = mod %}
+            {% endif %}
+
+            <label>
+                <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+            </label>
+            <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+            Enganação
+        </div>
+        <div>
+            {% assign prof = personagem.atributos.pericias.intimidacao %}
+            {% if prof %}
+            {% assign pericia_total = mod | plus: bonus_prof %}
+            {% else %}
+            {% assign pericia_total = mod %}
+            {% endif %}
+
+            <label>
+                <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+            </label>
+            <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+            Intimidação
+        </div>
+        <div>
+            {% assign prof = personagem.atributos.pericias.atuacao %}
+            {% if prof %}
+            {% assign pericia_total = mod | plus: bonus_prof %}
+            {% else %}
+            {% assign pericia_total = mod %}
+            {% endif %}
+
+            <label>
+                <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+            </label>
+            <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+            Atuação
+        </div>
+        <div>
+            {% assign prof = personagem.atributos.pericias.persuasao %}
+            {% if prof %}
+            {% assign pericia_total = mod | plus: bonus_prof %}
+            {% else %}
+            {% assign pericia_total = mod %}
+            {% endif %}
+
+            <label>
+                <input type="checkbox" disabled {% if prof %}checked{% endif %}>
+            </label>
+            <span>{% if pericia_total >= 0 %}+{% endif %}{{ pericia_total }}</span>
+            Persuasão
+        </div>
+    </section>
+</div>

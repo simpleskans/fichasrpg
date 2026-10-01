@@ -1,0 +1,36 @@
+<div class="ataques">
+    <strong>Armas & Truques de Dano</strong>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Bônus/CD</th>
+                <th>Dano & Tipo</th>
+                <th>Anotações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% assign prof_armas = personagem.classe.proficiencias.armas %}
+
+            {% for ataque in personagem.ataques %}
+            {% assign arma = site.data.armas | where: "nome", ataque.arma | first %}
+
+            {% assign mod_atq = personagem.atributos[ataque.atributo] | minus: 10 %}
+            {% if mod_atq < 0 %} {% assign mod_atq=mod_atq | minus: 1 | divided_by: 2 %} {% else %} {% assign
+                mod_atq=mod_atq | divided_by: 2 %} {% endif %} {% assign bonus_atq=mod_atq | plus: ataque.bonus_extra %}
+                {% if prof_armas contains arma.categoria %} {% assign bonus_atq=bonus_atq | plus: bonus_prof %} {% endif
+                %} {% assign dano_total=mod_atq | plus: ataque.bonus_extra %} <tr>
+                <td>{{ arma.nome }}</td>
+                <td>{% if bonus_atq >= 0 %}+{% endif %}{{ bonus_atq }}</td>
+                <td>{{ arma.dano }} {% if dano_total >= 0 %}+{% endif %}{{ dano_total }} {{ arma.tipo_dano }}</td>
+                <td>
+                    {{ arma.propriedades | join: ", " }}<br>{% if arma.maestria %}
+                    Maestria: {{ arma.maestria }}
+                    {% endif %}
+                </td>
+                </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+</div>

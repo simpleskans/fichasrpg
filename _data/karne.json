@@ -1,9 +1,8 @@
 {
     "infobasica": {
-        "nome": "Karne Teste",
+        "nome": "Karne",
         "subclasse": "",
-        "origem": "Forasteiro",
-        "exp": 1,
+        "exp": 0,
         "nivel": 1,
         "alinhamento": "OB",
         "aparencia": {
@@ -14,6 +13,29 @@
             "pele": "Branca",
             "cabelo": "Branco com padrões vermelhos"
         }
+    },
+    "ca": {
+        "base": 10,
+        "atributos": [
+            "des",
+            "con"
+        ],
+        "max_atributo": null,
+        "bonus_fixo": 0
+    },
+    "origem": {
+        "antecedente": "Forasteiro",
+        "talento": {
+            "nome": "Andarilho",
+            "descricao": "<p>Você possui uma excelente memória para mapas e geografia, conseguindo sempre se lembrar da configuração geral de um terreno, dos assentamentos e de outras características ao seu redor. Além disso, você pode encontrar comida e água para si mesmo e para até cinco outras pessoas todos os dias, desde que a terra ofereça frutas, pequenos animais, água, etc.</p>"
+        },
+        "ferramentas": [
+            "Ocarina"
+        ],
+        "idiomas": [
+            "Comum",
+            "Leonino"
+        ]
     },
     "talentos": [
         {
@@ -177,7 +199,14 @@
             "bonus_extra": 0
         }
     ],
+    "conjuracao": {
+        "atributo": "for"
+    },
     "espacos_magia": [
+        {
+            "circulo": 0,
+            "total": 2
+        },
         {
             "circulo": 1,
             "total": 2
@@ -244,5 +273,27 @@
             "concentracao": true,
             "descricao": "<p>Ao acertar o alvo, vinhas agarradoras aparecem nele e ele realiza uma salvaguarda de Força. Uma criatura Grande ou maior tem Vantagem nesta salvaguarda. Se falhar, o alvo está com a condição Contido até que a magia termine. Em caso de sucesso, as videiras murcham e a magia se encerra.</p> <p>Enquanto Contido desse modo, o alvo sofre 1d6 pontos de dano Perfurante no início de cada um dos turnos dele. O alvo ou uma criatura ao alcance dele pode executar uma ação para realizar um teste de Força (Atletismo) contra a CD para evitar sua magia. Em caso de sucesso, as videiras desaparecem.</p> <p><strong>Usando um Espaço de Magia de Círculo Superior.</strong> O dano aumenta em 1d6 pontos para cada círculo de espaço de magia acima de 1.</p>"
         }
-    ]
+    ],
+    "equipamentos": {
+        "escudo": false,
+        "lista": [
+            {
+                "nome": "Caixa de Fogo",
+                "quantidade": 3
+            },
+            {
+                "nome": "Pora"
+            }
+        ],
+        "itens_magicos": [
+            {
+                "nome": "Espada do Sol",
+                "sintonizado": false
+            },
+            {
+                "nome": "Arco do Vento",
+                "sintonizado": false
+            }
+        ]
+    }
 }

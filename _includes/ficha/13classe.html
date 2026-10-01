@@ -1,0 +1,30 @@
+<div class="ataques">
+    <strong>Características de Classe</strong>
+
+    <div class="caracteristicas-classe">
+        {% for carac in personagem.classe.caracteristicas %}
+        <details>
+            <summary>
+                <span class="nome">{{ carac.nome }}</span>
+                <br>
+                <span class="dados">
+                    {% if carac.dados %}
+                    {% if carac.dados.usos_max %}
+                    <span class="dado">
+                        Usos:
+                        <input type="text" inputmode="numeric" class="usos-atual" value="{{ carac.dados.usos_max }}">
+                        /{{ carac.dados.usos_max }}
+                    </span>
+                    {% endif %}
+                    {% endif %}
+                    {% if carac.dados.outro %}
+                    <span class="dado">{{ carac.dados.outro }}</span>
+                    {% endif %}
+                </span>
+            </summary>
+            <div>{{ carac.descricao }}</div>
+        </details>
+        {% endfor %}
+    </div>
+
+</div>
