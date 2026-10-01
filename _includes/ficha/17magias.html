@@ -1,6 +1,6 @@
 <div class="ataques magias">
     <strong>Truques e Magias Preparadas</strong>
-
+    {% if personagem.magias %}
     {% assign magias_por_nivel = personagem.magias | group_by: "nivel" | sort: "name" %}
 
     {% for grupo in magias_por_nivel %}
@@ -30,7 +30,11 @@
             {% for magia in grupo.items %}
             <details>
                 <summary>
-                    <span class="nome">{{ magia.nome }}</span><br>
+                    <span class="nome">
+                        {{ magia.nome }}
+                        {% if magia.origem %}
+                        <em>[{{ magia.origem }}]</em>{% endif %}
+                    </span><br>
                     <span class="dados">
                         {{ magia.tempo | split: "," | first }},
 
@@ -97,4 +101,5 @@
         </div>
     </section>
     {% endfor %}
+    {% endif %}
 </div>

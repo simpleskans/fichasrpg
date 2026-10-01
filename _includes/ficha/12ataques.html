@@ -16,19 +16,75 @@
             {% for ataque in personagem.ataques %}
             {% assign arma = site.data.armas | where: "nome", ataque.arma | first %}
 
-            {% assign mod_atq = personagem.atributos[ataque.atributo] | minus: 10 %}
-            {% if mod_atq < 0 %} {% assign mod_atq=mod_atq | minus: 1 | divided_by: 2 %} {% else %} {% assign
-                mod_atq=mod_atq | divided_by: 2 %} {% endif %} {% assign bonus_atq=mod_atq | plus: ataque.bonus_extra %}
-                {% if prof_armas contains arma.categoria %} {% assign bonus_atq=bonus_atq | plus: bonus_prof %} {% endif
-                %} {% assign dano_total=mod_atq | plus: ataque.bonus_extra %} <tr>
-                <td>{{ arma.nome }}</td>
-                <td>{% if bonus_atq >= 0 %}+{% endif %}{{ bonus_atq }}</td>
-                <td>{{ arma.dano }} {% if dano_total >= 0 %}+{% endif %}{{ dano_total }} {{ arma.tipo_dano }}</td>
-                <td>
-                    {{ arma.propriedades | join: ", " }}<br>{% if arma.maestria %}
-                    Maestria: {{ arma.maestria }}
-                    {% endif %}
-                </td>
+            {% assign mod_for = personagem.atributos.for | minus: 10 %}
+            {% if mod_for < 0 %} {% assign mod_for=mod_for | minus: 1 | divided_by: 2 %} {% else %} {% assign
+                mod_for=mod_for | divided_by: 2 %} {% endif %} {% assign precisa_destreza=false %} {% if
+                arma.alcance=="D" or arma.propriedades contains "Acuidade" %} {% assign precisa_destreza=true %} {%
+                endif %} {% if precisa_destreza %} {% assign mod_des=personagem.atributos.des | minus: 10 %} {% if
+                mod_des < 0 %} {% assign mod_des=mod_des | minus: 1 | divided_by: 2 %} {% else %} {% assign
+                mod_des=mod_des | divided_by: 2 %} {% endif %} {% endif %} {% assign tem_acuidade=false %} {% if
+                arma.propriedades contains "Acuidade" %} {% assign tem_acuidade=true %} {% endif %} {% if
+                arma.alcance=="D" %} {% assign mod_atq=mod_des %} {% elsif tem_acuidade %} {% assign mod_atq=mod_for %}
+                {% if mod_des> mod_for %}
+                {% assign mod_atq = mod_des %}
+                {% endif %}
+                {% else %}
+                {% assign mod_atq = mod_for %}
+                {% endif %}
+
+                {% assign bonus_atq_for = mod_for | plus: ataque.bonus_extra %}
+                {% if precisa_destreza %}
+                {% assign bonus_atq_des = mod_des | plus: ataque.bonus_extra %}
+                {% endif %}
+
+                {% if prof_armas contains arma.categoria %}
+                {% assign bonus_atq_for = bonus_atq_for | plus: bonus_prof %}
+                {% if precisa_destreza %}
+                {% assign bonus_atq_des = bonus_atq_des | plus: bonus_prof %}
+                {% endif %}
+                {% endif %}
+
+                {% if arma.alcance == "D" %}
+                {% assign bonus_atq = bonus_atq_des %}
+                {% elsif tem_acuidade %}
+                {% assign bonus_atq = bonus_atq_for %}
+                {% if bonus_atq_des > bonus_atq_for %}
+                {% assign bonus_atq = bonus_atq_des %}
+                {% endif %}
+                {% else %}
+                {% assign bonus_atq = bonus_atq_for %}
+                {% endif %}
+
+                {% assign dano_total = mod_atq | plus: ataque.bonus_extra %}
+
+                <tr>
+                    <td>{{ arma.nome }}</td>
+                    <td>
+                        {% if tem_acuidade %}
+                        {% if bonus_atq_for >= 0 %}+{% endif %}{{ bonus_atq_for }} (For) ou {% if bonus_atq_des >= 0 %}+{%
+                        endif %}{{ bonus_atq_des }} (Des)
+                        {% else %}
+                        {% if bonus_atq >= 0 %}+{% endif %}{{ bonus_atq }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if tem_acuidade %}
+                        {{ arma.dano }} {% if mod_for >= 0 %}+{% endif %}{{ mod_for }} (For) ou {% if mod_des >= 0 %}+{% endif
+                        %}{{ mod_des }} (Des) {{ arma.tipo_dano }}
+                        {% else %}
+                        {{ arma.dano }} {% if dano_total >= 0 %}+{% endif %}{{ dano_total }} {{ arma.tipo_dano }}
+                        {% endif %}
+
+                        {% if arma.dano_2maos %}
+                        <br>2 mãos: {{ arma.dano_2maos }} {% if dano_total >= 0 %}+{% endif %}{{ dano_total }} {{
+                        arma.tipo_dano }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {{ arma.propriedades | join: ", " }}<br>{% if arma.maestria %}
+                        Maestria: {{ arma.maestria }}
+                        {% endif %}
+                    </td>
                 </tr>
                 {% endfor %}
         </tbody>

@@ -80,7 +80,26 @@ h2 {
   justify-content: space-between;
 }
 
+.imagem-personagem {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 15rem;
+  border: 2px solid #9F9274;
+  background-color: #fff;
+  z-index: -1;
+}
+
+.imagem-personagem img {
+  width: 100%;
+}
+
+.cabecalho:has(.imagem-personagem) {
+  margin-top: 8rem;
+}
+
 .cabecalho {
+  position: relative;
   background: #75232E;
   color: #fff;
   padding: 10px;
@@ -603,5 +622,20 @@ div.caracteristicas-classe {
 @media only screen and (max-width: 620px) {
   .bloco.coluna.col4 {
     column-count: 2;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .imagem-personagem {
+        position: static;
+        width: 30%;
+        float: right;
+        margin-left: 1rem;
+        border: none;
+        background: none;
+  }
+
+  .cabecalho:has(.imagem-personagem) {
+    margin-top: 0;
   }
 }

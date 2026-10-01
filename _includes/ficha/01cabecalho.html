@@ -1,3 +1,10 @@
 <div class="cabecalho">
+    {%if personagem.infobasica.aparencia.imagem %}
+    {% unless include.page2 %}
+    <picture class="imagem-personagem">
+        <img src="/img/{{ personagem.infobasica.aparencia.imagem }}" alt="{{ personagem.infobasica.nome }}">
+    </picture>
+    {% endunless %}
+    {% endif %}
     <h2>{{ personagem.infobasica.nome }} {% if include.page2 %} - Página 2 {% endif %}</h2>
 </div>

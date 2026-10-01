@@ -1,33 +1,55 @@
 [
     {
-        "nome": "Alabarda",
+        "nome": "Cimitarra",
         "categoria": "marcial",
-        "dano": "1d10",
+        "alcance": "C",
+        "dano": "1d6",
+        "dano_2maos": null,
         "tipo_dano": "cortante",
-        "propriedades": ["Pesada", "Alcance", "Duas Mãos"],
-        "maestria": "Trepassar"
+        "propriedades": [
+            "Acuidade",
+            "Leve"
+        ],
+        "maestria": "Ágil"
     },
     {
-        "nome": "Machadinha",
-        "categoria": "simples",
+        "nome": "Espada Curta",
+        "categoria": "marcial",
+        "alcance": "C",
         "dano": "1d6",
-        "tipo_dano": "cortante",
-        "propriedades": ["Leve", "Arremesso (alcance 6/18 m)"],
-        "maestria": "Afligir"
-    },
-    {
-        "nome": "Azagaia",
-        "categoria": "simples",
-        "dano": "1d6",
+        "dano_2maos": null,
         "tipo_dano": "perfurante",
-        "propriedades": ["Arremesso (alcance 9/36 m)"],
+        "propriedades": [
+            "Acuidade",
+            "Leve"
+        ],
+        "maestria": " Afligir"
+    },
+    {
+        "nome": "Arco Longo",
+        "categoria": "marcial",
+        "alcance": "D",
+        "dano": "1d8",
+        "dano_2maos": null,
+        "tipo_dano": "perfurante",
+        "propriedades": [
+            "Duas Mãos",
+            "Munição (Alcance 45/180; Flecha)",
+            "Pesada"
+        ],
         "maestria": "Lentidão"
     },
     {
-        "nome": "Garras",
-        "categoria": "simples",
-        "dano": "1d4",
-        "tipo_dano": "cortante"
+        "nome": "Arco Curto",
+        "categoria": "marcial",
+        "alcance": "D",
+        "dano": "1d6",
+        "dano_2maos": null,
+        "tipo_dano": "perfurante",
+        "propriedades": [
+            "Duas Mãos",
+            "Munição (Alcance 24/96; Flecha)"
+        ],
+        "maestria": "Afligir"
     }
-
 ]
