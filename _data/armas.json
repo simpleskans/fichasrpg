@@ -51,5 +51,42 @@
             "Munição (Alcance 24/96; Flecha)"
         ],
         "maestria": "Afligir"
+    },
+    {
+        "nome": "Alabarda",
+        "categoria": "marcial",
+        "alcance": "C",
+        "dano": "1d10",
+        "dano_2maos": null,
+        "tipo_dano": "cortante",
+        "propriedades": [
+            " Duas Mãos",
+            "Extensão",
+            "Pesada"
+        ],
+        "maestria": " Trespassar"
+    },
+    {
+        "nome": "Machadinha",
+        "categoria": "marcial",
+        "alcance": "D",
+        "dano": "1d6",
+        "dano_2maos": null,
+        "tipo_dano": "perfurante",
+        "propriedades": [
+            "Arremesso (Alcance 6/18)",
+            "Leve"
+        ],
+        "maestria": "Afligir"
+    },
+    {
+        "nome": "Garras",
+        "categoria": "marcial",
+        "alcance": "C",
+        "dano": "1d4",
+        "dano_2maos": null,
+        "tipo_dano": "cortante",
+        "propriedades": [],
+        "maestria": null
     }
 ]
