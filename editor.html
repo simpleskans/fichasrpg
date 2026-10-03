@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Editor de Ficha - D&D 2024</title>
+<style>
+  :root {
+    --bg: #f4f1ea;
+    --card: #ffffff;
+    --border: #9F9274;
+    --text: #2c2a24;
+    --muted: #6b6558;
+    --accent: #5c5338;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 1.5rem;
+    font-size: 14px;
+  }
+  h1 { font-size: 1.4rem; margin: 0 0 1rem; }
+  h2 {
+    font-size: 1rem;
+    margin: 0;
+    padding: 0.6rem 1rem;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 6px 6px 0 0;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  h2 .arrow { transition: transform 0.15s; }
+  h2.collapsed .arrow { transform: rotate(-90deg); }
+  section.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+  .card-body {
+    padding: 1rem;
+    display: grid;
+    gap: 0.75rem;
+  }
+  .card-body.collapsed { display: none; }
+  .row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .field { display: flex; flex-direction: column; gap: 0.25rem; flex: 1; min-width: 140px; }
+  .field label { font-size: 0.75rem; color: var(--muted); font-weight: 600; }
+  input[type=text], input[type=number], textarea, select {
+    font-family: inherit;
+    font-size: 0.85rem;
+    padding: 0.4rem 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: #fffdf8;
+    color: var(--text);
+    width: 100%;
+  }
+  textarea { resize: vertical; min-height: 60px; }
+  .checkbox-row { display: flex; align-items: center; gap: 0.4rem; }
+  .checkbox-row label { font-size: 0.8rem; }
+  fieldset {
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    padding: 0.75rem;
+    margin: 0;
+  }
+  legend { font-size: 0.8rem; font-weight: 600; color: var(--accent); padding: 0 0.4rem; }
+  .list-item {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.6rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    background: #fbf9f3;
+  }
+  .list-item .remove-btn {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.4rem;
+    background: #a33;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.75rem;
+  }
+  button.add-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    align-self: start;
+  }
+  button.add-btn:hover { opacity: 0.9; }
+  .grid6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.5rem; }
+  .grid6 .field { min-width: 0; }
+  .pericias-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.3rem; }
+  #saida-wrap { position: sticky; bottom: 0; background: var(--bg); padding-top: 1rem; }
+  #saida {
+    width: 100%;
+    height: 180px;
+    font-family: monospace;
+    font-size: 0.75rem;
+  }
+  .toolbar { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+  .toolbar button, .toolbar label.file-btn {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+  .toolbar input[type=file] { display: none; }
+  .hint { font-size: 0.75rem; color: var(--muted); margin: 0.2rem 0 0; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .small-input { width: 70px !important; }
+</style>
+</head>
+<body>
+
+<h1>Editor de Ficha — D&amp;D 2024</h1>
+
+<div class="toolbar">
+  <label class="file-btn">Carregar JSON<input type="file" id="arquivo-input" accept=".json"></label>
+  <button id="btn-gerar">Gerar JSON</button>
+  <button id="btn-copiar">Copiar JSON</button>
+  <button id="btn-baixar">Baixar JSON</button>
+  <button id="btn-limpar">Começar do zero</button>
+</div>
+
+<!-- INFOBASICA -->
+<section class="card">
+  <h2 data-target="c-info">Informações Básicas <span class="arrow">▾</span></h2>
+  <div class="card-body" id="c-info">
+    <div class="row">
+      <div class="field"><label>Nome</label><input type="text" id="inf-nome"></div>
+      <div class="field"><label>Subclasse</label><input type="text" id="inf-subclasse"></div>
+    </div>
+    <div class="row">
+      <div class="field"><label>Nível</label><input type="number" id="inf-nivel" value="1" min="1" max="20"></div>
+      <div class="field"><label>Exp.</label><input type="number" id="inf-exp" value="0"></div>
+      <div class="field">
+        <label>Alinhamento</label>
+        <select id="inf-alinhamento">
+          <option value="OB">Ordeiro e Bom</option>
+          <option value="NB">Neutro e Bom</option>
+          <option value="CB">Caótico e Bom</option>
+          <option value="ON">Ordeiro e Neutro</option>
+          <option value="N">Neutro</option>
+          <option value="CN">Caótico e Neutro</option>
+          <option value="OM">Ordeiro e Mau</option>
+          <option value="NM">Neutro e Mau</option>
+          <option value="CM">Caótico e Mau</option>
+        </select>
+      </div>
+    </div>
+    <fieldset>
+      <legend>Aparência</legend>
+      <div class="grid6">
+        <div class="field"><label>Idade</label><input type="text" id="ap-idade"></div>
+        <div class="field"><label>Altura (m)</label><input type="text" id="ap-altura"></div>
+        <div class="field"><label>Peso (kg)</label><input type="text" id="ap-peso"></div>
+        <div class="field"><label>Olhos</label><input type="text" id="ap-olhos"></div>
+        <div class="field"><label>Pele</label><input type="text" id="ap-pele"></div>
+        <div class="field"><label>Cabelo</label><input type="text" id="ap-cabelo"></div>
+      </div>
+      <div class="field" style="margin-top:0.5rem"><label>Imagem (arquivo)</label><input type="text" id="ap-imagem" placeholder="nome.png"></div>
+    </fieldset>
+  </div>
+</section>
+
+<!-- CA -->
+<section class="card">
+  <h2 data-target="c-ca">Classe de Armadura <span class="arrow">▾</span></h2>
+  <div class="card-body" id="c-ca">
+    <div class="row">
+      <div class="field"><label>Base</label><input type="number" id="ca-base" value="10"></div>
+      <div class="field"><label>Atributos somados (ex: des,con)</label><input type="text" id="ca-atributos" placeholder="des,con"></div>
+      <div class="field"><label>Máximo do atributo (vazio = sem limite)</label><input type="number" id="ca-max"></div>
+      <div class="field"><label>Bônus fixo</label><input type="number" id="ca-bonus" value="0"></div>
+    </div>
+    <p class="hint">Ex.: Bárbaro sem armadura → base 10, atributos "des,con". Armadura média → base 14, atributos "des", máximo 2.</p>
+  </div>
+</section>
+
+<!-- ORIGEM -->
+<section class="card">
+  <h2 data-target="c-origem">Origem <span class="arrow">▾</span></h2>
+  <div class="card-body" id="c-origem">
+    <div class="field"><label>Antecedente</label><input type="text" id="org-antecedente"></div>
+    <fieldset>
+      <legend>Talento de Origem</legend>
+      <div class="field"><label>Nome</label><input type="text" id="org-talento-nome"></div>
+      <div class="field"><label>Descrição (HTML permitido)</label><textarea id="org-talento-desc"></textarea></div>
+      <div class="field"><label>Anotação curta (campo "outro")</label><input type="text" id="org-talento-outro"></div>
+    </fieldset>
+    <div class="field"><label>Ferramentas (uma por linha)</label><textarea id="org-ferramentas"></textarea></div>
+    <div class="field"><label>Idiomas (um por linha)</label><textarea id="org-idiomas"></textarea></div>
+  </div>
+</section>
+
+<!-- TALENTOS -->
+<section class="card">
+  <h2 data-target="c-talentos">Talentos <span class="arrow">▾</span></h2>
+  <div class="card-body" id="c-talentos">
+    <div id="talentos-lista"></div>
+    <button class="add-btn" id="add-talento">+ Adicionar talento</button>
+  </div>
+</section>
+
+<!-- ESPECIE -->
+<section class="card">
+  <h2 data-target="c-especie">Espécie <span class="arrow">▾</span></h2>
+  <div class="card-body" id="c-especie">
+    <div class="row">
+      <div class="field"><label>Nome</label><input type="text" id="esp-nome"></div>
+      <div class="field"><label>Tamanho</label><input type="text" id="esp-tamanho" value="Médio"></div>
+      <div class="field"><label>Deslocamento (m)</label><input type="number" id="esp-deslocamento" value="9"></div>
+    </div>
+    <fieldset>
+      <legend>Características Raciais</legend>
+      <div id="esp-carac-lista"></div>
+      <button class="add-btn" id="add-esp-carac">+ Adicionar característica</button>
+    </fieldset>
+  </div>
+</section>
+
+<!-- CLASSE -->
+<section class="card">
+  <h2 data-target="c-classe">Classe <span class="arrow">▾</span></h2>
+  <div class="card-body" id="c-classe">
+    <div class="row">
+      <div class="field"><label>Nome</label><input type="text" id="cls-nome"></div>
+      <div class="field">
+        <label>Atributo primário</label>
+        <select id="cls-attr-primario">
+          <option value="for">Força</option>
+          <option value="des">Destreza</option>
+          <option value="con">Constituição</option>
+          <option value="int">Inteligência</option>
+          <option value="sab">Sabedoria</option>
+          <option value="car">Carisma</option>
+        </select>
+      </div>
+      <div class="field"><label>Dado de vida</label><input type="number" id="cls-dado-vida" value="8"></div>
+    </div>
+    <div class="row">
+      <div class="field"><label>PV nível 1</label><input type="number" id="cls-pv1" value="8"></div>
+      <div class="field"><label>PV por nível</label><input type="number" id="cls-pvn" value="5"></div>
+    </div>
+    <div class="field"><label>Salvaguardas (ex: for,con)</label><input type="text" id="cls-saves" placeholder="for,con"></div>
+    <div class="two-col">
+      <div class="field"><label>Proficiência em armas (ex: simples,marcial)</label><input type="text" id="cls-prof-armas" placeholder="simples,marcial"></div>
+      <div class="field"><label>Proficiência em armaduras (ex: leve,media,escudo)</label><input type="text" id="cls-prof-armaduras" placeholder="leve,media,escudo"></div>
+    </div>
+    <fieldset>
+      <legend>Características de Classe</legend>
+      <div id="cls-carac-lista"></div>
+      <button class="add-btn" id="add-cls-carac">+ Adicionar característica</button>
+    </fieldset>
+  </div>
+</section>
+
+<!-- ATRIBUTOS -->
+<section class="card">
+  <h2 data-target="c-atributos">Atributos <span class="arrow">▾</span></h2>
+  <div class="card-body" id="c-atributos">
+    <div class="grid6">
+      <div class="field"><label>Força</label><input type="number" id="at-for" value="10"></div>
+      <div class="field"><label>Destreza</label><input type="number" id="at-des" value="10"></div>
+      <div class="field"><label>Constituição</label><input type="number" id="at-con" value="10"></div>
+      <div class="field"><label>Inteligência</label><input type="number" id="at-int" value="10"></div>
+      <div class="field"><label>Sabedoria</label><input type="number" id="at-sab" value="10"></div>
+      <div class="field"><label>Carisma</label><input type="number" id="at-car" value="10"></div>
+    </div>
+
+    <fieldset>
+      <legend>Salvaguardas com proficiência (além das já dadas pela classe)</legend>
+      <div class="grid6" id="saves-checks"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Perícias com proficiência</legend>
+      <div class="pericias-grid" id="pericias-checks"></div>
+    </fieldset>
+  </div>
+</section>
+
+<!-- ATAQUES -->
+<section class="card">
+  <h2 data-target="c-ataques">Ataques <span class="arrow">▾</span></h2>
+  <div class="card-body" id="c-ataques">
+    <p class="hint">O nome deve bater exatamente com uma arma do catálogo (_data/armas.json).</p>
+    <div id="ataques-lista"></div>
+    <button class="add-btn" id="add-ataque">+ Adicionar ataque</button>
+  </div>
+</section>
+
+<!-- EQUIPAMENTOS -->
+<section class="card">
+  <h2 data-target="c-equip">Equipamentos <span class="arrow">▾</span></h2>
+  <div class="card-body" id="c-equip">
+    <div class="checkbox-row"><input type="checkbox" id="eq-escudo"><label for="eq-escudo">Usa escudo</label></div>
+    <fieldset>
+      <legend>Lista de equipamentos</legend>
+      <div id="eq-lista"></div>
+      <button class="add-btn" id="add-equip-item">+ Adicionar item</button>
+    </fieldset>
+    <fieldset>
+      <legend>Itens mágicos</legend>
+      <div id="eq-magicos-lista"></div>
+      <button class="add-btn" id="add-equip-magico">+ Adicionar item mágico</button>
+    </fieldset>
+  </div>
+</section>
+
+<!-- MOEDAS -->
+<section class="card">
+  <h2 data-target="c-moedas">Moedas <span class="arrow">▾</span></h2>
+  <div class="card-body" id="c-moedas">
+    <div class="grid6">
+      <div class="field"><label>PC</label><input type="number" id="moeda-pc" value="0"></div>
+      <div class="field"><label>PP</label><input type="number" id="moeda-pp" value="0"></div>
+      <div class="field"><label>PE</label><input type="number" id="moeda-pe" value="0"></div>
+      <div class="field"><label>PO</label><input type="number" id="moeda-po" value="0"></div>
+      <div class="field"><label>PL</label><input type="number" id="moeda-pl" value="0"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONJURACAO -->
+<section class="card">
+  <h2 data-target="c-conj">Conjuração <span class="arrow">▾</span></h2>
+  <div class="card-body" id="c-conj">
+    <div class="field">
+      <label>Atributo de conjuração (vazio = não conjura)</label>
+      <select id="conj-atributo">
+        <option value="">Nenhum</option>
+        <option value="for">Força</option>
+        <option value="des">Destreza</option>
+        <option value="con">Constituição</option>
+        <option value="int">Inteligência</option>
+        <option value="sab">Sabedoria</option>
+        <option value="car">Carisma</option>
+      </select>
+    </div>
+    <fieldset>
+      <legend>Espaços de magia por círculo</legend>
+      <div class="grid6" id="espacos-magia-grid"></div>
+    </fieldset>
+  </div>
+</section>
+
+<!-- MAGIAS -->
+<section class="card">
+  <h2 data-target="c-magias">Magias e Truques <span class="arrow">▾</span></h2>
+  <div class="card-body" id="c-magias">
+    <p class="hint">Cole aqui objetos de magia no formato Simple Skans (um por bloco). Campos: nome, original, nivel, escola, classes, tempo, ritual, alcance, componentes, duracao, concentracao, descricao.</p>
+    <div id="magias-lista"></div>
+    <button class="add-btn" id="add-magia">+ Adicionar magia</button>
+  </div>
+</section>
+
+<!-- HISTORIA (texto livre, pendente) -->
+<section class="card">
+  <h2 data-target="c-historia">História e Personalidade <span class="arrow">▾</span></h2>
+  <div class="card-body" id="c-historia">
+    <div class="field"><label>Texto</label><textarea id="historia-texto" style="min-height:100px"></textarea></div>
+  </div>
+</section>
+
+<div id="saida-wrap">
+  <h2 style="border-radius:6px">JSON gerado</h2>
+  <textarea id="saida" readonly></textarea>
+</div>
+
+<script>
+const PERICIAS = [
+  ["atletismo","Atletismo"],["acrobacia","Acrobacia"],["furtividade","Furtividade"],
+  ["prestidigitacao","Prestidigitação"],["arcanismo","Arcanismo"],["historia","História"],
+  ["investigacao","Investigação"],["natureza","Natureza"],["religiao","Religião"],
+  ["intuicao","Intuição"],["lidarcomanimais","Lidar com Animais"],["medicina","Medicina"],
+  ["percepcao","Percepção"],["sobrevivencia","Sobrevivência"],["atuacao","Atuação"],
+  ["enganacao","Enganação"],["intimidacao","Intimidação"],["persuasao","Persuasão"]
+];
+const ATRIBUTOS = [["for","Força"],["des","Destreza"],["con","Constituição"],["int","Inteligência"],["sab","Sabedoria"],["car","Carisma"]];
+
+function el(tag, attrs, children) {
+  const e = document.createElement(tag);
+  if (attrs) for (const k in attrs) {
+    if (k === "text") e.textContent = attrs[k];
+    else e.setAttribute(k, attrs[k]);
+  }
+  if (children) children.forEach(c => e.appendChild(c));
+  return e;
+}
+
+// ---------- Colapsar seções ----------
+document.querySelectorAll("h2[data-target]").forEach(h => {
+  h.addEventListener("click", () => {
+    const body = document.getElementById(h.dataset.target);
+    body.classList.toggle("collapsed");
+    h.classList.toggle("collapsed");
+  });
+});
+
+// ---------- Checkboxes de saves ----------
+const savesWrap = document.getElementById("saves-checks");
+ATRIBUTOS.forEach(([chave, label]) => {
+  const id = "save-" + chave;
+  const row = el("div", {class:"checkbox-row"});
+  const cb = el("input", {type:"checkbox", id});
+  row.appendChild(cb);
+  row.appendChild(el("label", {for:id, text:label}));
+  savesWrap.appendChild(row);
+});
+
+// ---------- Checkboxes de pericias ----------
+const periciasWrap = document.getElementById("pericias-checks");
+PERICIAS.forEach(([chave, label]) => {
+  const id = "pericia-" + chave;
+  const row = el("div", {class:"checkbox-row"});
+  const cb = el("input", {type:"checkbox", id});
+  row.appendChild(cb);
+  row.appendChild(el("label", {for:id, text:label}));
+  periciasWrap.appendChild(row);
+});
+
+// ---------- Espacos de magia ----------
+const espacosGrid = document.getElementById("espacos-magia-grid");
+for (let i = 0; i <= 9; i++) {
+  const field = el("div", {class:"field"});
+  field.appendChild(el("label", {text: i===0 ? "Truques" : (i + "º círculo")}));
+  field.appendChild(el("input", {type:"number", id:"espaco-"+i, value:"0", min:"0"}));
+  espacosGrid.appendChild(field);
+}
+
+// ---------- Listas dinâmicas genéricas ----------
+function criarItemCaracteristica(container, dados) {
+  dados = dados || {};
+  const item = el("div", {class:"list-item"});
+  const rm = el("button", {class:"remove-btn", text:"Remover", type:"button"});
+  rm.onclick = () => item.remove();
+  item.appendChild(rm);
+
+  const nome = el("input", {type:"text", class:"carac-nome", placeholder:"Nome"});
+  nome.value = dados.nome || "";
+  const desc = el("textarea", {class:"carac-desc", placeholder:"Descrição (HTML permitido)"});
+  desc.value = dados.descricao || "";
+  const outro = el("input", {type:"text", class:"carac-outro", placeholder:'Anotação curta (campo "outro")'});
+  outro.value = (dados.dados && dados.dados.outro) || "";
+  const usosMax = el("input", {type:"number", class:"carac-usos", placeholder:"Usos máximos (opcional)"});
+  usosMax.value = (dados.dados && dados.dados.usos_max) || "";
+
+  item.appendChild(el("label", {text:"Nome"}));
+  item.appendChild(nome);
+  item.appendChild(el("label", {text:"Descrição"}));
+  item.appendChild(desc);
+  const row = el("div", {class:"row"});
+  const f1 = el("div", {class:"field"});
+  f1.appendChild(el("label", {text:"Anotação curta"}));
+  f1.appendChild(outro);
+  const f2 = el("div", {class:"field"});
+  f2.appendChild(el("label", {text:"Usos máximos"}));
+  f2.appendChild(usosMax);
+  row.appendChild(f1); row.appendChild(f2);
+  item.appendChild(row);
+
+  container.appendChild(item);
+}
+
+document.getElementById("add-talento").onclick = () => criarItemCaracteristica(document.getElementById("talentos-lista"));
+document.getElementById("add-esp-carac").onclick = () => criarItemCaracteristica(document.getElementById("esp-carac-lista"));
+document.getElementById("add-cls-carac").onclick = () => criarItemCaracteristica(document.getElementById("cls-carac-lista"));
+
+// ---------- Ataques ----------
+function criarItemAtaque(dados) {
+  dados = dados || {};
+  const item = el("div", {class:"list-item"});
+  const rm = el("button", {class:"remove-btn", text:"Remover", type:"button"});
+  rm.onclick = () => item.remove();
+  item.appendChild(rm);
+
+  const row = el("div", {class:"row"});
+  const fArma = el("div", {class:"field"});
+  fArma.appendChild(el("label", {text:"Nome da arma"}));
+  const arma = el("input", {type:"text", class:"atq-arma"});
+  arma.value = dados.arma || "";
+  fArma.appendChild(arma);
+
+  const fBonus = el("div", {class:"field"});
+  fBonus.appendChild(el("label", {text:"Bônus extra"}));
+  const bonus = el("input", {type:"number", class:"atq-bonus"});
+  bonus.value = dados.bonus_extra || 0;
+  fBonus.appendChild(bonus);
+
+  row.appendChild(fArma); row.appendChild(fBonus);
+  item.appendChild(row);
+  document.getElementById("ataques-lista").appendChild(item);
+}
+document.getElementById("add-ataque").onclick = () => criarItemAtaque();
+
+// ---------- Equipamentos ----------
+function criarItemEquip(dados) {
+  dados = dados || {};
+  const item = el("div", {class:"list-item"});
+  const rm = el("button", {class:"remove-btn", text:"Remover", type:"button"});
+  rm.onclick = () => item.remove();
+  item.appendChild(rm);
+
+  const row = el("div", {class:"row"});
+  const fNome = el("div", {class:"field"});
+  fNome.appendChild(el("label", {text:"Nome"}));
+  const nome = el("input", {type:"text", class:"eq-nome"});
+  nome.value = dados.nome || "";
+  fNome.appendChild(nome);
+
+  const fQtd = el("div", {class:"field"});
+  fQtd.appendChild(el("label", {text:"Quantidade (opcional)"}));
+  const qtd = el("input", {type:"number", class:"eq-qtd"});
+  qtd.value = dados.quantidade || "";
+  fQtd.appendChild(qtd);
+
+  row.appendChild(fNome); row.appendChild(fQtd);
+  item.appendChild(row);
+  document.getElementById("eq-lista").appendChild(item);
+}
+document.getElementById("add-equip-item").onclick = () => criarItemEquip();
+
+function criarItemMagico(dados) {
+  dados = dados || {};
+  const item = el("div", {class:"list-item"});
+  const rm = el("button", {class:"remove-btn", text:"Remover", type:"button"});
+  rm.onclick = () => item.remove();
+  item.appendChild(rm);
+
+  const row = el("div", {class:"row"});
+  const fNome = el("div", {class:"field"});
+  fNome.appendChild(el("label", {text:"Nome"}));
+  const nome = el("input", {type:"text", class:"eqm-nome"});
+  nome.value = dados.nome || "";
+  fNome.appendChild(nome);
+
+  const check = el("div", {class:"checkbox-row"});
+  const cb = el("input", {type:"checkbox", class:"eqm-sintonizado"});
+  cb.checked = !!dados.sintonizado;
+  check.appendChild(cb);
+  check.appendChild(el("label", {text:"Sintonizado"}));
+
+  row.appendChild(fNome); row.appendChild(check);
+  item.appendChild(row);
+  document.getElementById("eq-magicos-lista").appendChild(item);
+}
+document.getElementById("add-equip-magico").onclick = () => criarItemMagico();
+
+// ---------- Magias ----------
+function criarItemMagia(dados) {
+  dados = dados || {};
+  const item = el("div", {class:"list-item"});
+  const rm = el("button", {class:"remove-btn", text:"Remover", type:"button"});
+  rm.onclick = () => item.remove();
+  item.appendChild(rm);
+
+  const campos = [
+    ["nome","text","Nome"], ["original","text","Nome original (inglês)"],
+    ["nivel","number","Círculo (0 = truque)"], ["escola","text","Escola"],
+    ["classes","text","Classes (separadas por vírgula)"], ["tempo","text","Tempo de conjuração"],
+    ["alcance","text","Alcance (número em metros ou texto como Pessoal)"],
+    ["componentes","text","Componentes (ex: V, S, M)"], ["duracao","text","Duração"]
+  ];
+  campos.forEach(([chave, tipo, label]) => {
+    const f = el("div", {class:"field"});
+    f.appendChild(el("label", {text:label}));
+    const inp = el("input", {type:tipo, class:"magia-"+chave});
+    inp.value = dados[chave] !== undefined ? dados[chave] : "";
+    f.appendChild(inp);
+    item.appendChild(f);
+  });
+
+  const checksRow = el("div", {class:"row"});
+  const c1 = el("div", {class:"checkbox-row"});
+  const ritual = el("input", {type:"checkbox", class:"magia-ritual"});
+  ritual.checked = !!dados.ritual;
+  c1.appendChild(ritual); c1.appendChild(el("label", {text:"Ritual"}));
+  const c2 = el("div", {class:"checkbox-row"});
+  const conc = el("input", {type:"checkbox", class:"magia-concentracao"});
+  conc.checked = !!dados.concentracao;
+  c2.appendChild(conc); c2.appendChild(el("label", {text:"Concentração"}));
+  checksRow.appendChild(c1); checksRow.appendChild(c2);
+  item.appendChild(checksRow);
+
+  const descField = el("div", {class:"field"});
+  descField.appendChild(el("label", {text:"Descrição (HTML permitido)"}));
+  const desc = el("textarea", {class:"magia-descricao", style:"min-height:80px"});
+  desc.value = dados.descricao || "";
+  descField.appendChild(desc);
+  item.appendChild(descField);
+
+  document.getElementById("magias-lista").appendChild(item);
+}
+document.getElementById("add-magia").onclick = () => criarItemMagia();
+
+// ---------- Ler caracteristica de um list-item ----------
+function lerCaracteristica(item) {
+  const nome = item.querySelector(".carac-nome").value.trim();
+  const descricao = item.querySelector(".carac-desc").value.trim();
+  const outro = item.querySelector(".carac-outro").value.trim();
+  const usosMax = item.querySelector(".carac-usos").value.trim();
+  const obj = { nome, descricao };
+  if (outro || usosMax) {
+    obj.dados = {};
+    if (usosMax) obj.dados.usos_max = parseInt(usosMax, 10);
+    if (outro) obj.dados.outro = outro;
+  } else {
+    obj.dados = null;
+  }
+  return obj;
+}
+
+// ---------- Gerar JSON ----------
+function gerarJSON() {
+  const g = id => document.getElementById(id);
+  const val = id => g(id).value.trim();
+  const num = id => { const v = g(id).value; return v === "" ? 0 : Number(v); };
+
+  const linhasParaArray = texto => texto.split("\n").map(s => s.trim()).filter(Boolean);
+
+  const saves = [];
+  ATRIBUTOS.forEach(([chave]) => { if (g("save-"+chave).checked) saves.push(chave); });
+  const savesObj = {};
+  ATRIBUTOS.forEach(([chave]) => { savesObj[chave] = g("save-"+chave).checked; });
+
+  const periciasObj = {};
+  PERICIAS.forEach(([chave]) => { periciasObj[chave] = g("pericia-"+chave).checked; });
+
+  const espacosMagia = [];
+  for (let i = 0; i <= 9; i++) {
+    espacosMagia.push({ circulo: i, total: num("espaco-"+i) });
+  }
+
+  const talentos = [...document.querySelectorAll("#talentos-lista .list-item")].map(lerCaracteristica).filter(t => t.nome);
+  const espCarac = [...document.querySelectorAll("#esp-carac-lista .list-item")].map(lerCaracteristica).filter(t => t.nome);
+  const clsCarac = [...document.querySelectorAll("#cls-carac-lista .list-item")].map(lerCaracteristica).filter(t => t.nome);
+
+  const ataques = [...document.querySelectorAll("#ataques-lista .list-item")].map(item => ({
+    arma: item.querySelector(".atq-arma").value.trim(),
+    bonus_extra: Number(item.querySelector(".atq-bonus").value || 0)
+  })).filter(a => a.arma);
+
+  const equipLista = [...document.querySelectorAll("#eq-lista .list-item")].map(item => {
+    const nome = item.querySelector(".eq-nome").value.trim();
+    const qtd = item.querySelector(".eq-qtd").value.trim();
+    const obj = { nome };
+    if (qtd) obj.quantidade = Number(qtd);
+    return obj;
+  }).filter(i => i.nome);
+
+  const equipMagicos = [...document.querySelectorAll("#eq-magicos-lista .list-item")].map(item => ({
+    nome: item.querySelector(".eqm-nome").value.trim() || null,
+    sintonizado: item.querySelector(".eqm-sintonizado").checked
+  }));
+
+  const magias = [...document.querySelectorAll("#magias-lista .list-item")].map(item => {
+    const q = sel => item.querySelector(sel);
+    const alcanceRaw = q(".magia-alcance").value.trim();
+    const alcance = alcanceRaw !== "" && !isNaN(alcanceRaw) ? Number(alcanceRaw) : alcanceRaw;
+    return {
+      nome: q(".magia-nome").value.trim(),
+      original: q(".magia-original").value.trim(),
+      nivel: Number(q(".magia-nivel").value || 0),
+      escola: q(".magia-escola").value.trim(),
+      classes: q(".magia-classes").value.trim(),
+      tempo: q(".magia-tempo").value.trim(),
+      ritual: q(".magia-ritual").checked,
+      alcance: alcance,
+      componentes: q(".magia-componentes").value.trim(),
+      duracao: q(".magia-duracao").value.trim(),
+      concentracao: q(".magia-concentracao").checked,
+      descricao: q(".magia-descricao").value.trim()
+    };
+  }).filter(m => m.nome);
+
+  const caAtributos = val("ca-atributos") ? val("ca-atributos").split(",").map(s => s.trim()).filter(Boolean) : [];
+  const clsProfArmas = val("cls-prof-armas") ? val("cls-prof-armas").split(",").map(s => s.trim()).filter(Boolean) : [];
+  const clsProfArmaduras = val("cls-prof-armaduras") ? val("cls-prof-armaduras").split(",").map(s => s.trim()).filter(Boolean) : [];
+  const clsSaves = val("cls-saves") ? val("cls-saves").split(",").map(s => s.trim()).filter(Boolean) : [];
+
+  const resultado = {
+    infobasica: {
+      nome: val("inf-nome"),
+      subclasse: val("inf-subclasse"),
+      exp: num("inf-exp"),
+      nivel: num("inf-nivel"),
+      alinhamento: val("inf-alinhamento"),
+      aparencia: {
+        idade: val("ap-idade"),
+        altura: val("ap-altura"),
+        peso: val("ap-peso"),
+        olhos: val("ap-olhos"),
+        pele: val("ap-pele"),
+        cabelo: val("ap-cabelo"),
+        imagem: val("ap-imagem") || undefined
+      }
+    },
+    ca: {
+      base: num("ca-base"),
+      atributos: caAtributos,
+      max_atributo: val("ca-max") ? num("ca-max") : null,
+      bonus_fixo: num("ca-bonus")
+    },
+    origem: {
+      antecedente: val("org-antecedente"),
+      talento: val("org-talento-nome") ? {
+        nome: val("org-talento-nome"),
+        descricao: val("org-talento-desc"),
+        dados: val("org-talento-outro") ? { outro: val("org-talento-outro") } : null
+      } : undefined,
+      ferramentas: linhasParaArray(g("org-ferramentas").value),
+      idiomas: linhasParaArray(g("org-idiomas").value)
+    },
+    talentos: talentos,
+    especie: {
+      nome: val("esp-nome"),
+      tamanho: val("esp-tamanho"),
+      deslocamento: num("esp-deslocamento"),
+      caracteristicas: espCarac
+    },
+    classe: {
+      nome: val("cls-nome"),
+      atributo_primario: val("cls-attr-primario"),
+      dado_vida: num("cls-dado-vida"),
+      pv_nivel_1: num("cls-pv1"),
+      pv_por_nivel: num("cls-pvn"),
+      saves: clsSaves,
+      proficiencias: {
+        armas: clsProfArmas,
+        armaduras: clsProfArmaduras
+      },
+      caracteristicas: clsCarac
+    },
+    atributos: {
+      for: num("at-for"), des: num("at-des"), con: num("at-con"),
+      int: num("at-int"), sab: num("at-sab"), car: num("at-car"),
+      saves: savesObj,
+      pericias: periciasObj
+    },
+    ataques: ataques,
+    conjuracao: { atributo: val("conj-atributo") || null },
+    espacos_magia: espacosMagia,
+    magias: magias,
+    equipamentos: {
+      escudo: g("eq-escudo").checked,
+      lista: equipLista,
+      itens_magicos: equipMagicos
+    },
+    historia: val("historia-texto") || undefined
+  };
+
+  return JSON.stringify(resultado, (k, v) => v === undefined ? undefined : v, 4);
+}
+
+document.getElementById("btn-gerar").onclick = () => {
+  document.getElementById("saida").value = gerarJSON();
+};
+
+document.getElementById("btn-copiar").onclick = async () => {
+  const texto = gerarJSON();
+  document.getElementById("saida").value = texto;
+  try {
+    await navigator.clipboard.writeText(texto);
+    alert("JSON copiado para a área de transferência.");
+  } catch (e) {
+    alert("Não foi possível copiar automaticamente. O texto já está na caixa abaixo, selecione e copie manualmente.");
+  }
+};
+
+document.getElementById("btn-baixar").onclick = () => {
+  const texto = gerarJSON();
+  document.getElementById("saida").value = texto;
+  const nome = (document.getElementById("inf-nome").value.trim() || "personagem").toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  const blob = new Blob([texto], {type: "application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = nome + ".json";
+  a.click();
+  URL.revokeObjectURL(url);
+};
+
+document.getElementById("btn-limpar").onclick = () => {
+  if (confirm("Isso vai limpar todos os campos preenchidos. Continuar?")) {
+    location.reload();
+  }
+};
+
+// ---------- Carregar JSON existente ----------
+function carregarJSON(dados) {
+  const g = id => document.getElementById(id);
+  const setVal = (id, v) => { if (v !== undefined && v !== null) g(id).value = v; };
+
+  const inf = dados.infobasica || {};
+  setVal("inf-nome", inf.nome);
+  setVal("inf-subclasse", inf.subclasse);
+  setVal("inf-nivel", inf.nivel);
+  setVal("inf-exp", inf.exp);
+  if (inf.alinhamento) g("inf-alinhamento").value = inf.alinhamento;
+  const ap = inf.aparencia || {};
+  setVal("ap-idade", ap.idade); setVal("ap-altura", ap.altura); setVal("ap-peso", ap.peso);
+  setVal("ap-olhos", ap.olhos); setVal("ap-pele", ap.pele); setVal("ap-cabelo", ap.cabelo);
+  setVal("ap-imagem", ap.imagem);
+
+  const ca = dados.ca || {};
+  setVal("ca-base", ca.base);
+  setVal("ca-atributos", (ca.atributos || []).join(","));
+  setVal("ca-max", ca.max_atributo);
+  setVal("ca-bonus", ca.bonus_fixo);
+
+  const origem = dados.origem || {};
+  setVal("org-antecedente", origem.antecedente);
+  if (origem.talento) {
+    setVal("org-talento-nome", origem.talento.nome);
+    setVal("org-talento-desc", origem.talento.descricao);
+    setVal("org-talento-outro", origem.talento.dados && origem.talento.dados.outro);
+  }
+  setVal("org-ferramentas", (origem.ferramentas || []).join("\n"));
+  setVal("org-idiomas", (origem.idiomas || []).join("\n"));
+
+  (dados.talentos || []).forEach(t => criarItemCaracteristica(document.getElementById("talentos-lista"), t));
+
+  const especie = dados.especie || {};
+  setVal("esp-nome", especie.nome);
+  setVal("esp-tamanho", especie.tamanho);
+  setVal("esp-deslocamento", especie.deslocamento);
+  (especie.caracteristicas || []).forEach(c => criarItemCaracteristica(document.getElementById("esp-carac-lista"), c));
+
+  const classe = dados.classe || {};
+  setVal("cls-nome", classe.nome);
+  if (classe.atributo_primario) g("cls-attr-primario").value = classe.atributo_primario;
+  setVal("cls-dado-vida", classe.dado_vida);
+  setVal("cls-pv1", classe.pv_nivel_1);
+  setVal("cls-pvn", classe.pv_por_nivel);
+  setVal("cls-saves", (classe.saves || []).join(","));
+  const prof = classe.proficiencias || {};
+  setVal("cls-prof-armas", (prof.armas || []).join(","));
+  setVal("cls-prof-armaduras", (prof.armaduras || []).join(","));
+  (classe.caracteristicas || []).forEach(c => criarItemCaracteristica(document.getElementById("cls-carac-lista"), c));
+
+  const atr = dados.atributos || {};
+  ATRIBUTOS.forEach(([chave]) => setVal("at-"+chave, atr[chave]));
+  const saves = atr.saves || {};
+  ATRIBUTOS.forEach(([chave]) => { if (saves[chave]) g("save-"+chave).checked = true; });
+  const pericias = atr.pericias || {};
+  PERICIAS.forEach(([chave]) => { if (pericias[chave]) g("pericia-"+chave).checked = true; });
+
+  (dados.ataques || []).forEach(a => criarItemAtaque(a));
+
+  const conj = dados.conjuracao || {};
+  if (conj.atributo) g("conj-atributo").value = conj.atributo;
+
+  (dados.espacos_magia || []).forEach(e => setVal("espaco-"+e.circulo, e.total));
+
+  (dados.magias || []).forEach(m => criarItemMagia(m));
+
+  const equip = dados.equipamentos || {};
+  g("eq-escudo").checked = !!equip.escudo;
+  (equip.lista || []).forEach(i => criarItemEquip(i));
+  (equip.itens_magicos || []).forEach(i => criarItemMagico(i));
+
+  setVal("historia-texto", dados.historia);
+
+  alert("Ficha carregada.");
+}
+
+document.getElementById("arquivo-input").addEventListener("change", (ev) => {
+  const file = ev.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const dados = JSON.parse(e.target.result);
+      carregarJSON(dados);
+    } catch (err) {
+      alert("Erro ao ler o JSON: " + err.message);
+    }
+  };
+  reader.readAsText(file);
+});
+</script>
+
+</body>
+</html>

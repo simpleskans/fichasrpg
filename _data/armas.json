@@ -60,7 +60,7 @@
         "dano_2maos": null,
         "tipo_dano": "cortante",
         "propriedades": [
-            " Duas Mãos",
+            "Duas Mãos",
             "Extensão",
             "Pesada"
         ],
@@ -88,5 +88,39 @@
         "tipo_dano": "cortante",
         "propriedades": [],
         "maestria": null
+    },
+    {
+        "nome": "Foice",
+        "categoria": "simples",
+        "alcance": "C",
+        "dano": "1d4",
+        "dano_2maos": null,
+        "tipo_dano": "cortante",
+        "propriedades": [
+            "Leve"
+        ],
+        "maestria": "Ágil"
+    },
+    {
+        "nome": "Maça",
+        "categoria": "simples",
+        "alcance": "C",
+        "dano": "1d6",
+        "dano_2maos": null,
+        "tipo_dano": "contundente"
+    },
+    {
+        "nome": "Adaga",
+        "categoria": "simples",
+        "alcance": "C",
+        "dano": "1d4",
+        "dano_2maos": null,
+        "tipo_dano": "perfurante",
+        "propriedades": [
+            "Acuidade",
+            "Arremesso (Alcance 6/18)",
+            "Leve"
+        ],
+        "maestria": "Ágil"
     }
 ]

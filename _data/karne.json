@@ -164,22 +164,18 @@
     "ataques": [
         {
             "arma": "Alabarda",
-            "atributo": "for",
             "bonus_extra": 0
         },
         {
             "arma": "Machadinha",
-            "atributo": "for",
             "bonus_extra": 0
         },
         {
             "arma": "Arco Curto",
-            "atributo": "for",
             "bonus_extra": 0
         },
         {
             "arma": "Garras",
-            "atributo": "for",
             "bonus_extra": 0
         }
     ],
@@ -276,7 +272,7 @@
         }
     ],
     "equipamentos": {
-        "escudo": false,
+        "escudo": true,
         "lista": [
             {
                 "nome": "Pedra sem peso"

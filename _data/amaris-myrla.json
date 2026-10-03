@@ -1,0 +1,243 @@
+{
+    "infobasica": {
+        "nome": "Amaris Myrla",
+        "subclasse": "",
+        "exp": 0,
+        "nivel": 1,
+        "alinhamento": "OB",
+        "aparencia": {
+            "idade": "",
+            "altura": "",
+            "peso": "",
+            "olhos": "",
+            "pele": "",
+            "cabelo": ""
+        }
+    },
+    "ca": {
+        "base": 11,
+        "atributos": [
+            "des"
+        ],
+        "max_atributo": null,
+        "bonus_fixo": 0
+    },
+    "origem": {
+        "antecedente": "Artista",
+        "talento": {
+            "nome": "Artifista",
+            "descricao": "<p>Você adquire os seguintes benefícios.</p><p><em><strong>Proficiência com Ferramentas.</strong></em> Você adquire proficiência com três Ferramentas de Artesão diferentes à sua escolha na tabela Fabricação Rápida.</p><p><em><strong>Desconto.</strong></em> Sempre que você compra um item não mágico, recebe um desconto de 20% nele.</p><p><em><strong>Fabricação Rápida.</strong></em> Quando completa um Descanso Longo, você pode fabricar uma peça de equipamento da tabela Fabricação Rápida, se tiver as Ferramentas de Artesão associadas a esse item e tenha proficiência com essas ferramentas. O item permanece até que você complete outro Descanso Longo, momento em que o item se desfaz.</p>",
+            "dados": null
+        },
+        "ferramentas": [
+            "Ferramentas de Artesão",
+            "Ferramentas de Ladrão"
+        ],
+        "idiomas": [
+            "Comum"
+        ]
+    },
+    "talentos": [],
+    "especie": {
+        "nome": "Elfo Marinho",
+        "tamanho": "Médio",
+        "deslocamento": 9,
+        "caracteristicas": [
+            {
+                "nome": "Amigo do Mar",
+                "descricao": "<p>Animais aquáticos têm uma afinidade extraordinária com seu povo. Você pode comunicar ideias simples a qualquer fera que tenha deslocamento de natação. Elas podem entender o significado de suas palavras, embora você não tenha a habilidade especial para entendê-las de volta.</p>",
+                "dados": null
+            },
+            {
+                "nome": "Ancestralidade Feérica",
+                "descricao": "<p>Você tem Vantagem ao realizar salvaguardas para evitar ou encerrar a condição Enfeitiçado.</p>",
+                "dados": null
+            },
+            {
+                "nome": "Transe",
+                "descricao": "<p> Você pode completar um Descanso Longo em 4 horas ao meditar, sem a necessidade de dormir, mantendo a consciência, e magia não pode forçá-lo a dormir.</p>",
+                "dados": null
+            },
+            {
+                "nome": "Criança do Mar",
+                "descricao": "<p>Você pode respirar ar e água e tem resistência a dano gélido.</p>",
+                "dados": null
+            }
+        ]
+    },
+    "classe": {
+        "nome": "Ladino",
+        "atributo_primario": "des",
+        "dado_vida": 8,
+        "pv_nivel_1": 8,
+        "pv_por_nivel": 5,
+        "saves": [
+            "des",
+            "int"
+        ],
+        "proficiencias": {
+            "armas": [
+                "acuidade",
+                "leve"
+            ],
+            "armaduras": [
+                "leve"
+            ]
+        },
+        "caracteristicas": [
+            {
+                "nome": "Especialista",
+                "descricao": "<p>Você obtém Especialização (veja o glossário de regras) em duas de suas perícias, à sua escolha, nas quais já seja proficiente. Furtividade e Prestidigitação são recomendadas se você tiver proficiência nelas.</p><p>No nível 6 de Ladino, você obtém Especialização em mais duas perícias nas quais já seja proficiente à sua escolha.</p>",
+                "dados": null
+            },
+            {
+                "nome": "Gíria do Ladrão",
+                "descricao": "<p>Você aprendeu vários idiomas nas comunidades onde usou seus talentos gatunos. Você conhece a Gíria dos Ladrões e outro idioma à sua escolha, que você escolhe nas tabelas de idiomas no capítulo 2.</p>",
+                "dados": null
+            },
+            {
+                "nome": "Maestria em Arma",
+                "descricao": "<p>Seu treinamento com armas permite que você use as propriedades de maestria de dois tipos de armas à sua escolha com as quais você tem proficiência, como Adagas e Arcos Curtos.</p><p>Ao completar um Descanso Longo, você pode alterar os tipos de armas que escolheu. Por exemplo, você pode trocar para as propriedades de maestria de Cimitarras e Espadas Curtas.</p>",
+                "dados": null
+            }
+        ]
+    },
+    "atributos": {
+        "for": 10,
+        "des": 10,
+        "con": 10,
+        "int": 10,
+        "sab": 10,
+        "car": 10,
+        "saves": {
+            "for": false,
+            "des": true,
+            "con": false,
+            "int": true,
+            "sab": false,
+            "car": false
+        },
+        "pericias": {
+            "atletismo": false,
+            "acrobacia": false,
+            "furtividade": false,
+            "prestidigitacao": false,
+            "arcanismo": false,
+            "historia": false,
+            "investigacao": true,
+            "natureza": false,
+            "religiao": false,
+            "intuicao": false,
+            "lidarcomanimais": false,
+            "medicina": false,
+            "percepcao": false,
+            "sobrevivencia": false,
+            "atuacao": false,
+            "enganacao": false,
+            "intimidacao": false,
+            "persuasao": true
+        }
+    },
+    "ataques": [
+        {
+            "arma": "Adaga",
+            "bonus_extra": 0
+        },
+        {
+            "arma": "Espada Curta",
+            "bonus_extra": 0
+        },
+        {
+            "arma": "Arco Curto",
+            "bonus_extra": 0
+        }
+    ],
+    "conjuracao": {
+        "atributo": null
+    },
+    "espacos_magia": [
+        {
+            "circulo": 0,
+            "total": 0
+        },
+        {
+            "circulo": 1,
+            "total": 0
+        },
+        {
+            "circulo": 2,
+            "total": 0
+        },
+        {
+            "circulo": 3,
+            "total": 0
+        },
+        {
+            "circulo": 4,
+            "total": 0
+        },
+        {
+            "circulo": 5,
+            "total": 0
+        },
+        {
+            "circulo": 6,
+            "total": 0
+        },
+        {
+            "circulo": 7,
+            "total": 0
+        },
+        {
+            "circulo": 8,
+            "total": 0
+        },
+        {
+            "circulo": 9,
+            "total": 0
+        }
+    ],
+    "magias": [],
+    "equipamentos": {
+        "escudo": false,
+        "lista": [
+            {
+                "nome": "Ferramentas de Artesão"
+            },
+            {
+                "nome": "Algibeiras",
+                "quantidade": 2
+            },
+            {
+                "nome": "Roupas de Viagem"
+            },
+            {
+                "nome": "Armadura  de Couro"
+            },
+            {
+                "nome": "Adagas",
+                "quantidade": 2
+            },
+            {
+                "nome": "Espada  Curta"
+            },
+            {
+                "nome": "Arco Curto"
+            },
+            {
+                "nome": "Flechas",
+                "quantidade": 20
+            },
+            {
+                "nome": "Aljava"
+            },
+            {
+                "nome": "Ferramentas de  Ladrão"
+            },
+            {
+                "nome": "Kit de Assaltante"
+            }
+        ],
+        "itens_magicos": []
+    }
+}

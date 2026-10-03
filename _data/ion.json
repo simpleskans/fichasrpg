@@ -1,0 +1,212 @@
+{
+    "infobasica": {
+        "nome": "Ion'",
+        "subclasse": "",
+        "exp": 0,
+        "nivel": 1,
+        "alinhamento": "N",
+        "aparencia": {
+            "idade": "16",
+            "altura": "1.48",
+            "peso": "39",
+            "olhos": "Vermelho Brilhante",
+            "pele": "Penas Preta",
+            "cabelo": "Rosto Branco"
+        }
+    },
+    "ca": {
+        "base": 13,
+        "atributos": [
+            "des"
+        ],
+        "max_atributo": 2,
+        "bonus_fixo": 0
+    },
+    "origem": {
+        "antecedente": "Charlatão",
+        "talento": {
+            "nome": "Habilidoso",
+            "descricao": "<p>Você adquire proficiência em qualquer combinação de três perícias ou ferramentas à sua escolha.</p><p><em><strong>Repetível.</strong></em> Você pode adquirir este talento mais de uma vez.</p>",
+            "dados": null
+        },
+        "ferramentas": [
+            "Kit de Falsificação"
+        ],
+        "idiomas": [
+            "Comum"
+        ]
+    },
+    "talentos": [],
+    "especie": {
+        "nome": "Corujino",
+        "tamanho": "Médio",
+        "deslocamento": 9,
+        "caracteristicas": [
+            {
+                "nome": "Visão no Escuro",
+                "descricao": "<p>Você tem Visão no Escuro com um alcance de 18 metros.</p>",
+                "dados": {
+                    "outro": "18 m"
+                }
+            },
+            {
+                "nome": "Voo",
+                "descricao": "<p>Graças às suas asas, você tem um deslocamento de voo igual à seu deslocamento de caminhada. Você não pode usar esse deslocamento de voo se estiver vestindo armadura média ou pesada.</p>",
+                "dados": null
+            }
+        ]
+    },
+    "classe": {
+        "nome": "Clérigo",
+        "atributo_primario": "sab",
+        "dado_vida": 8,
+        "pv_nivel_1": 8,
+        "pv_por_nivel": 7,
+        "saves": [
+            "sab",
+            "car"
+        ],
+        "proficiencias": {
+            "armas": [
+                "simples"
+            ],
+            "armaduras": [
+                "leve",
+                "media",
+                "escudo"
+            ]
+        },
+        "caracteristicas": [
+            {
+                "nome": "Ordem Divina",
+                "descricao": "<p>Você se dedicou a um dos seguintes papéis sagrados à sua escolha.</p><p><em><strong>Protetor.</strong></em> Treinado para a batalha, você adquire proficiência com armas Marciais e treinamento com Armadura Pesada.</p><p><em><strong>Taumaturgo.</strong></em> Você conhece um truque adicional da lista de magias de Clérigo. Além disso, sua conexão mística com o divino lhe dá um bônus em seus testes de Inteligência (Arcanismo ou Religião). O bônus é igual ao seu modificador de Sabedoria (mínimo de +1).</p>",
+                "dados": null
+            }
+        ]
+    },
+    "atributos": {
+        "for": 8,
+        "des": 10,
+        "con": 13,
+        "int": 14,
+        "sab": 15,
+        "car": 12,
+        "saves": {
+            "for": false,
+            "des": false,
+            "con": false,
+            "int": false,
+            "sab": true,
+            "car": true
+        },
+        "pericias": {
+            "atletismo": false,
+            "acrobacia": false,
+            "furtividade": true,
+            "prestidigitacao": true,
+            "arcanismo": false,
+            "historia": false,
+            "investigacao": false,
+            "natureza": false,
+            "religiao": false,
+            "intuicao": true,
+            "lidarcomanimais": false,
+            "medicina": false,
+            "percepcao": false,
+            "sobrevivencia": false,
+            "atuacao": false,
+            "enganacao": true,
+            "intimidacao": false,
+            "persuasao": true
+        }
+    },
+    "ataques": [
+        {
+            "arma": "Maça",
+            "bonus_extra": 0
+        }
+    ],
+    "conjuracao": {
+        "atributo": "sab"
+    },
+    "espacos_magia": [
+        {
+            "circulo": 0,
+            "total": 3
+        },
+        {
+            "circulo": 1,
+            "total": 4
+        },
+        {
+            "circulo": 2,
+            "total": 0
+        },
+        {
+            "circulo": 3,
+            "total": 0
+        },
+        {
+            "circulo": 4,
+            "total": 0
+        },
+        {
+            "circulo": 5,
+            "total": 0
+        },
+        {
+            "circulo": 6,
+            "total": 0
+        },
+        {
+            "circulo": 7,
+            "total": 0
+        },
+        {
+            "circulo": 8,
+            "total": 0
+        },
+        {
+            "circulo": 9,
+            "total": 0
+        }
+    ],
+    "magias": [],
+    "equipamentos": {
+        "escudo": true,
+        "lista": [
+            {
+                "nome": "Cota de Malha Parcial"
+            },
+            {
+                "nome": "Escudo"
+            },
+            {
+                "nome": "Maça"
+            },
+            {
+                "nome": "Símbolo Sagrado"
+            },
+            {
+                "nome": "Kit de Sacerdote"
+            },
+            {
+                "nome": "Kit de Falsificação"
+            },
+            {
+                "nome": "Fantasia"
+            },
+            {
+                "nome": "Roupas Finas"
+            }
+        ],
+        "itens_magicos": []
+    },
+    "moedas": {
+        "pp": 0,
+        "po": 22,
+        "pe": 0,
+        "pl": 0,
+        "pc": 0
+    }
+}

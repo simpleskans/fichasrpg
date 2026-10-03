@@ -1,0 +1,272 @@
+{
+    "infobasica": {
+        "nome": "Seryn",
+        "subclasse": "",
+        "exp": 0,
+        "nivel": 1,
+        "alinhamento": "",
+        "aparencia": {
+            "idade": "",
+            "altura": "",
+            "peso": "",
+            "olhos": "",
+            "pele": "",
+            "cabelo": ""
+        }
+    },
+    "classe": {
+        "nome": "Druida",
+        "atributo_primario": "sab",
+        "dado_vida": 8,
+        "pv_nivel_1": 8,
+        "pv_por_nivel": 7,
+        "saves": [
+            "int",
+            "sab"
+        ],
+        "proficiencias": {
+            "armas": [
+                "simples"
+            ],
+            "armaduras": [
+                "leve",
+                "escudo"
+            ]
+        },
+        "caracteristicas": [
+            {
+                "nome": "Idioma Druídico",
+                "descricao": "<p>Você domina Druídico, o idioma secreto dos Druidas. Ao aprender esse idioma antigo, você também adquiriu a habilidade mágica de se comunicar com animais; você sempre tem a magia <em>Falar com Animais</em> preparada.</p><p>Você pode usar Druídico para deixar mensagens ocultas. Você e outros que conhecem Druídico identificam automaticamente tal mensagem. Outros podem perceber a presença da mensagem com um teste de Inteligência (Investigação) CD 15, mas não podem decifrá-la sem magia.</p>",
+                "dados": {
+                    "outro": "Falar com Animais"
+                }
+            },
+            {
+                "nome": "Ordem Primal",
+                "descricao": "<p>Você se dedicou a uma das seguintes funções sagradas à sua escolha.</p><p><em><strong>Protetor.</strong></em> Treinado para a batalha, você adquire proficiência com armas Marciais e treinamento com armadura Média.</p><p><em><strong>Xamã.</strong></em> Você conhece um truque adicional da lista de magias de Druida. Além disso, sua conexão mística com a natureza lhe concede um bônus em seus testes de Inteligência (Arcanismo ou Natureza). O bônus é igual ao seu modificador de Sabedoria (bônus mínimo de +1).</p>",
+                "dados": {
+                    "outro": ""
+                }
+            }
+        ]
+    },
+    "ca": {
+        "base": 11,
+        "atributos": [
+            "des"
+        ],
+        "max_atributo": null,
+        "bonus_fixo": 0
+    },
+    "origem": {
+        "antecedente": "Escriba",
+        "talento": {
+            "nome": "Habilidoso",
+            "descricao": "<p>Você adquire proficiência em qualquer combinação de três perícias ou ferramentas à sua escolha.</p><p><em><strong>Repetível.</strong></em> Você pode adquirir este talento mais de uma vez.</p>"
+        },
+        "ferramentas": [
+            "Kit de Herbalismo",
+            "Suprimentos de Calígrafo"
+        ],
+        "idiomas": [
+            "Comum"
+        ]
+    },
+    "talentos": [],
+    "especie": {
+        "nome": "Elfo Astral / Kalashtar",
+        "tamanho": "Médio",
+        "deslocamento": 9,
+        "caracteristicas": [
+            {
+                "nome": "Elo Mental",
+                "descricao": "<p>Você é capaz de falar telepaticamente com qualquer criatura que consiga enxergar, desde que a criatura esteja, no máximo, a uma distância em metros de você igual a 3 vezes seu nível. Você não precisar falar o mesmo idioma da criatura para que ela compreenda suas declarações telepáticas, mas a criatura precisa ser capaz de compreender ao menos um idioma.</p><p>Ao usar este traço racial para falar telepaticamente com uma criatura, você pode usar sua ação para dar à criatura a capacidade de falar telepaticamente com você durante 1 hora ou até você encerrar o efeito usando uma outra ação. Para utilizar essa habilidade, a criatura precisa ser capaz de enxergar você e deve estar dentro do alcance especificado para este traço racial. Você só pode dar essa habilidade a uma criatura por vez. Concedê-la a uma outra criaturaremoverá a capacidade da criatura que a tinha antes</p>",
+                "dados": {
+                    "outro": "Distância: 3 m"
+                }
+            },
+            {
+                "nome": "Apartado dos Sonhos",
+                "descricao": "<p>Apartado dos Sonhos. Os kalashtar dormem, mas não estabelecem contato com o plano dos sonhos como fazem as outras criaturas. Em vez disso, enquanto dormem, suas mentes recorrem às lembranças de seus espíritos  extraplanares. Sendo assim, você é imune a magias e outros efeitos mágicos que exigem que você sonhe, como <em>sonho</em>, mas não a magias e outros efeitos mágicos que botem você para dormir, como <em>sono</em>.</p>"
+            },
+            {
+                "nome": "Fogo Astral",
+                "descricao": "<p>Você conhece um dos seguintes truques à sua escolha: <em>luzes dançantes</em>, <em>luz</em> ou <em>chama sagrada</em>. Inteligência, Sabedoria ou Carisma é seu atributo de conjuração para este truque (escolha ao selecionar esta raça).</p>",
+                "dados": {
+                    "outro": ""
+                }
+            },
+            {
+                "nome": "Passo da Luz da Estrela",
+                "descricao": "<p>Como uma ação bônus, você pode se teletransportar magicamente até 9 metros para um espaço desocupado que você possa ver. Você pode usar esta característica um número de vezes igual ao seu bônus de proficiência e recupera todos os usos gastos ao terminar um descanso longo.</p>",
+                "dados": {
+                    "usos_max": "2",
+                    "outro": "Distância: 9 m"
+                }
+            },
+            {
+                "nome": "Visão no Escuro",
+                "descricao": "<p>Você tem Visão no Escuro com um alcance de 18 metros.</p>",
+                "dados": {
+                    "outro": "Distância: 18 m"
+                }
+            }
+        ]
+    },
+    "atributos": {
+        "for": 11,
+        "des": 12,
+        "con": 11,
+        "int": 15,
+        "sab": 13,
+        "car": 9,
+        "saves": {
+            "for": false,
+            "des": false,
+            "con": false,
+            "int": true,
+            "sab": true,
+            "car": false
+        },
+        "pericias": {
+            "acrobacia": false,
+            "arcanismo": false,
+            "atletismo": false,
+            "atuacao": false,
+            "enganacao": false,
+            "furtividade": false,
+            "historia": false,
+            "intimidacao": false,
+            "investigacao": true,
+            "intuicao": false,
+            "lidarcomanimais": false,
+            "medicina": false,
+            "natureza": false,
+            "percepcao": true,
+            "persuasao": false,
+            "prestidigitacao": false,
+            "religiao": false,
+            "sobrevivencia": false
+        }
+    },
+    "outros": {
+        "pvmax": 15,
+        "dvmax": 1
+    },
+    "ataques": [
+        {
+            "arma": "Foice",
+            "bonus_extra": 0
+        }
+    ],
+    "conjuracao": {
+        "atributo": "sab"
+    },
+    "espacos_magia": [
+        {
+            "circulo": 0,
+            "total": 2
+        },
+        {
+            "circulo": 1,
+            "total": 2
+        },
+        {
+            "circulo": 2,
+            "total": 0
+        },
+        {
+            "circulo": 3,
+            "total": 0
+        },
+        {
+            "circulo": 4,
+            "total": 0
+        },
+        {
+            "circulo": 5,
+            "total": 0
+        },
+        {
+            "circulo": 6,
+            "total": 0
+        },
+        {
+            "circulo": 7,
+            "total": 0
+        },
+        {
+            "circulo": 8,
+            "total": 0
+        },
+        {
+            "circulo": 9,
+            "total": 0
+        }
+    ],
+    "magias": [
+        {
+            "origem": "Idioma Druídico",
+            "nome": "Falar com Animais",
+            "original": "speak with animals",
+            "nivel": 1,
+            "escola": "Adivinhação",
+            "classes": "Bardo, Bruxo, Druida, Guardião",
+            "tempo": "Ação",
+            "ritual": true,
+            "alcance": "Pessoal",
+            "componentes": "V, S",
+            "duracao": "10 minutos",
+            "concentracao": false,
+            "descricao": "<p>Pela duração da magia, você pode compreender e se comunicar verbalmente com Feras, e pode usar com elas qualquer uma das opções de perícia da ação Influenciar.</p> <p>A maioria das Feras oferece pouca informação sobre assuntos que não estejam diretamente ligados à sobrevivência ou ao companheirismo mas, no mínimo, uma Fera pode fornecer informações sobre áreas vizinhas e monstros, incluindo o que percebeu no último dia.</p>"
+        }
+    ],
+    "equipamentos": {
+        "escudo": true,
+        "lista": [
+            {
+                "nome": "Armadura de Couro"
+            },
+            {
+                "nome": "Escudo"
+            },
+            {
+                "nome": "Foice"
+            },
+            {
+                "nome": "Foco Druídico (Cajado)"
+            },
+            {
+                "nome": "Kit de Explorador"
+            },
+            {
+                "nome": "Kit de Herbalismo"
+            },
+            {
+                "nome": "Suprimentos de Calígrafo"
+            },
+            {
+                "nome": "Lâmpada"
+            },
+            {
+                "nome": "Frascos de Óleo",
+                "quantidade": 3
+            },
+            {
+                "nome": "Folhas de Pergaminho",
+                "quantidade": 12
+            },
+            {
+                "nome": "Roupas Finas"
+            }
+        ],
+        "itens_magicos": []
+    },
+    "moedas": {
+        "pc": 0,
+        "pp": 0,
+        "pe": 0,
+        "po": 32,
+        "pl": 0
+    }
+}
