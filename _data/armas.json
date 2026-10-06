@@ -122,5 +122,30 @@
             "Leve"
         ],
         "maestria": "Ágil"
+    },
+    {
+        "nome": "Espada Longa",
+        "categoria": "marcial",
+        "alcance": "C",
+        "dano": "1d8",
+        "dano_2maos": "1d10",
+        "tipo_dano": "cortante",
+        "propriedades": [
+            "Versátil"
+        ],
+        "maestria": "Drenar"
+    },
+    {
+        "nome": "Azagaia",
+        "categoria": "simples",
+        "alcance": "C",
+        "dano": "1d6",
+        "dano_2maos": null,
+        "tipo_dano": "perfurante",
+        "propriedades": [
+            "Arremesso (Alcance 9/36)"
+        ],
+        "maestria": "Lentidão"
     }
+
 ]
