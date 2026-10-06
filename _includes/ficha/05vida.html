@@ -2,9 +2,10 @@
 
     {% assign mod_con = personagem.atributos.con | minus: 10 %}
     {% if mod_con < 0 %} {% assign mod_con=mod_con | minus: 1 | divided_by: 2 %} {% else %} {% assign mod_con=mod_con |
-        divided_by: 2 %} {% endif %} {% assign niveis_extra=personagem.infobasica.nivel | minus: 1 %} {% assign
-        pv_extra=personagem.classe.pv_por_nivel | plus: mod_con | times: niveis_extra %} {% assign
-        pv_max=personagem.classe.pv_nivel_1 | plus: mod_con | plus: pv_extra %} <!-- PONTOS DE VIDA -->
+        divided_by: 2 %} {% endif %} {% assign media_dado=personagem.classe.dado_vida | divided_by: 2 | plus: 1 %} {%
+        assign niveis_extra=personagem.infobasica.nivel | minus: 1 %} {% assign pv_extra=media_dado | plus: mod_con |
+        times: niveis_extra %} {% assign pv_max=personagem.classe.dado_vida | plus: mod_con | plus: pv_extra %} <!--
+        PONTOS DE VIDA -->
         <section class="pontos-vida">
             <strong>Pontos de Vida</strong>
 

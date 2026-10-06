@@ -1,0 +1,216 @@
+{
+    "infobasica": {
+        "nome": "Lyra",
+        "subclasse": "",
+        "exp": 0,
+        "nivel": 1,
+        "alinhamento": "OB",
+        "aparencia": {
+            "idade": "",
+            "altura": "",
+            "peso": "",
+            "olhos": "",
+            "pele": "",
+            "cabelo": ""
+        }
+    },
+    "ca": {
+        "base": 11,
+        "atributos": [
+            "des"
+        ],
+        "max_atributo": null,
+        "bonus_fixo": 0
+    },
+    "origem": {
+        "antecedente": "",
+        "ferramentas": [
+            "Ferramentas de Ladrão"
+        ],
+        "idiomas": []
+    },
+    "talentos": [],
+    "especie": {
+        "nome": "",
+        "tamanho": "Médio",
+        "deslocamento": 9,
+        "caracteristicas": []
+    },
+    "classe": {
+        "nome": "Ladino",
+        "atributo_primario": "des",
+        "dado_vida": 8,
+        "saves": [
+            "des",
+            "int"
+        ],
+        "proficiencias": {
+            "armas": [
+                "Acuidade",
+                "Leve"
+            ],
+            "armaduras": [
+                "leve"
+            ]
+        },
+        "caracteristicas": [
+            {
+                "nome": "Ataque Furtivo",
+                "descricao": "<p>Você sabe atacar sutilmente, explorando a distração do inimigo. Uma vez por turno, ao atingir uma criatura com uma jogada de ataque em que tem Vantagem com uma arma com Acuidade ou uma arma à Distância, você pode causar 1d6 pontos de dano adicional do tipo de dano da arma.</p><p>Você não precisa ter Vantagem na jogada de ataque se pelo menos um de seus aliados estiver a até 1,5 metro do alvo, e o aliado não tem a condição Incapacitado e você não tem Desvantagem na jogada de ataque.</p><p>O dano adicional aumenta à medida que você adquire níveis de Ladino, conforme mostrado na coluna Ataque Furtivo da tabela Características de Ladino.</p>",
+                "dados": {
+                    "outro": "Dano: +1d6"
+                }
+            },
+            {
+                "nome": "Especialista",
+                "descricao": "<p>Você obtém Especialização (veja o glossário de regras) em duas de suas perícias, à sua escolha, nas quais já seja proficiente. Furtividade e Prestidigitação são recomendadas se você tiver proficiência nelas.</p><p>No nível 6 de Ladino, você obtém Especialização em mais duas perícias nas quais já seja proficiente à sua escolha.</p>",
+                "dados": null
+            },
+            {
+                "nome": "Gíria do Ladrão",
+                "descricao": "<p>Você aprendeu vários idiomas nas comunidades onde usou seus talentos gatunos. Você conhece a Gíria dos Ladrões e outro idioma à sua escolha, que você escolhe nas tabelas de idiomas no capítulo 2.</p>",
+                "dados": null
+            },
+            {
+                "nome": "Maestria em Arma",
+                "descricao": "<p>Seu treinamento com armas permite que você use as propriedades de maestria de dois tipos de armas à sua escolha com as quais você tem proficiência, como Adagas e Arcos Curtos.</p><p>Ao completar um Descanso Longo, você pode alterar os tipos de armas que escolheu. Por exemplo, você pode trocar para as propriedades de maestria de Cimitarras e Espadas Curtas.</p>",
+                "dados": null
+            }
+        ]
+    },
+    "atributos": {
+        "for": 5,
+        "des": 16,
+        "con": 10,
+        "int": 11,
+        "sab": 13,
+        "car": 13,
+        "saves": {
+            "for": false,
+            "des": true,
+            "con": false,
+            "int": true,
+            "sab": false,
+            "car": false
+        },
+        "pericias": {
+            "atletismo": false,
+            "acrobacia": false,
+            "furtividade": false,
+            "prestidigitacao": false,
+            "arcanismo": false,
+            "historia": false,
+            "investigacao": false,
+            "natureza": false,
+            "religiao": false,
+            "intuicao": false,
+            "lidarcomanimais": false,
+            "medicina": false,
+            "percepcao": false,
+            "sobrevivencia": false,
+            "atuacao": false,
+            "enganacao": false,
+            "intimidacao": false,
+            "persuasao": false
+        }
+    },
+    "ataques": [
+        {
+            "arma": "Adaga",
+            "bonus_extra": 0
+        },
+        {
+            "arma": "Espada Curta",
+            "bonus_extra": 0
+        },
+        {
+            "arma": "Arco Curto",
+            "bonus_extra": 0
+        }
+    ],
+    "conjuracao": {
+        "atributo": null
+    },
+    "espacos_magia": [
+        {
+            "circulo": 0,
+            "total": 0
+        },
+        {
+            "circulo": 1,
+            "total": 0
+        },
+        {
+            "circulo": 2,
+            "total": 0
+        },
+        {
+            "circulo": 3,
+            "total": 0
+        },
+        {
+            "circulo": 4,
+            "total": 0
+        },
+        {
+            "circulo": 5,
+            "total": 0
+        },
+        {
+            "circulo": 6,
+            "total": 0
+        },
+        {
+            "circulo": 7,
+            "total": 0
+        },
+        {
+            "circulo": 8,
+            "total": 0
+        },
+        {
+            "circulo": 9,
+            "total": 0
+        }
+    ],
+    "magias": [],
+    "equipamentos": {
+        "escudo": false,
+        "lista": [
+            {
+                "nome": "Armadura  de Couro"
+            },
+            {
+                "nome": "Adagas",
+                "quantidade": 2
+            },
+            {
+                "nome": "Espada  Curta"
+            },
+            {
+                "nome": "Arco Curto"
+            },
+            {
+                "nome": "Flechas",
+                "quantidade": 20
+            },
+            {
+                "nome": "Aljava"
+            },
+            {
+                "nome": "Ferramentas de  Ladrão"
+            },
+            {
+                "nome": "Kit de Assaltante"
+            }
+        ],
+        "itens_magicos": []
+    },
+    "moedas": {
+        "pc": 0,
+        "pp": 0,
+        "pe": 0,
+        "po": 8,
+        "pl": 0
+    }
+}
