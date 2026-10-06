@@ -146,6 +146,18 @@
             "Arremesso (Alcance 9/36)"
         ],
         "maestria": "Lentidão"
+    },
+    {
+        "nome": "Cajado",
+        "categoria": "simples",
+        "alcance": "C",
+        "dano": "1d6",
+        "dano_2maos": "1d8",
+        "tipo_dano": "contundente",
+        "propriedades": [
+            "Versátil"
+        ],
+        "maestria": "Derrubar"
     }
 
 ]
