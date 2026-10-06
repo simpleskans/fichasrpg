@@ -1,247 +1,259 @@
 {
-  "infobasica": {
-    "nome": "Louise",
-    "subclasse": "",
-    "exp": 0,
-    "nivel": 1,
-    "alinhamento": "OB",
-    "aparencia": {
-      "idade": "",
-      "altura": "",
-      "peso": "",
-      "olhos": "",
-      "pele": "",
-      "cabelo": ""
-    }
-  },
-  "ca": {
-    "base": 16,
-    "atributos": [],
-    "max_atributo": null,
-    "bonus_fixo": 0
-  },
-  "origem": {
-    "antecedente": "Eremita",
-    "talento": {
-      "nome": "Curandeiro",
-      "descricao": "<p>Você adquire os seguintes benefícios.</p><p><em><strong>Médico de Combate.</strong></em> Caso tenha um Kit de Curandeiro, você pode gastar um uso e cuidar de uma criatura a até 1,5 metro de você como uma ação Usar Objeto. Essa criatura pode gastar um dos Dados de Pontos de Vida dela e você joga esse dado. A criatura recupera um número de Pontos de Vida igual à jogada mais o seu Bônus de Proficiência.</p><p><em><strong>Cura Garantida.</strong></em> Sempre que jogar um dado para determinar o número de Pontos de Vida que você recupera com uma magia ou com o benefício do talento Médico de Combate, você pode jogar novamente o dado se o resultado for 1, e você deve usar a nova jogada.</p>",
-      "dados": null
-    },
-    "ferramentas": ["Kit de Herbalismo"],
-    "idiomas": []
-  },
-  "talentos": [],
-  "especie": {
-    "nome": "Githyanki",
-    "tamanho": "Médio",
-    "deslocamento": 9,
-    "caracteristicas": [
-      {
-        "nome": "Conhecimento Astral",
-        "descricao": "<p>Você pode acessar misticamente um depósito de experiências de entidades conectadas ao Plano Astral. Sempre que terminar um descanso longo, você ganha proficiência em uma perícia de sua escolha e com uma arma ou ferramenta de sua escolha, selecionada do <em>Livro do Jogador</em>, conforme você projeta momentaneamente sua consciência para o Plano Astral. Essas proficiências duram até o fim do seu próximo descanso longo.</p>",
-        "dados": null
-      },
-      {
-        "nome": "Psionismo Githyanki",
-        "descricao": "<p> Você conhece o truque mãos mágicas e, quando conjura o truque usando este traço, a mão é invisível.</p><p>A partir do 3o nível, você pode conjurar a magia salto usando este traço. A partir do 5o nível, você também pode conjurar a magia passo nebuloso usando este traço. Uma vez que conjurar salto ou passo nebuloso usando este traço, você não poderá conjurar essa magia novamente até terminar um descanso longo. Você também pode conjurar essas magias usando quaisquer espaços de magia que tiver do círculo apropriado.</p><p>Inteligência, Sabedoria ou Carisma é seu atributo de conjuração ao conjurar estas magias utilizando este traço (escolha um ao selecionar esta raça). Nenhuma dessas magias requer componentes materiais quando conjurada usando este traço.</p>",
-        "dados": null
-      },
-      {
-        "nome": "Resiliência Psíquica",
-        "descricao": "<p>Você tem resistência a dano psíquico.</p>",
-        "dados": null
-      }
-    ]
-  },
-  "classe": {
-    "nome": "Paladino",
-    "atributo_primario": "for",
-    "dado_vida": 10,
-    "saves": ["sab", "car"],
-    "proficiencias": {
-      "armas": ["simples", "marciais"],
-      "armaduras": ["leve", "media", "pesada", "escudo"]
-    },
-    "caracteristicas": [
-      {
-        "nome": "Maestria em Arma",
-        "descricao": "<p>Seu treinamento com armas permite que você use as propriedades de maestria de dois tipos de armas à sua escolha com as quais você tem proficiência, como Azagaia e Espadas Longas.</p><p>Sempre que completar um Descanso Longo, você pode alterar os tipos de armas que escolheu. Por exemplo, você pode mudar para usar as propriedades de maestria de Alabardas e Manguais.</p>",
-        "dados": null
-      },
-      {
-        "nome": "Mãos Consagradas",
-        "descricao": "<p>Seu toque abençoado pode aliviar feridas. Você tem uma reserva de poder de cura que reabastece ao completar um Descanso Longo. Com essa reserva, você pode recuperar um número total de Pontos de Vida igual a cinco vezes seu nível de Paladino.</p><p>Como uma Ação Bônus, você toca uma criatura (que pode ser você mesmo) e extrair poder dessa reserva de cura para restaurar um número de Pontos de Vida para essa criatura, até o valor máximo restante na reserva.</p><p>Você também pode gastar 5 Pontos de Vida dessa reserva de poder de cura para remover a condição Envenenado da criatura; esses pontos não restauram Pontos de Vida da criatura.</p>",
-        "dados": {
-          "usos_max": 5,
-          "outro": "Cura: 5 * nvl"
+    "infobasica": {
+        "nome": "Louise",
+        "subclasse": "",
+        "exp": 0,
+        "nivel": 1,
+        "alinhamento": "OB",
+        "aparencia": {
+            "idade": "",
+            "altura": "",
+            "peso": "",
+            "olhos": "",
+            "pele": "",
+            "cabelo": ""
         }
-      }
-    ]
-  },
-  "atributos": {
-    "for": 10,
-    "des": 10,
-    "con": 10,
-    "int": 10,
-    "sab": 10,
-    "car": 10,
-    "saves": {
-      "for": false,
-      "des": false,
-      "con": false,
-      "int": false,
-      "sab": true,
-      "car": true
     },
-    "pericias": {
-      "atletismo": false,
-      "acrobacia": false,
-      "furtividade": false,
-      "prestidigitacao": false,
-      "arcanismo": false,
-      "historia": false,
-      "investigacao": false,
-      "natureza": false,
-      "religiao": true,
-      "intuicao": false,
-      "lidarcomanimais": false,
-      "medicina": true,
-      "percepcao": false,
-      "sobrevivencia": false,
-      "atuacao": false,
-      "enganacao": false,
-      "intimidacao": false,
-      "persuasao": false
-    }
-  },
-  "ataques": [
-    {
-      "arma": "Espada Longa",
-      "bonus_extra": 0
+    "ca": {
+        "base": 16,
+        "atributos": [],
+        "max_atributo": null,
+        "bonus_fixo": 0
     },
-    {
-      "arma": "Azagaia",
-      "bonus_extra": 0
+    "origem": {
+        "antecedente": "Eremita",
+        "talento": {
+            "nome": "Curandeiro",
+            "descricao": "<p>Você adquire os seguintes benefícios.</p><p><em><strong>Médico de Combate.</strong></em> Caso tenha um Kit de Curandeiro, você pode gastar um uso e cuidar de uma criatura a até 1,5 metro de você como uma ação Usar Objeto. Essa criatura pode gastar um dos Dados de Pontos de Vida dela e você joga esse dado. A criatura recupera um número de Pontos de Vida igual à jogada mais o seu Bônus de Proficiência.</p><p><em><strong>Cura Garantida.</strong></em> Sempre que jogar um dado para determinar o número de Pontos de Vida que você recupera com uma magia ou com o benefício do talento Médico de Combate, você pode jogar novamente o dado se o resultado for 1, e você deve usar a nova jogada.</p>",
+            "dados": null
+        },
+        "ferramentas": [
+            "Kit de Herbalismo"
+        ],
+        "idiomas": []
     },
-    {
-      "arma": "Cajado",
-      "bonus_extra": 0
-    }
-
-  ],
-  "conjuracao": {
-    "atributo": "car"
-  },
-  "espacos_magia": [
-    {
-      "circulo": 0,
-      "total": 0
+    "talentos": [],
+    "especie": {
+        "nome": "Githyanki",
+        "tamanho": "Médio",
+        "deslocamento": 9,
+        "caracteristicas": [
+            {
+                "nome": "Conhecimento Astral",
+                "descricao": "<p>Você pode acessar misticamente um depósito de experiências de entidades conectadas ao Plano Astral. Sempre que terminar um descanso longo, você ganha proficiência em uma perícia de sua escolha e com uma arma ou ferramenta de sua escolha, selecionada do <em>Livro do Jogador</em>, conforme você projeta momentaneamente sua consciência para o Plano Astral. Essas proficiências duram até o fim do seu próximo descanso longo.</p>",
+                "dados": null
+            },
+            {
+                "nome": "Psionismo Githyanki",
+                "descricao": "<p>Você conhece o truque <em>mãos mágicas</em> e, quando conjura o truque usando este traço, a mão é invisível.</p><p>A partir do 3º nível, você pode conjurar a magia <em>salto</em> usando este traço. A partir do 5º nível, você também pode conjurar a magia <em>passo nebuloso</em> usando este traço. Uma vez que conjurar <em>salto</em> ou <em>passo nebuloso</em> usando este traço, você não poderá conjurar essa magia novamente até terminar um descanso longo. Você também pode conjurar essas magias usando quaisquer espaços de magia que tiver do círculo apropriado.</p><p>Inteligência, Sabedoria ou Carisma é seu atributo de conjuração ao conjurar estas magias utilizando este traço. Nenhuma dessas magias requer componentes materiais quando conjurada usando este traço.</p>",
+                "dados": null
+            },
+            {
+                "nome": "Resiliência Psíquica",
+                "descricao": "<p>Você tem resistência a dano psíquico.</p>",
+                "dados": null
+            }
+        ]
     },
-    {
-      "circulo": 1,
-      "total": 2
+    "classe": {
+        "nome": "Paladino",
+        "atributo_primario": "for",
+        "dado_vida": 10,
+        "saves": [
+            "sab",
+            "car"
+        ],
+        "proficiencias": {
+            "armas": [
+                "simples",
+                "marciais"
+            ],
+            "armaduras": [
+                "leve",
+                "media",
+                "pesada",
+                "escudo"
+            ]
+        },
+        "caracteristicas": [
+            {
+                "nome": "Maestria em Arma",
+                "descricao": "<p>Seu treinamento com armas permite que você use as propriedades de maestria de dois tipos de armas à sua escolha com as quais você tem proficiência, como Azagaia e Espadas Longas.</p><p>Sempre que completar um Descanso Longo, você pode alterar os tipos de armas que escolheu. Por exemplo, você pode mudar para usar as propriedades de maestria de Alabardas e Manguais.</p>",
+                "dados": null
+            },
+            {
+                "nome": "Mãos Consagradas",
+                "descricao": "<p>Seu toque abençoado pode aliviar feridas. Você tem uma reserva de poder de cura que reabastece ao completar um Descanso Longo. Com essa reserva, você pode recuperar um número total de Pontos de Vida igual a cinco vezes seu nível de Paladino.</p><p>Como uma Ação Bônus, você toca uma criatura (que pode ser você mesmo) e extrair poder dessa reserva de cura para restaurar um número de Pontos de Vida para essa criatura, até o valor máximo restante na reserva.</p><p>Você também pode gastar 5 Pontos de Vida dessa reserva de poder de cura para remover a condição Envenenado da criatura; esses pontos não restauram Pontos de Vida da criatura.</p>",
+                "dados": {
+                    "usos_max": 5,
+                    "outro": "Cura: 5 * nvl"
+                }
+            }
+        ]
     },
-    {
-      "circulo": 2,
-      "total": 0
+    "atributos": {
+        "for": 10,
+        "des": 10,
+        "con": 10,
+        "int": 10,
+        "sab": 10,
+        "car": 10,
+        "saves": {
+            "for": false,
+            "des": false,
+            "con": false,
+            "int": false,
+            "sab": true,
+            "car": true
+        },
+        "pericias": {
+            "atletismo": false,
+            "acrobacia": false,
+            "furtividade": false,
+            "prestidigitacao": false,
+            "arcanismo": false,
+            "historia": false,
+            "investigacao": false,
+            "natureza": false,
+            "religiao": true,
+            "intuicao": false,
+            "lidarcomanimais": false,
+            "medicina": true,
+            "percepcao": false,
+            "sobrevivencia": false,
+            "atuacao": false,
+            "enganacao": false,
+            "intimidacao": false,
+            "persuasao": false
+        }
     },
-    {
-      "circulo": 3,
-      "total": 0
-    },
-    {
-      "circulo": 4,
-      "total": 0
-    },
-    {
-      "circulo": 5,
-      "total": 0
-    },
-    {
-      "circulo": 6,
-      "total": 0
-    },
-    {
-      "circulo": 7,
-      "total": 0
-    },
-    {
-      "circulo": 8,
-      "total": 0
-    },
-    {
-      "circulo": 9,
-      "total": 0
-    }
-  ],
-  "magias": [
-    {
-      "nome": "Mãos Mágicas",
-      "original": "mage hand",
-      "nivel": 0,
-      "escola": "Invocação",
-      "classes": "Bardo, Bruxo, Feiticeiro, Mago, Artífice",
-      "tempo": "Ação",
-      "ritual": false,
-      "alcance": 9,
-      "componentes": "V, S",
-      "duracao": "1 minuto",
-      "concentracao": false,
-      "descricao": "<p>Uma mão espectral flutuante aparece em um ponto que você escolher no alcance da magia. A mão permanece pela duração. A mão desaparece se estiver a mais de 9 metros de você ou se você conjurar esta magia novamente.</p> <p>Ao conjurar a magia, você pode usar a mão para manipular um objeto, abrir uma porta ou um recipiente destrancado, guardar ou recolher itens de recipientes abertos, ou despejar o conteúdo de um frasco.</p> <p>Como uma ação Usar Magia em seus próximos turnos, você pode controlar a mão novamente. Como parte dessa ação, você pode mover a mão até 9 metros.</p> <p>A mão não pode atacar, ativar itens mágicos ou carregar mais de 5 quilos.</p>"
-    }
-  ],
-  "equipamentos": {
-    "escudo": true,
-    "lista": [
-      {
-        "nome": "Cota de Malha"
-      },
-      {
-        "nome": "Escudo"
-      },
-      {
-        "nome": "Espada Longa"
-      },
-      {
-        "nome": "Azagaias",
-        "quantidade": 6
-      },
-      {
-        "nome": "Símbolo Sagrado"
-      },
-      {
-        "nome": "Kit de Sacerdote"
-      },
-      {
-        "nome": "Cajado"
-      },
-      {
-        "nome": "Kit de Herbalismo"
-      },
-      {
-        "nome": "Lâmpada"
-      },
-      {
-        "nome": "Livro (filosofia)"
-      },
-      {
-        "nome": "Frascos de Óleo",
-        "quantidade": 3
-      },
-      {
-        "nome": "Roupas  de Viagem"
-      },
-      {
-        "nome": "Saco de Dormir"
-      }
+    "ataques": [
+        {
+            "arma": "Espada Longa",
+            "bonus_extra": 0
+        },
+        {
+            "arma": "Azagaia",
+            "bonus_extra": 0
+        },
+        {
+            "arma": "Cajado",
+            "bonus_extra": 0
+        }
     ],
-    "itens_magicos": []
-  },
-  "moedas": {
-    "pc": 0,
-    "pp": 0,
-    "pe": 0,
-    "po": 25,
-    "pl": 0
-  }
+    "conjuracao": {
+        "atributo": "car"
+    },
+    "espacos_magia": [
+        {
+            "circulo": 0,
+            "total": 0
+        },
+        {
+            "circulo": 1,
+            "total": 2
+        },
+        {
+            "circulo": 2,
+            "total": 0
+        },
+        {
+            "circulo": 3,
+            "total": 0
+        },
+        {
+            "circulo": 4,
+            "total": 0
+        },
+        {
+            "circulo": 5,
+            "total": 0
+        },
+        {
+            "circulo": 6,
+            "total": 0
+        },
+        {
+            "circulo": 7,
+            "total": 0
+        },
+        {
+            "circulo": 8,
+            "total": 0
+        },
+        {
+            "circulo": 9,
+            "total": 0
+        }
+    ],
+    "magias": [
+        {
+            "nome": "Mãos Mágicas",
+            "original": "mage hand",
+            "nivel": 0,
+            "escola": "Invocação",
+            "classes": "Bardo, Bruxo, Feiticeiro, Mago, Artífice",
+            "tempo": "Ação",
+            "ritual": false,
+            "alcance": 9,
+            "componentes": "V, S",
+            "duracao": "1 minuto",
+            "concentracao": false,
+            "descricao": "<p>Uma mão espectral flutuante aparece em um ponto que você escolher no alcance da magia. A mão permanece pela duração. A mão desaparece se estiver a mais de 9 metros de você ou se você conjurar esta magia novamente.</p> <p>Ao conjurar a magia, você pode usar a mão para manipular um objeto, abrir uma porta ou um recipiente destrancado, guardar ou recolher itens de recipientes abertos, ou despejar o conteúdo de um frasco.</p> <p>Como uma ação Usar Magia em seus próximos turnos, você pode controlar a mão novamente. Como parte dessa ação, você pode mover a mão até 9 metros.</p> <p>A mão não pode atacar, ativar itens mágicos ou carregar mais de 5 quilos.</p>"
+        }
+    ],
+    "equipamentos": {
+        "escudo": true,
+        "lista": [
+            {
+                "nome": "Cota de Malha"
+            },
+            {
+                "nome": "Escudo"
+            },
+            {
+                "nome": "Espada Longa"
+            },
+            {
+                "nome": "Azagaias",
+                "quantidade": 6
+            },
+            {
+                "nome": "Símbolo Sagrado"
+            },
+            {
+                "nome": "Kit de Sacerdote"
+            },
+            {
+                "nome": "Cajado"
+            },
+            {
+                "nome": "Kit de Herbalismo"
+            },
+            {
+                "nome": "Lâmpada"
+            },
+            {
+                "nome": "Livro (filosofia)"
+            },
+            {
+                "nome": "Frascos de Óleo",
+                "quantidade": 3
+            },
+            {
+                "nome": "Roupas  de Viagem"
+            },
+            {
+                "nome": "Saco de Dormir"
+            }
+        ],
+        "itens_magicos": []
+    },
+    "moedas": {
+        "pc": 0,
+        "pp": 0,
+        "pe": 0,
+        "po": 25,
+        "pl": 0
+    }
 }

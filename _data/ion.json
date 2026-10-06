@@ -60,8 +60,6 @@
         "nome": "Clérigo",
         "atributo_primario": "sab",
         "dado_vida": 8,
-        "pv_nivel_1": 8,
-        "pv_por_nivel": 7,
         "saves": [
             "sab",
             "car"
@@ -102,7 +100,7 @@
         "pericias": {
             "atletismo": false,
             "acrobacia": false,
-            "furtividade": true,
+            "furtividade": false,
             "prestidigitacao": true,
             "arcanismo": false,
             "historia": false,
@@ -136,7 +134,7 @@
         },
         {
             "circulo": 1,
-            "total": 4
+            "total": 2
         },
         {
             "circulo": 2,
@@ -203,10 +201,10 @@
         "itens_magicos": []
     },
     "moedas": {
+        "pc": 0,
         "pp": 0,
-        "po": 22,
         "pe": 0,
-        "pl": 0,
-        "pc": 0
+        "po": 22,
+        "pl": 0
     }
 }

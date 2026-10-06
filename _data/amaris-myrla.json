@@ -69,8 +69,6 @@
         "nome": "Ladino",
         "atributo_primario": "des",
         "dado_vida": 8,
-        "pv_nivel_1": 8,
-        "pv_por_nivel": 5,
         "saves": [
             "des",
             "int"
@@ -239,5 +237,12 @@
             }
         ],
         "itens_magicos": []
+    },
+    "moedas": {
+        "pc": 0,
+        "pp": 0,
+        "pe": 0,
+        "po": 19,
+        "pl": 0
     }
 }
