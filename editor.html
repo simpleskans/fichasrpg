@@ -672,7 +672,8 @@
       item.appendChild(rm);
 
       const campos = [
-        ["nome", "text", "Nome"], ["original", "text", "Nome original (inglês)"],
+        ["nome", "text", "Nome"], ["origem", "text", "Origem (opcional, ex: Fogo Astral)"],
+        ["original", "text", "Nome original (inglês)"],
         ["nivel", "number", "Círculo (0 = truque)"], ["escola", "text", "Escola"],
         ["classes", "text", "Classes (separadas por vírgula)"], ["tempo", "text", "Tempo de conjuração"],
         ["alcance", "text", "Alcance (número em metros ou texto como Pessoal)"],
@@ -776,6 +777,7 @@
         const alcance = alcanceRaw !== "" && !isNaN(alcanceRaw) ? Number(alcanceRaw) : alcanceRaw;
         return {
           nome: q(".magia-nome").value.trim(),
+          origem: q(".magia-origem").value.trim() || undefined,
           original: q(".magia-original").value.trim(),
           nivel: Number(q(".magia-nivel").value || 0),
           escola: q(".magia-escola").value.trim(),

@@ -4,22 +4,88 @@
         "subclasse": "",
         "exp": 0,
         "nivel": 1,
-        "alinhamento": "",
+        "alinhamento": "OB",
         "aparencia": {
-            "idade": "",
-            "altura": "",
-            "peso": "",
-            "olhos": "",
-            "pele": "",
-            "cabelo": ""
+            "idade": "127",
+            "altura": "1.8",
+            "peso": "57",
+            "olhos": "Dourados",
+            "pele": "Marrom",
+            "cabelo": "Branco/Prateado",
+            "imagem": "seryn.jpeg"
         }
+    },
+    "ca": {
+        "base": 11,
+        "atributos": [
+            "des"
+        ],
+        "max_atributo": null,
+        "bonus_fixo": 0
+    },
+    "origem": {
+        "antecedente": "Escriba",
+        "talento": {
+            "nome": "Habilidoso",
+            "descricao": "<p>Você adquire proficiência em qualquer combinação de três perícias ou ferramentas à sua escolha.</p><p><em><strong>Repetível.</strong></em> Você pode adquirir este talento mais de uma vez.</p>",
+            "dados": {
+                "outro": "Arcanismo, Lidar com Animais, Medicina"
+            }
+        },
+        "ferramentas": [
+            "Kit de Herbalismo",
+            "Suprimentos de Calígrafo"
+        ],
+        "idiomas": [
+            "Comum"
+        ]
+    },
+    "talentos": [],
+    "especie": {
+        "nome": "Elfo Astral / Kalashtar",
+        "tamanho": "Médio",
+        "deslocamento": 9,
+        "caracteristicas": [
+            {
+                "nome": "Elo Mental",
+                "descricao": "<p>Você é capaz de falar telepaticamente com qualquer criatura que consiga enxergar, desde que a criatura esteja, no máximo, a uma distância em metros de você igual a 3 vezes seu nível. Você não precisar falar o mesmo idioma da criatura para que ela compreenda suas declarações telepáticas, mas a criatura precisa ser capaz de compreender ao menos um idioma.</p><p>Ao usar este traço racial para falar telepaticamente com uma criatura, você pode usar sua ação para dar à criatura a capacidade de falar telepaticamente com você durante 1 hora ou até você encerrar o efeito usando uma outra ação. Para utilizar essa habilidade, a criatura precisa ser capaz de enxergar você e deve estar dentro do alcance especificado para este traço racial. Você só pode dar essa habilidade a uma criatura por vez. Concedê-la a uma outra criaturaremoverá a capacidade da criatura que a tinha antes</p>",
+                "dados": {
+                    "outro": "Distância: 3 m"
+                }
+            },
+            {
+                "nome": "Apartado dos Sonhos",
+                "descricao": "<p>Apartado dos Sonhos. Os kalashtar dormem, mas não estabelecem contato com o plano dos sonhos como fazem as outras criaturas. Em vez disso, enquanto dormem, suas mentes recorrem às lembranças de seus espíritos  extraplanares. Sendo assim, você é imune a magias e outros efeitos mágicos que exigem que você sonhe, como <em>sonho</em>, mas não a magias e outros efeitos mágicos que botem você para dormir, como <em>sono</em>.</p>",
+                "dados": null
+            },
+            {
+                "nome": "Fogo Astral",
+                "descricao": "<p>Você conhece um dos seguintes truques à sua escolha: <em>luzes dançantes</em>, <em>luz</em> ou <em>chama sagrada</em>. Inteligência, Sabedoria ou Carisma é seu atributo de conjuração para este truque (escolha ao selecionar esta raça).</p>",
+                "dados": {
+                    "outro": "Chama Sagrada"
+                }
+            },
+            {
+                "nome": "Passo da Luz da Estrela",
+                "descricao": "<p>Como uma ação bônus, você pode se teletransportar magicamente até 9 metros para um espaço desocupado que você possa ver. Você pode usar esta característica um número de vezes igual ao seu bônus de proficiência e recupera todos os usos gastos ao terminar um descanso longo.</p>",
+                "dados": {
+                    "usos_max": 2,
+                    "outro": "Distância: 9 m"
+                }
+            },
+            {
+                "nome": "Visão no Escuro",
+                "descricao": "<p>Você tem Visão no Escuro com um alcance de 18 metros.</p>",
+                "dados": {
+                    "outro": "Distância: 18 m"
+                }
+            }
+        ]
     },
     "classe": {
         "nome": "Druida",
         "atributo_primario": "sab",
         "dado_vida": 8,
-        "pv_nivel_1": 8,
-        "pv_por_nivel": 7,
         "saves": [
             "int",
             "sab"
@@ -45,81 +111,18 @@
                 "nome": "Ordem Primal",
                 "descricao": "<p>Você se dedicou a uma das seguintes funções sagradas à sua escolha.</p><p><em><strong>Protetor.</strong></em> Treinado para a batalha, você adquire proficiência com armas Marciais e treinamento com armadura Média.</p><p><em><strong>Xamã.</strong></em> Você conhece um truque adicional da lista de magias de Druida. Além disso, sua conexão mística com a natureza lhe concede um bônus em seus testes de Inteligência (Arcanismo ou Natureza). O bônus é igual ao seu modificador de Sabedoria (bônus mínimo de +1).</p>",
                 "dados": {
-                    "outro": ""
-                }
-            }
-        ]
-    },
-    "ca": {
-        "base": 11,
-        "atributos": [
-            "des"
-        ],
-        "max_atributo": null,
-        "bonus_fixo": 0
-    },
-    "origem": {
-        "antecedente": "Escriba",
-        "talento": {
-            "nome": "Habilidoso",
-            "descricao": "<p>Você adquire proficiência em qualquer combinação de três perícias ou ferramentas à sua escolha.</p><p><em><strong>Repetível.</strong></em> Você pode adquirir este talento mais de uma vez.</p>"
-        },
-        "ferramentas": [
-            "Kit de Herbalismo",
-            "Suprimentos de Calígrafo"
-        ],
-        "idiomas": [
-            "Comum"
-        ]
-    },
-    "talentos": [],
-    "especie": {
-        "nome": "Elfo Astral / Kalashtar",
-        "tamanho": "Médio",
-        "deslocamento": 9,
-        "caracteristicas": [
-            {
-                "nome": "Elo Mental",
-                "descricao": "<p>Você é capaz de falar telepaticamente com qualquer criatura que consiga enxergar, desde que a criatura esteja, no máximo, a uma distância em metros de você igual a 3 vezes seu nível. Você não precisar falar o mesmo idioma da criatura para que ela compreenda suas declarações telepáticas, mas a criatura precisa ser capaz de compreender ao menos um idioma.</p><p>Ao usar este traço racial para falar telepaticamente com uma criatura, você pode usar sua ação para dar à criatura a capacidade de falar telepaticamente com você durante 1 hora ou até você encerrar o efeito usando uma outra ação. Para utilizar essa habilidade, a criatura precisa ser capaz de enxergar você e deve estar dentro do alcance especificado para este traço racial. Você só pode dar essa habilidade a uma criatura por vez. Concedê-la a uma outra criaturaremoverá a capacidade da criatura que a tinha antes</p>",
-                "dados": {
-                    "outro": "Distância: 3 m"
-                }
-            },
-            {
-                "nome": "Apartado dos Sonhos",
-                "descricao": "<p>Apartado dos Sonhos. Os kalashtar dormem, mas não estabelecem contato com o plano dos sonhos como fazem as outras criaturas. Em vez disso, enquanto dormem, suas mentes recorrem às lembranças de seus espíritos  extraplanares. Sendo assim, você é imune a magias e outros efeitos mágicos que exigem que você sonhe, como <em>sonho</em>, mas não a magias e outros efeitos mágicos que botem você para dormir, como <em>sono</em>.</p>"
-            },
-            {
-                "nome": "Fogo Astral",
-                "descricao": "<p>Você conhece um dos seguintes truques à sua escolha: <em>luzes dançantes</em>, <em>luz</em> ou <em>chama sagrada</em>. Inteligência, Sabedoria ou Carisma é seu atributo de conjuração para este truque (escolha ao selecionar esta raça).</p>",
-                "dados": {
-                    "outro": ""
-                }
-            },
-            {
-                "nome": "Passo da Luz da Estrela",
-                "descricao": "<p>Como uma ação bônus, você pode se teletransportar magicamente até 9 metros para um espaço desocupado que você possa ver. Você pode usar esta característica um número de vezes igual ao seu bônus de proficiência e recupera todos os usos gastos ao terminar um descanso longo.</p>",
-                "dados": {
-                    "usos_max": "2",
-                    "outro": "Distância: 9 m"
-                }
-            },
-            {
-                "nome": "Visão no Escuro",
-                "descricao": "<p>Você tem Visão no Escuro com um alcance de 18 metros.</p>",
-                "dados": {
-                    "outro": "Distância: 18 m"
+                    "outro": "Xamã (Bônus +1)"
                 }
             }
         ]
     },
     "atributos": {
-        "for": 11,
-        "des": 12,
-        "con": 11,
-        "int": 15,
-        "sab": 13,
-        "car": 9,
+        "for": 8,
+        "des": 14,
+        "con": 14,
+        "int": 13,
+        "sab": 16,
+        "car": 10,
         "saves": {
             "for": false,
             "des": false,
@@ -129,33 +132,33 @@
             "car": false
         },
         "pericias": {
-            "acrobacia": false,
-            "arcanismo": false,
             "atletismo": false,
+            "acrobacia": false,
+            "furtividade": false,
+            "prestidigitacao": false,
+            "arcanismo": true,
+            "historia": false,
+            "investigacao": true,
+            "natureza": true,
+            "religiao": false,
+            "intuicao": false,
+            "lidarcomanimais": true,
+            "medicina": true,
+            "percepcao": true,
+            "sobrevivencia": true,
             "atuacao": false,
             "enganacao": false,
-            "furtividade": false,
-            "historia": false,
             "intimidacao": false,
-            "investigacao": true,
-            "intuicao": false,
-            "lidarcomanimais": false,
-            "medicina": false,
-            "natureza": false,
-            "percepcao": true,
-            "persuasao": false,
-            "prestidigitacao": false,
-            "religiao": false,
-            "sobrevivencia": false
+            "persuasao": false
         }
-    },
-    "outros": {
-        "pvmax": 15,
-        "dvmax": 1
     },
     "ataques": [
         {
             "arma": "Foice",
+            "bonus_extra": 0
+        },
+        {
+            "arma": "Cajado",
             "bonus_extra": 0
         }
     ],
@@ -206,8 +209,8 @@
     ],
     "magias": [
         {
-            "origem": "Idioma Druídico",
             "nome": "Falar com Animais",
+            "origem": "Idioma Druídico",
             "original": "speak with animals",
             "nivel": 1,
             "escola": "Adivinhação",
@@ -219,6 +222,96 @@
             "duracao": "10 minutos",
             "concentracao": false,
             "descricao": "<p>Pela duração da magia, você pode compreender e se comunicar verbalmente com Feras, e pode usar com elas qualquer uma das opções de perícia da ação Influenciar.</p> <p>A maioria das Feras oferece pouca informação sobre assuntos que não estejam diretamente ligados à sobrevivência ou ao companheirismo mas, no mínimo, uma Fera pode fornecer informações sobre áreas vizinhas e monstros, incluindo o que percebeu no último dia.</p>"
+        },
+        {
+            "nome": "Chama Sagrada",
+            "origem": "Fogo Astral",
+            "original": "Sacred Flame",
+            "nivel": 0,
+            "escola": "Evocação",
+            "classes": "Clérigo",
+            "tempo": "Ação",
+            "ritual": false,
+            "alcance": 18,
+            "componentes": "V, S",
+            "duracao": "Instantânea",
+            "concentracao": false,
+            "descricao": "<p>Um brilho semelhante a uma chama desce sobre uma criatura à sua vista e no alcance da magia. O alvo deve ser bem-sucedido em uma salvaguarda de Destreza ou sofre 1d8 pontos de dano Radiante. O alvo não recebe nenhum benefício de Cobertura Parcial ou Cobertura de Três Quartos para esta salvaguarda.</p> <p><strong>Aprimoramento de Truque.</strong> O dano aumenta em 1d8 quando você atinge os níveis 5 (2d8), 11 (3d8) e 17 (4d8).</p>"
+        },
+        {
+            "nome": "Fagulha Estelar",
+            "origem": "Ordem Primal",
+            "original": "Starry Wisp",
+            "nivel": 0,
+            "escola": "Evocação",
+            "classes": "Bardo, Druida",
+            "tempo": "Ação",
+            "ritual": false,
+            "alcance": 18,
+            "componentes": "V, S",
+            "duracao": "Instantânea",
+            "concentracao": false,
+            "descricao": "<p>Você lança uma faísca de luz em uma criatura ou objeto no alcance da magia. Realize um ataque mágico à distância contra o alvo. Em caso de acerto, o alvo sofre 1d8 pontos de dano Radiante e, até o final do seu próximo turno, emite Meia-luz em um raio de 3 metros e não pode se beneficiar da condição Invisível.</p> <p><strong>Aprimoramento de Truque.</strong> O dano aumenta em 1d8 quando você atinge os níveis 5 (2d8), 11 (3d8) e 17 (4d8).</p>"
+        },
+        {
+            "nome": "Arte Druídica",
+            "origem": "Conjuração",
+            "original": "druidcraft",
+            "nivel": 0,
+            "escola": "Transmutação",
+            "classes": "Druida",
+            "tempo": "Ação",
+            "ritual": false,
+            "alcance": 9,
+            "componentes": "V, S",
+            "duracao": "Instantânea",
+            "concentracao": false,
+            "descricao": "<p>Sussurrando para os espíritos da natureza, você cria um dos seguintes efeitos no alcance da magia.</p> <p><strong>Brincar com Fogo.</strong> Você acende ou apaga uma vela, uma tocha ou uma fogueira.</p> <p><strong>Efeito Sensorial.</strong> Você cria um efeito sensorial inofensivo, como folhas caindo, fadas dançantes espectrais, uma brisa suave, o som de um animal ou o leve odor de gambá. O efeito deve caber em um Cubo de 1,5 metro de lado.</p> <p><strong>Florescimento.</strong> Você instantaneamente faz uma flor desabrochar, uma vagem se abrir ou um botão de folha se abrir.</p> <p><strong>Sensor Climático.</strong> Você cria um efeito sensorial minúsculo e inofensivo que prevê qual será o clima no local onde você está pelas próximas 24 horas. O efeito pode se manifestar como uma esfera dourada para céu claro, uma nuvem para chuva, flocos de neve caindo para neve e assim por diante. Esse efeito persiste por 1 rodada.</p>"
+        },
+        {
+            "nome": "Elementalismo",
+            "origem": "Conjuração",
+            "original": "Elementalism",
+            "nivel": 0,
+            "escola": "Transmutação",
+            "classes": "Druida, Feiticeiro, Mago, Artífice",
+            "tempo": "Ação",
+            "ritual": false,
+            "alcance": 9,
+            "componentes": "V, S",
+            "duracao": "Instantânea",
+            "concentracao": false,
+            "descricao": "<p>Você exerce controle sobre os elementos, criando um dos seguintes efeitos no alcance da magia.</p> <p><strong>Convocar Água.</strong> Você cria um jato de névoa fria que umedece levemente criaturas e objetos em um Cubo de 1,5 metro de lado. Como alternativa, você cria 1 xícara de água limpa em um recipiente aberto ou em uma superfície, e a água evapora em 1 minuto.</p> <p><strong>Convocar Brisa.</strong> Você cria uma brisa forte o suficiente para ondular um tecido, mexer poeira, farfalhar folhas e fechar portas e persianas abertas, tudo em um Cubo de 1,5 metro de lado. Portas e persianas que estiverem sendo mantidas abertas por alguém ou alguma força não são afetadas.</p> <p><strong>Convocar Fogo.</strong> Você cria uma fina nuvem de brasas inofensivas e fumaça colorida e perfumada em um Cubo de 1,5 metro de lados. Você escolhe a cor e o perfume, e as brasas podem acender velas, tochas ou lâmpadas nessa área. O cheiro da fumaça permanece por 1 minuto.</p> <p><strong>Convocar Terra.</strong> Você cria uma fina camada de poeira ou areia que cobre superfícies em uma área quadrada de 1,5 metro de lado, ou faz com que uma única palavra apareça em sua caligrafia em um pedaço de terra ou areia.</p> <p><strong>Esculpir Elemento.</strong> Você faz com que terra, areia, fogo, fumaça, névoa ou água que caiba em um Cubo de 30 centímetros de lado assuma uma forma rudimentar (como a de uma criatura) por 1 hora.</p>"
+        },
+        {
+            "nome": "Curar Ferimentos",
+            "origem": "Conjuração",
+            "original": "cure wounds",
+            "nivel": 1,
+            "escola": "Abjuração",
+            "classes": "Bardo, Clérigo, Druida, Guardião, Paladino, Artífice",
+            "tempo": "Ação",
+            "ritual": false,
+            "alcance": "Toque",
+            "componentes": "V, S",
+            "duracao": "Instantânea",
+            "concentracao": false,
+            "descricao": "<p>Uma criatura que você toca recupera um número de Pontos de Vida igual a 2d8 mais seu modificador de atributo de conjuração.</p> <p><strong>Usando um Espaço de Magia de Círculo Superior.</strong> A cura aumenta em 2d8 para cada círculo de espaço de magia acima de 1.</p>"
+        },
+        {
+            "nome": "Amizade Animal",
+            "origem": "Conjuração",
+            "original": "Animal Friendship",
+            "nivel": 1,
+            "escola": "Encantamento",
+            "classes": "Bardo, Druida, Guardião",
+            "tempo": "Ação",
+            "ritual": false,
+            "alcance": 9,
+            "componentes": "V, S, M (um bocado de comida)",
+            "duracao": "24 horas",
+            "concentracao": false,
+            "descricao": "<p>Escolha como alvo uma Fera à sua vista e no alcance da magia. O alvo deve ser bem-sucedido em uma salvaguarda de Sabedoria ou tem a condição Enfeitiçado pela duração da magia. Se você ou um de seus aliados causar dano ao alvo, a magia encerra.</p> <p><strong>Usando um Espaço de Magia de Círculo Superior.</strong> Você pode escolher uma criatura adicional para cada círculo de espaço de magia acima de 1.</p>"
         }
     ],
     "equipamentos": {
