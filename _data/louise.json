@@ -6,17 +6,19 @@
         "nivel": 1,
         "alinhamento": "OB",
         "aparencia": {
-            "idade": "",
-            "altura": "",
-            "peso": "",
-            "olhos": "",
-            "pele": "",
-            "cabelo": ""
+            "idade": "27",
+            "altura": "1.80",
+            "peso": "78.9",
+            "olhos": "Vermelho-claro",
+            "pele": "Amarelada/Verde Oliva",
+            "cabelo": "Preto"
         }
     },
     "ca": {
-        "base": 16,
-        "atributos": [],
+        "base": 13,
+        "atributos": [
+            "des"
+        ],
         "max_atributo": null,
         "bonus_fixo": 0
     },
@@ -28,7 +30,8 @@
             "dados": null
         },
         "ferramentas": [
-            "Kit de Herbalismo"
+            "Kit de Herbalismo",
+            "Suprimentos de Pintor"
         ],
         "idiomas": []
     },
@@ -41,7 +44,9 @@
             {
                 "nome": "Conhecimento Astral",
                 "descricao": "<p>Você pode acessar misticamente um depósito de experiências de entidades conectadas ao Plano Astral. Sempre que terminar um descanso longo, você ganha proficiência em uma perícia de sua escolha e com uma arma ou ferramenta de sua escolha, selecionada do <em>Livro do Jogador</em>, conforme você projeta momentaneamente sua consciência para o Plano Astral. Essas proficiências duram até o fim do seu próximo descanso longo.</p>",
-                "dados": null
+                "dados": {
+                    "outro": "Sobrevivência, Suprimentos de Pintor"
+                }
             },
             {
                 "nome": "Psionismo Githyanki",
@@ -56,17 +61,14 @@
         ]
     },
     "classe": {
-        "nome": "Paladino",
-        "atributo_primario": "for",
-        "dado_vida": 10,
-        "saves": [
-            "sab",
-            "car"
-        ],
+        "nome": "Clérigo",
+        "atributo_primario": "sab",
+        "dado_vida": 8,
+        "saves": [],
         "proficiencias": {
             "armas": [
                 "simples",
-                "marciais"
+                "marcial"
             ],
             "armaduras": [
                 "leve",
@@ -77,27 +79,21 @@
         },
         "caracteristicas": [
             {
-                "nome": "Maestria em Arma",
-                "descricao": "<p>Seu treinamento com armas permite que você use as propriedades de maestria de dois tipos de armas à sua escolha com as quais você tem proficiência, como Azagaia e Espadas Longas.</p><p>Sempre que completar um Descanso Longo, você pode alterar os tipos de armas que escolheu. Por exemplo, você pode mudar para usar as propriedades de maestria de Alabardas e Manguais.</p>",
-                "dados": null
-            },
-            {
-                "nome": "Mãos Consagradas",
-                "descricao": "<p>Seu toque abençoado pode aliviar feridas. Você tem uma reserva de poder de cura que reabastece ao completar um Descanso Longo. Com essa reserva, você pode recuperar um número total de Pontos de Vida igual a cinco vezes seu nível de Paladino.</p><p>Como uma Ação Bônus, você toca uma criatura (que pode ser você mesmo) e extrair poder dessa reserva de cura para restaurar um número de Pontos de Vida para essa criatura, até o valor máximo restante na reserva.</p><p>Você também pode gastar 5 Pontos de Vida dessa reserva de poder de cura para remover a condição Envenenado da criatura; esses pontos não restauram Pontos de Vida da criatura.</p>",
+                "nome": "Ordem Divina",
+                "descricao": "<p>Você se dedicou a um dos seguintes papéis sagrados à sua escolha.</p><p><em><strong>Protetor.</strong></em> Treinado para a batalha, você adquire proficiência com armas Marciais e treinamento com Armadura Pesada.</p><p><em><strong>Taumaturgo.</strong></em> Você conhece um truque adicional da lista de magias de Clérigo. Além disso, sua conexão mística com o divino lhe dá um bônus em seus testes de Inteligência (Arcanismo ou Religião). O bônus é igual ao seu modificador de Sabedoria (mínimo de +1).</p>",
                 "dados": {
-                    "usos_max": 5,
-                    "outro": "Cura: 5 * nvl"
+                    "outro": "Protetor"
                 }
             }
         ]
     },
     "atributos": {
-        "for": 10,
-        "des": 10,
-        "con": 10,
+        "for": 14,
+        "des": 8,
+        "con": 15,
         "int": 10,
-        "sab": 10,
-        "car": 10,
+        "sab": 16,
+        "car": 12,
         "saves": {
             "for": false,
             "des": false,
@@ -112,15 +108,15 @@
             "furtividade": false,
             "prestidigitacao": false,
             "arcanismo": false,
-            "historia": false,
+            "historia": true,
             "investigacao": false,
             "natureza": false,
             "religiao": true,
-            "intuicao": false,
+            "intuicao": true,
             "lidarcomanimais": false,
             "medicina": true,
             "percepcao": false,
-            "sobrevivencia": false,
+            "sobrevivencia": true,
             "atuacao": false,
             "enganacao": false,
             "intimidacao": false,
@@ -129,11 +125,7 @@
     },
     "ataques": [
         {
-            "arma": "Espada Longa",
-            "bonus_extra": 0
-        },
-        {
-            "arma": "Azagaia",
+            "arma": "Maça",
             "bonus_extra": 0
         },
         {
@@ -147,7 +139,7 @@
     "espacos_magia": [
         {
             "circulo": 0,
-            "total": 0
+            "total": 3
         },
         {
             "circulo": 1,
@@ -189,6 +181,7 @@
     "magias": [
         {
             "nome": "Mãos Mágicas",
+            "origem": "Psionismo Githyanki",
             "original": "mage hand",
             "nivel": 0,
             "escola": "Invocação",
@@ -200,23 +193,64 @@
             "duracao": "1 minuto",
             "concentracao": false,
             "descricao": "<p>Uma mão espectral flutuante aparece em um ponto que você escolher no alcance da magia. A mão permanece pela duração. A mão desaparece se estiver a mais de 9 metros de você ou se você conjurar esta magia novamente.</p> <p>Ao conjurar a magia, você pode usar a mão para manipular um objeto, abrir uma porta ou um recipiente destrancado, guardar ou recolher itens de recipientes abertos, ou despejar o conteúdo de um frasco.</p> <p>Como uma ação Usar Magia em seus próximos turnos, você pode controlar a mão novamente. Como parte dessa ação, você pode mover a mão até 9 metros.</p> <p>A mão não pode atacar, ativar itens mágicos ou carregar mais de 5 quilos.</p>"
+        },
+        {
+            "nome": "Badalar Fúnebre",
+            "original": "Toll the Dead",
+            "origem": "Conjuração",
+            "nivel": 0,
+            "escola": "Necromancia",
+            "classes": "Clérigo, Bruxo, Mago",
+            "tempo": "Ação",
+            "ritual": false,
+            "alcance": 18,
+            "componentes": "V, S",
+            "duracao": "Instantânea",
+            "concentracao": false,
+            "descricao": "<p>Você aponta para uma criatura à sua vista e no alcance da magia, então um único toque de um badalar doloroso é audível a até 3 metros do alvo. O alvo deve ser bem-sucedido em uma salvaguarda de Sabedoria ou sofre 1d8 pontos de dano Necrótico. Caso o alvo tenha perdido algum de seus Pontos de Vida, em vez de 1d8, ele sofre 1d12 pontos de dano Necrótico.</p> <p><strong>Aprimoramento de Truque.</strong> O dano aumenta em um dado quando você atinge os níveis 5 (2d8 ou 2d12), 11 (3d8 ou 3d12) e 17 (4d8 ou 4d12).</p>"
+        },
+        {
+            "nome": "Resistência",
+            "original": "Resistance",
+            "origem": "Conjuração",
+            "nivel": 0,
+            "escola": "Abjuração",
+            "classes": "Clérigo, Druida, Artífice",
+            "tempo": "Ação",
+            "ritual": false,
+            "alcance": "Toque",
+            "componentes": "V, S",
+            "duracao": "até 1 minuto",
+            "concentracao": true,
+            "descricao": "<p><strong>Componente:</strong> V, S</p> <p>Você toca uma criatura voluntária e escolhe um tipo de dano: Ácido, Contundente, Cortante, Elétrico, Gélido, Ígneo, Necrótico, Perfurante, Radiante, Trovejante ou Venenoso. Quando a criatura sofre dano do tipo escolhido antes que a magia termine, a criatura reduz o dano total sofrido em 1d4 pontos. Uma criatura pode se beneficiar desta magia apenas uma vez por turno.</p>"
+        },
+        {
+            "nome": "Luz",
+            "original": "light",
+            "nivel": 0,
+            "escola": "Evocação",
+            "classes": "Bardo, Clérigo, Feiticeiro, Mago, Artífice",
+            "tempo": "Ação",
+            "ritual": false,
+            "alcance": "Toque",
+            "origem": "Conjuração",
+            "componentes": "V, M (um vaga-lume ou musgo fosforescente)",
+            "duracao": "1 hora",
+            "concentracao": false,
+            "descricao": "<p>Você toca em um objeto Grande ou menor que não está sendo usado ou carregado por outra pessoa. Até que a magia termine, o objeto emite Luz Plena em um raio de 6 metros e Meia-luz por mais 6 metros. A luz pode ter a cor que você desejar.</p> <p>Cobrir o objeto com algo opaco bloqueia a luz. A magia se encerra se você a conjurar novamente.</p>"
         }
     ],
     "equipamentos": {
         "escudo": true,
         "lista": [
             {
-                "nome": "Cota de Malha"
+                "nome": "Cota de Malha Parcial"
             },
             {
                 "nome": "Escudo"
             },
             {
-                "nome": "Espada Longa"
-            },
-            {
-                "nome": "Azagaias",
-                "quantidade": 6
+                "nome": "Maça"
             },
             {
                 "nome": "Símbolo Sagrado"
@@ -241,7 +275,7 @@
                 "quantidade": 3
             },
             {
-                "nome": "Roupas  de Viagem"
+                "nome": "Roupas de Viagem"
             },
             {
                 "nome": "Saco de Dormir"
@@ -253,7 +287,7 @@
         "pc": 0,
         "pp": 0,
         "pe": 0,
-        "po": 25,
+        "po": 23,
         "pl": 0
     }
 }
